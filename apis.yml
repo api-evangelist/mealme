@@ -1,31 +1,47 @@
 aid: mealme
 name: MealMe
 description: >-
-  Restaurant and Grocery Food Ordering APIGet menus/inventory and send orders to
-  the POS of 1M  restaurants and grocery stores out of the box 
+  MealMe provides the largest food ordering API, enabling developers to get
+  menus, inventory, and send orders to the point of sale at over 1 million
+  restaurants and grocery stores for pickup or delivery. Includes a Food Search
+  API, Menu API, and Grocery Ordering API.
 type: Index
-position: Consumer
-access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
-created: '2025-03-01'
-modified: '2025-03-01'
+  - Food
+  - Restaurants
+  - Grocery
+  - Ordering
+  - Delivery
 url: >-
   https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/apis.yml
+created: '2025-03-01'
+modified: '2026-03-16'
 specificationVersion: '0.19'
 apis:
-  - aid: mealme:mealme
-    name: MealMe
+  - aid: mealme:mealme-api
+    name: MealMe Food Ordering API
     description: >-
-      Restaurant and Grocery Food Ordering APIGet menus/inventory and send
-      orders to the POS of 1M  restaurants and grocery stores out of the box 
-    humanURL: ' https://www.mealme.ai/'
+      The MealMe API enables getting menus and inventory and sending orders to
+      the POS of over 1 million restaurants and grocery stores. Every menu item
+      includes real-time availability, prices, and customizations.
+    humanURL: https://www.mealme.ai/
+    baseURL: https://api.mealme.ai/v2
     tags:
-      - API
+      - Food
+      - Ordering
+      - Restaurants
+      - Grocery
     properties:
       - type: Documentation
-        url: ' https://www.mealme.ai/'
+        url: https://docs.mealme.ai/docs/api-features
+      - type: Getting Started
+        url: https://docs.mealme.ai/docs/create-order
+common:
+  - type: Portal
+    url: https://www.mealme.ai/
+  - type: Documentation
+    url: https://docs.mealme.ai/
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
