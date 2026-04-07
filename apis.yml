@@ -8,11 +8,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - Delivery
   - Food
-  - Restaurants
   - Grocery
   - Ordering
-  - Delivery
+  - Restaurants
 url: >-
   https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/apis.yml
 created: '2025-03-01'
@@ -29,9 +29,9 @@ apis:
     baseURL: https://api.mealme.ai/v2
     tags:
       - Food
+      - Grocery
       - Ordering
       - Restaurants
-      - Grocery
     properties:
       - type: Documentation
         url: https://docs.mealme.ai/docs/api-features
