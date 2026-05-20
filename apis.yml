@@ -38,6 +38,10 @@ apis:
       - type: GettingStarted
         url: https://docs.mealme.ai/docs/create-order
 common:
+  - type: GitHubOrganization
+    url: https://github.com/MealMe-Ai
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/mealme
   - type: Portal
     url: https://www.mealme.ai/
   - type: Documentation
