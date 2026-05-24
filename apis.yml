@@ -46,6 +46,8 @@ common:
     url: https://www.mealme.ai/
   - type: Documentation
     url: https://docs.mealme.ai/
+  - type: LLMsTxt
+    url: https://api.mealme.ai/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
