@@ -3,19 +3,47 @@ info:
   title: MealMe Food Ordering API
   version: "4.1.0"
   description: |
-    MealMe provides a food ordering API for menus, inventory, and order
-    placement at over one million restaurants and grocery stores in the US
-    and Canada. The API covers store and product search, cart and order
-    management, payment methods, customer support chat, tracking webhooks,
-    and geocoding. The current reference is version 4.1.0.
+    MealMe provides a food and grocery ordering API for menus, inventory, and
+    order placement at over one million restaurants and grocery stores in the
+    United States and Canada. The API covers store and product search, store
+    lookup, inventory/menu retrieval, product details, cart creation and
+    management, order creation and finalization, payment methods, MealMe
+    Connect accounts, customer support chat, order tracking webhooks, places
+    search, and geocoding. Every menu item and grocery product returned
+    includes real-time availability, prices, and customizations or modifiers.
+    The current reference is version 4.1.0.
+
+    Paths in this specification mirror the documented MealMe endpoints under
+    https://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,
+    and `/order/order/v4`). Authentication uses an API key passed in the
+    Authorization header.
   contact:
     name: MealMe API Reference
     url: https://docs.mealme.ai/reference
 servers:
-  - url: https://api.mealme.ai/v2
-    description: MealMe production API
+- url: https://api.mealme.ai
+  description: MealMe production API
 security:
-  - apiKeyHeader: []
+- apiKeyHeader: []
+tags:
+- name: Search
+  description: Store, product, and place search.
+- name: Stores
+  description: Store lookup, inventory, and product details.
+- name: Carts
+  description: Cart creation, retrieval, and item management.
+- name: Orders
+  description: Order creation, finalization, and history.
+- name: Payments
+  description: Payment method management and payment intents.
+- name: Connect Accounts
+  description: MealMe Connect account linking and ordering.
+- name: Support Chat
+  description: Customer support chat.
+- name: Tracking
+  description: Order tracking webhooks.
+- name: Geocoding
+  description: Address geocoding and reverse geocoding.
 components:
   securitySchemes:
     apiKeyHeader:
@@ -24,120 +52,865 @@ components:
       name: Authorization
       description: API key issued by MealMe, passed in the Authorization header.
   schemas:
+    CartItem:
+      type: object
+      required: [product_id]
+      properties:
+        product_id:
+          type: string
+          description: Product identifier from a search or inventory result.
+          example: prod_5a3e9d12
+        quantity:
+          type: integer
+          minimum: 1
+          default: 1
+          example: 1
+        product_marked_price:
+          type: integer
+          description: Marked price in cents.
+          example: 1299
+        selected_options:
+          type: array
+          description: Selected product customizations and modifiers.
+          items:
+            type: object
+          example: &id003 []
+        notes:
+          type: string
+          description: Special instructions for the store.
+          example: Leave at the front desk
+    CartRequest:
+      type: object
+      required: [items, pickup, user_id]
+      properties:
+        cart_id:
+          type: string
+          description: ID of an existing cart to update.
+          example: kQ8vZEd-UnW_gZu6c4iO
+        items:
+          type: array
+          items: {$ref: "#/components/schemas/CartItem"}
+        pickup:
+          type: boolean
+          description: Fulfillment type. true for pickup, false for delivery.
+          example: false
+        driver_tip_cents:
+          type: integer
+          default: 100
+          example: 100
+        user_latitude: {type: number, example: 37.7786357}
+        user_longitude: {type: number, example: -122.3918135}
+        user_street_num: {type: string, example: '188'}
+        user_street_name: {type: string, example: King Street}
+        user_apt_num: {type: string, example: example}
+        user_city: {type: string, example: San Francisco}
+        user_state: {type: string, example: CA}
+        user_country: {type: string, enum: [US, CA], example: US}
+        user_zipcode: {type: string, example: '94107'}
+        user_dropoff_notes: {type: string, example: Leave at the front desk}
+        user_name: {type: string, example: Steve Jobs}
+        user_email: {type: string, format: email, example: diner@example.com}
+        user_phone: {type: integer, example: 14155550123}
+        user_id:
+          type: string
+          description: Unique self-provided customer user ID.
+          example: user_abc123
+        disable_sms: {type: boolean, default: false, example: false}
+        customer_order_id: {type: string, example: id_7b2c4e}
+        autofill_selected_options: {type: boolean, default: false, example: false}
     Cart:
       type: object
       properties:
-        cart_id: { type: string }
-        store_id: { type: string }
+        cart_id: {type: string, example: kQ8vZEd-UnW_gZu6c4iO}
+        store_id: {type: string, example: 8c9f33d5-d138-4a49-9a4f-162f195c89b8}
+        subtotal: {type: integer, description: Subtotal in cents., example: 1299}
         items:
           type: array
-          items: { $ref: "#/components/schemas/CartItem" }
-    CartItem:
+          items: {$ref: "#/components/schemas/CartItem"}
+    OrderRequest:
       type: object
+      required: [items, pickup, user_name, user_email, user_phone, user_id]
       properties:
-        product_id: { type: string }
-        name: { type: string }
-        quantity: { type: integer }
-        price: { type: number }
-        customizations:
+        place_order:
+          type: boolean
+          description: When false, returns a finalizable quote rather than placing.
+          example: false
+        order_id: {type: string, example: ord_8f2a1c9b}
+        items:
           type: array
-          items: { type: object }
+          items: {$ref: "#/components/schemas/CartItem"}
+        pickup: {type: boolean, example: false}
+        scheduled_id: {type: string, example: id_7b2c4e}
+        driver_tip_cents: {type: integer, example: 1299}
+        pickup_tip_cents: {type: integer, example: 1299}
+        user_latitude: {type: number, example: 37.7786357}
+        user_longitude: {type: number, example: -122.3918135}
+        user_street_num: {type: string, example: '188'}
+        user_street_name: {type: string, example: King Street}
+        user_apt_num: {type: string, example: example}
+        user_city: {type: string, example: San Francisco}
+        user_state: {type: string, example: CA}
+        user_country: {type: string, enum: [US, CA], example: US}
+        user_zipcode: {type: string, example: '94107'}
+        user_dropoff_notes: {type: string, example: Leave at the front desk}
+        user_pickup_notes: {type: string, example: Leave at the front desk}
+        user_name: {type: string, example: Steve Jobs}
+        user_email: {type: string, format: email, example: diner@example.com}
+        user_phone: {type: integer, example: 14155550123}
+        user_id: {type: string, example: user_abc123}
+        payment_method_id: {type: string, example: id_7b2c4e}
+        charge_user: {type: boolean, example: false}
+        include_final_quote: {type: boolean, example: false}
+        disable_sms: {type: boolean, example: false}
+        customer_order_id: {type: string, example: id_7b2c4e}
+        metadata: {type: object, example: &id004 {}}
+        tracking_link: {type: string, example: https://example.com/webhook}
     Order:
       type: object
       properties:
-        order_id: { type: string }
-        cart_id: { type: string }
-        status: { type: string }
-        total: { type: number }
+        order_id: {type: string, example: ord_8f2a1c9b}
+        cart_id: {type: string, example: kQ8vZEd-UnW_gZu6c4iO}
+        status:
+          type: string
+          enum: [unplaced, awaiting_confirmation, in_progress, canceled, completed]
+          example: unplaced
+        total: {type: integer, description: Total in cents., example: 1299}
     Store:
       type: object
       properties:
-        store_id: { type: string }
-        name: { type: string }
-        address: { type: string }
-        latitude: { type: number }
-        longitude: { type: number }
+        _id: {type: string, example: 8c9f33d5-d138-4a49-9a4f-162f195c89b8}
+        name: {type: string, example: Tony's Pizza Napoletana}
+        address: {type: string, example: '188 King Street, San Francisco, CA 94107'}
+        type: {type: string, enum: [restaurant, grocery], example: restaurant}
+        is_open: {type: boolean, example: false}
+        phone_number: {type: string, example: '+14155550123'}
+        cuisines: {type: array, items: {type: string}, example: &id001 [Pizza, Italian]}
+        rating: {type: number, example: 4.5}
+        miles: {type: number, example: 1.5}
+        quotes: {type: array, items: {type: object}, example: &id002 []}
     Product:
       type: object
       properties:
-        product_id: { type: string }
-        name: { type: string }
-        price: { type: number }
-        available: { type: boolean }
+        product_id: {type: string, example: prod_5a3e9d12}
+        name: {type: string, example: Tony's Pizza Napoletana}
+        price: {type: integer, description: Price in cents., example: 1299}
+        available: {type: boolean, example: false}
+        store_name: {type: string, example: Tony's Pizza Napoletana}
+        menu_id: {type: string, example: id_7b2c4e}
     PaymentMethod:
       type: object
       properties:
-        payment_method_id: { type: string }
-        type: { type: string }
-        last4: { type: string }
+        payment_method_id: {type: string, example: id_7b2c4e}
+        type: {type: string, example: card}
+        last4: {type: string, example: '4242'}
+    PaymentMethodCreateRequest:
+      type: object
+      required: [user_email, user_id, payment_method]
+      properties:
+        user_email: {type: string, format: email, example: diner@example.com}
+        user_id: {type: string, example: user_abc123}
+        payment_method:
+          type: object
+          description: Payment method details.
+          example: &id005 {}
 paths:
-  /carts:
-    post:
-      tags: [Carts]
-      summary: Create a cart
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema: { $ref: "#/components/schemas/Cart" }
-      responses:
-        "200":
-          description: Cart created
-          content:
-            application/json:
-              schema: { $ref: "#/components/schemas/Cart" }
+  /search/store/v3:
     get:
-      tags: [Carts]
-      summary: List carts
+      tags: [Search]
+      operationId: searchStores
+      summary: Search for a Store
+      description: Search restaurants and grocery stores near a location.
+      parameters:
+      - {in: query, name: query, schema: {type: string}, example: pizza}
+      - {in: query, name: latitude, required: true, schema: {type: number}, example: 37.7786357}
+      - {in: query, name: longitude, required: true, schema: {type: number}, example: -122.3918135}
+      - {in: query, name: store_type, schema: {type: string, enum: [restaurant, grocery]}, example: restaurant}
+      - {in: query, name: budget, schema: {type: number, default: 20}, example: 20}
+      - {in: query, name: pickup, schema: {type: boolean, default: false}, example: false}
+      - {in: query, name: fetch_quotes, schema: {type: boolean, default: false}, example: false}
+      - {in: query, name: sort, schema: {type: string, enum: [cheapest, fastest, rating, distance, relevance]}, example: cheapest}
+      - {in: query, name: open, schema: {type: boolean, default: false}, example: false}
+      - {in: query, name: maximum_miles, schema: {type: number, default: 3}, example: 3}
+      - {in: query, name: page, schema: {type: integer}, example: 0}
       responses:
         "200":
-          description: Carts
+          description: Matching stores.
           content:
             application/json:
               schema:
                 type: array
-                items: { $ref: "#/components/schemas/Cart" }
-  /carts/{id}:
+                items: {$ref: "#/components/schemas/Store"}
+              examples:
+                SearchStores200Example:
+                  summary: Default searchStores 200 response
+                  x-microcks-default: true
+                  value:
+                  - _id: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+                    name: Tony's Pizza Napoletana
+                    address: 188 King Street, San Francisco, CA 94107
+                    type: restaurant
+                    is_open: false
+                    phone_number: '+14155550123'
+                    cuisines: *id001
+                    rating: 4.5
+                    miles: 1.5
+                    quotes: *id002
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+        "429": {description: Too Many Requests}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /search/product/v4:
     get:
-      tags: [Carts]
-      summary: Retrieve a cart
+      tags: [Search]
+      operationId: searchProducts
+      summary: Search for a Product
+      description: Search products across restaurants, grocery, and retail stores.
       parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
+      - {in: query, name: query, schema: {type: string}, example: pizza}
+      - {in: query, name: product_id, schema: {type: string}, example: prod_5a3e9d12}
+      - {in: query, name: store_name, schema: {type: string}, example: Tony's Pizza Napoletana}
+      - {in: query, name: menu_id, schema: {type: string}, example: id_7b2c4e}
+      - {in: query, name: user_latitude, required: true, schema: {type: number}, example: 37.7786357}
+      - {in: query, name: user_longitude, required: true, schema: {type: number}, example: -122.3918135}
+      - {in: query, name: pickup, schema: {type: boolean, default: false}, example: false}
+      - {in: query, name: upc_codes, schema: {type: string}, example: example}
+      - {in: query, name: fetch_quotes, schema: {type: boolean, default: false}, example: false}
+      - {in: query, name: sort, schema: {type: string, enum: [relevance, cheapest, fastest, rating, distance]}, example: relevance}
+      - {in: query, name: fuzzy_search, schema: {type: boolean, default: false}, example: false}
+      - {in: query, name: maximum_miles, schema: {type: number, default: 1.5}, example: 1.5}
+      - {in: query, name: sale, schema: {type: boolean, default: false}, example: false}
+      - {in: query, name: page, schema: {type: integer}, example: 0}
       responses:
         "200":
-          description: Cart
+          description: Matching products.
           content:
             application/json:
-              schema: { $ref: "#/components/schemas/Cart" }
-  /carts/{id}/items:
+              schema:
+                type: array
+                items: {$ref: "#/components/schemas/Product"}
+              examples:
+                SearchProducts200Example:
+                  summary: Default searchProducts 200 response
+                  x-microcks-default: true
+                  value:
+                  - product_id: prod_5a3e9d12
+                    name: Tony's Pizza Napoletana
+                    price: 1299
+                    available: false
+                    store_name: Tony's Pizza Napoletana
+                    menu_id: id_7b2c4e
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+        "429": {description: Too Many Requests}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /search/cart:
+    get:
+      tags: [Search]
+      operationId: searchCart
+      summary: Search for a Cart
+      description: Search for a set of products to build a cart in one call.
+      responses:
+        "200":
+          description: Cart search results.
+        "401": {description: Missing Authorization}
+        "429": {description: Too Many Requests}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /places/search:
+    get:
+      tags: [Search]
+      operationId: searchPlaces
+      summary: Search for a Place
+      description: Search for a place or address with optional location bias.
+      parameters:
+      - {in: query, name: search, required: true, schema: {type: string}, example: pizza}
+      - {in: query, name: location_bias_latitude, schema: {type: number}, example: 37.7786357}
+      - {in: query, name: location_bias_longitude, schema: {type: number}, example: -122.3918135}
+      - {in: query, name: location_bias_radius, schema: {type: integer, default: 10000}, example: 10000}
+      - {in: query, name: search_type, schema: {type: string, enum: [place, address, addresses], default: place}, example: place}
+      - {in: query, name: open_filter, schema: {type: boolean, default: false}, example: false}
+      responses:
+        "200": {description: Matching places.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /utils/store_lookup/v3:
+    get:
+      tags: [Stores]
+      operationId: storeLookup
+      summary: Get a MealMe Store
+      description: Fetch stores by a comma-delimited list of store IDs (max 50).
+      parameters:
+      - {in: query, name: store_ids, required: true, schema: {type: string}, example: 8c9f33d5-d138-4a49-9a4f-162f195c89b8}
+      - {in: query, name: use_new_db, schema: {type: boolean, default: true}, example: true}
+      responses:
+        "200":
+          description: Stores.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {$ref: "#/components/schemas/Store"}
+              examples:
+                StoreLookup200Example:
+                  summary: Default storeLookup 200 response
+                  x-microcks-default: true
+                  value:
+                  - _id: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+                    name: Tony's Pizza Napoletana
+                    address: 188 King Street, San Francisco, CA 94107
+                    type: restaurant
+                    is_open: false
+                    phone_number: '+14155550123'
+                    cuisines: *id001
+                    rating: 4.5
+                    miles: 1.5
+                    quotes: *id002
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+        "429": {description: Too Many Requests}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /utils/add_store:
+    get:
+      tags: [Stores]
+      operationId: addStore
+      summary: Add a Google Place to MealMe
+      description: Add a store to MealMe by its Google Place identifier.
+      parameters:
+      - {in: query, name: place_id, required: true, schema: {type: string}, example: id_7b2c4e}
+      responses:
+        "200": {description: Store added.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /details/inventory/v4:
+    get:
+      tags: [Stores]
+      operationId: getInventory
+      summary: Get Inventory
+      description: Retrieve a store's menu or grocery inventory.
+      parameters:
+      - {in: query, name: store_id, required: true, schema: {type: string}, example: 8c9f33d5-d138-4a49-9a4f-162f195c89b8}
+      - {in: query, name: subcategory_id, schema: {type: string}, example: id_7b2c4e}
+      - {in: query, name: pickup, schema: {type: boolean, default: false}, example: false}
+      - {in: query, name: include_quote, schema: {type: boolean, default: false}, example: false}
+      - {in: query, name: include_customizations, schema: {type: boolean, default: true}, example: true}
+      - {in: query, name: available, schema: {type: boolean, default: true}, example: true}
+      - {in: query, name: page, schema: {type: integer}, example: 0}
+      - {in: query, name: menu_id, schema: {type: string}, example: id_7b2c4e}
+      responses:
+        "200": {description: Inventory.}
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+        "429": {description: Too Many Requests}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /details/product/v2:
+    get:
+      tags: [Stores]
+      operationId: getProductDetails
+      summary: Get Product Details
+      description: Retrieve details for a single product including customizations.
+      parameters:
+      - {in: query, name: product_id, required: true, schema: {type: string}, example: prod_5a3e9d12}
+      - {in: query, name: pickup, schema: {type: boolean, default: false}, example: false}
+      - {in: query, name: include_quote, schema: {type: boolean, default: false}, example: false}
+      - {in: query, name: user_latitude, schema: {type: number}, example: 37.7786357}
+      - {in: query, name: user_longitude, schema: {type: number}, example: -122.3918135}
+      - {in: query, name: include_fees, schema: {type: boolean, default: true}, example: true}
+      responses:
+        "200":
+          description: Product.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/Product"}
+              examples:
+                GetProductDetails200Example:
+                  summary: Default getProductDetails 200 response
+                  x-microcks-default: true
+                  value:
+                    product_id: prod_5a3e9d12
+                    name: Tony's Pizza Napoletana
+                    price: 1299
+                    available: false
+                    store_name: Tony's Pizza Napoletana
+                    menu_id: id_7b2c4e
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+        "406": {description: Product Unavailable}
+        "429": {description: Too Many Requests}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /cart/create:
     post:
       tags: [Carts]
-      summary: Add an item to a cart
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
+      operationId: createCart
+      summary: Create a Cart
+      description: Create or update a cart from a list of products and a fulfillment mode.
       requestBody:
         required: true
         content:
           application/json:
-            schema: { $ref: "#/components/schemas/CartItem" }
+            schema: {$ref: "#/components/schemas/CartRequest"}
+            examples:
+              CreateCartRequestExample:
+                summary: Default createCart request
+                x-microcks-default: true
+                value:
+                  cart_id: kQ8vZEd-UnW_gZu6c4iO
+                  items:
+                  - product_id: prod_5a3e9d12
+                    quantity: 1
+                    product_marked_price: 1299
+                    selected_options: *id003
+                    notes: Leave at the front desk
+                  pickup: false
+                  driver_tip_cents: 100
+                  user_latitude: 37.7786357
+                  user_longitude: -122.3918135
+                  user_street_num: '188'
+                  user_street_name: King Street
+                  user_apt_num: example
+                  user_city: San Francisco
+                  user_state: CA
+                  user_country: US
+                  user_zipcode: '94107'
+                  user_dropoff_notes: Leave at the front desk
+                  user_name: Steve Jobs
+                  user_email: diner@example.com
+                  user_phone: 14155550123
+                  user_id: user_abc123
+                  disable_sms: false
+                  customer_order_id: id_7b2c4e
+                  autofill_selected_options: false
       responses:
         "200":
-          description: Cart updated
-  /carts/{id}/items/remove:
+          description: Cart created.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/Cart"}
+              examples:
+                CreateCart200Example:
+                  summary: Default createCart 200 response
+                  x-microcks-default: true
+                  value:
+                    cart_id: kQ8vZEd-UnW_gZu6c4iO
+                    store_id: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+                    subtotal: 1299
+                    items:
+                    - product_id: prod_5a3e9d12
+                      quantity: 1
+                      product_marked_price: 1299
+                      selected_options: *id003
+                      notes: Leave at the front desk
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+        "429": {description: Too Many Requests}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /cart/retrieve/v2:
+    get:
+      tags: [Carts]
+      operationId: retrieveCart
+      summary: Retrieve a Cart
+      description: Retrieve a previously created cart by its ID.
+      parameters:
+      - {in: query, name: cart_id, required: true, schema: {type: string}, example: kQ8vZEd-UnW_gZu6c4iO}
+      responses:
+        "200":
+          description: Cart.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/Cart"}
+              examples:
+                RetrieveCart200Example:
+                  summary: Default retrieveCart 200 response
+                  x-microcks-default: true
+                  value:
+                    cart_id: kQ8vZEd-UnW_gZu6c4iO
+                    store_id: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+                    subtotal: 1299
+                    items:
+                    - product_id: prod_5a3e9d12
+                      quantity: 1
+                      product_marked_price: 1299
+                      selected_options: *id003
+                      notes: Leave at the front desk
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+        "404": {description: Unknown Cart ID}
+        "429": {description: Too Many Requests}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /cart/list/v2:
+    get:
+      tags: [Carts]
+      operationId: listCarts
+      summary: List Carts
+      description: List the carts associated with the account.
+      responses:
+        "200":
+          description: Carts.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {$ref: "#/components/schemas/Cart"}
+              examples:
+                ListCarts200Example:
+                  summary: Default listCarts 200 response
+                  x-microcks-default: true
+                  value:
+                  - cart_id: kQ8vZEd-UnW_gZu6c4iO
+                    store_id: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+                    subtotal: 1299
+                    items:
+                    - {}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /add_to_cart:
     post:
       tags: [Carts]
-      summary: Remove an item from a cart
+      operationId: addToCart
+      summary: Add an Item to a Cart
+      description: Add one or more items to an existing cart.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [cart_id, items]
+              properties:
+                cart_id: {type: string}
+                items:
+                  type: array
+                  items: {$ref: "#/components/schemas/CartItem"}
+            examples:
+              AddToCartRequestExample:
+                summary: Default addToCart request
+                x-microcks-default: true
+                value:
+                  cart_id: kQ8vZEd-UnW_gZu6c4iO
+                  items:
+                  - product_id: prod_5a3e9d12
+                    quantity: 1
+                    product_marked_price: 1299
+                    selected_options: *id003
+                    notes: Leave at the front desk
+      responses:
+        "200":
+          description: Cart updated.
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /remove_from_cart:
+    post:
+      tags: [Carts]
+      operationId: removeFromCart
+      summary: Remove an Item from a Cart
+      description: Remove an item from an existing cart.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [cart_id, product_id]
+              properties:
+                cart_id: {type: string}
+                product_id: {type: string}
+            examples:
+              RemoveFromCartRequestExample:
+                summary: Default removeFromCart request
+                x-microcks-default: true
+                value:
+                  cart_id: kQ8vZEd-UnW_gZu6c4iO
+                  product_id: prod_5a3e9d12
+      responses:
+        "200": {description: Item removed.}
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /order/order/v4:
+    post:
+      tags: [Orders]
+      operationId: createOrder
+      summary: Create an Order
+      description: |
+        Create an order from a list of items. When place_order is false the
+        response returns a finalizable quote; when true the order is placed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: "#/components/schemas/OrderRequest"}
+            examples:
+              CreateOrderRequestExample:
+                summary: Default createOrder request
+                x-microcks-default: true
+                value:
+                  place_order: false
+                  order_id: ord_8f2a1c9b
+                  items:
+                  - product_id: prod_5a3e9d12
+                    quantity: 1
+                    product_marked_price: 1299
+                    selected_options: *id003
+                    notes: Leave at the front desk
+                  pickup: false
+                  scheduled_id: id_7b2c4e
+                  driver_tip_cents: 1299
+                  pickup_tip_cents: 1299
+                  user_latitude: 37.7786357
+                  user_longitude: -122.3918135
+                  user_street_num: '188'
+                  user_street_name: King Street
+                  user_apt_num: example
+                  user_city: San Francisco
+                  user_state: CA
+                  user_country: US
+                  user_zipcode: '94107'
+                  user_dropoff_notes: Leave at the front desk
+                  user_pickup_notes: Leave at the front desk
+                  user_name: Steve Jobs
+                  user_email: diner@example.com
+                  user_phone: 14155550123
+                  user_id: user_abc123
+                  payment_method_id: id_7b2c4e
+                  charge_user: false
+                  include_final_quote: false
+                  disable_sms: false
+                  customer_order_id: id_7b2c4e
+                  metadata: *id004
+                  tracking_link: https://example.com/webhook
+      responses:
+        "200":
+          description: Order created.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/Order"}
+              examples:
+                CreateOrder200Example:
+                  summary: Default createOrder 200 response
+                  x-microcks-default: true
+                  value:
+                    order_id: ord_8f2a1c9b
+                    cart_id: kQ8vZEd-UnW_gZu6c4iO
+                    status: unplaced
+                    total: 1299
+        "202": {description: Order accepted.}
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+        "406": {description: Not Acceptable}
+        "422": {description: Unprocessable Entity}
+        "504": {description: Gateway Timeout}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /order/finalize:
+    post:
+      tags: [Orders]
+      operationId: finalizeOrder
+      summary: Finalize an Order
+      description: Finalize a previously created order quote (place_order=false).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [order_id]
+              properties:
+                order_id: {type: string}
+            examples:
+              FinalizeOrderRequestExample:
+                summary: Default finalizeOrder request
+                x-microcks-default: true
+                value:
+                  order_id: ord_8f2a1c9b
+      responses:
+        "200":
+          description: Order finalized.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/Order"}
+              examples:
+                FinalizeOrder200Example:
+                  summary: Default finalizeOrder 200 response
+                  x-microcks-default: true
+                  value:
+                    order_id: ord_8f2a1c9b
+                    cart_id: kQ8vZEd-UnW_gZu6c4iO
+                    status: unplaced
+                    total: 1299
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /account/orders:
+    get:
+      tags: [Orders]
+      operationId: getOrders
+      summary: Get Orders
+      description: Retrieve account orders with optional filters.
       parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
+      - {in: query, name: order_id, schema: {type: string}, example: ord_8f2a1c9b}
+      - {in: query, name: start_date, schema: {type: string}, example: example}
+      - {in: query, name: end_date, schema: {type: string}, example: example}
+      - {in: query, name: status, schema: {type: string}, example: completed}
+      - {in: query, name: favorited, schema: {type: boolean}, example: false}
+      - {in: query, name: user_id, schema: {type: string}, example: user_abc123}
+      - {in: query, name: include_order_count, schema: {type: boolean}, example: false}
+      - {in: query, name: page, schema: {type: integer, default: 0}, example: 0}
+      responses:
+        "200":
+          description: Orders.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {$ref: "#/components/schemas/Order"}
+              examples:
+                GetOrders200Example:
+                  summary: Default getOrders 200 response
+                  x-microcks-default: true
+                  value:
+                  - order_id: ord_8f2a1c9b
+                    cart_id: kQ8vZEd-UnW_gZu6c4iO
+                    status: unplaced
+                    total: 1299
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /payment/create/v2:
+    post:
+      tags: [Payments]
+      operationId: createPaymentMethod
+      summary: Create a Payment Method
+      description: Create a payment method for a user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: "#/components/schemas/PaymentMethodCreateRequest"}
+            examples:
+              CreatePaymentMethodRequestExample:
+                summary: Default createPaymentMethod request
+                x-microcks-default: true
+                value:
+                  user_email: diner@example.com
+                  user_id: user_abc123
+                  payment_method: *id005
+      responses:
+        "200":
+          description: Payment method created.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/PaymentMethod"}
+              examples:
+                CreatePaymentMethod200Example:
+                  summary: Default createPaymentMethod 200 response
+                  x-microcks-default: true
+                  value:
+                    payment_method_id: id_7b2c4e
+                    type: card
+                    last4: '4242'
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+        "422": {description: User ID does not match user email}
+        "429": {description: Too Many Requests}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /payment/list:
+    get:
+      tags: [Payments]
+      operationId: listPaymentMethods
+      summary: List Payment Methods
+      description: List a user's payment methods.
+      parameters:
+      - {in: query, name: user_id, required: true, schema: {type: string}, example: user_abc123}
+      - {in: query, name: user_email, required: true, schema: {type: string, format: email}, example: diner@example.com}
+      responses:
+        "200":
+          description: Payment methods.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {$ref: "#/components/schemas/PaymentMethod"}
+              examples:
+                ListPaymentMethods200Example:
+                  summary: Default listPaymentMethods 200 response
+                  x-microcks-default: true
+                  value:
+                  - payment_method_id: id_7b2c4e
+                    type: card
+                    last4: '4242'
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /payment/delete:
+    post:
+      tags: [Payments]
+      operationId: deletePaymentMethod
+      summary: Delete a Payment Method
+      description: Delete a user's payment method.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [payment_method_id]
+              properties:
+                payment_method_id: {type: string}
+                user_id: {type: string}
+                user_email: {type: string, format: email}
+            examples:
+              DeletePaymentMethodRequestExample:
+                summary: Default deletePaymentMethod request
+                x-microcks-default: true
+                value:
+                  payment_method_id: id_7b2c4e
+                  user_id: user_abc123
+                  user_email: diner@example.com
+      responses:
+        "200": {description: Deleted.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /get_payment_intent:
+    post:
+      tags: [Payments]
+      operationId: getPaymentIntent
+      summary: Get a Payment Intent
+      description: Create a payment intent for a cart.
       requestBody:
         required: true
         content:
@@ -145,14 +918,29 @@ paths:
             schema:
               type: object
               properties:
-                product_id: { type: string }
+                cart_id: {type: string}
+                amount: {type: integer, description: Amount in cents.}
+                currency: {type: string}
+            examples:
+              GetPaymentIntentRequestExample:
+                summary: Default getPaymentIntent request
+                x-microcks-default: true
+                value:
+                  cart_id: kQ8vZEd-UnW_gZu6c4iO
+                  amount: 1299
+                  currency: usd
       responses:
-        "200":
-          description: Item removed
-  /connect-accounts:
+        "200": {description: Payment intent.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /connect_account:
     post:
       tags: [Connect Accounts]
-      summary: Create a connect account
+      operationId: createConnectAccount
+      summary: Create a Connect Account
+      description: Create a MealMe Connect account for a store.
       requestBody:
         required: true
         content:
@@ -160,219 +948,156 @@ paths:
             schema:
               type: object
               properties:
-                store_id: { type: string }
-                credentials: { type: object }
+                store_id: {type: string}
+                credentials: {type: object}
+            examples:
+              CreateConnectAccountRequestExample:
+                summary: Default createConnectAccount request
+                x-microcks-default: true
+                value:
+                  store_id: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+                  credentials: {}
       responses:
-        "200":
-          description: Connect account created
-  /connect-accounts/{id}:
+        "200": {description: Connect account created.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     get:
       tags: [Connect Accounts]
-      summary: Get a connect account
+      operationId: getConnectAccount
+      summary: Get a Connect Account
+      description: Retrieve a MealMe Connect account.
       parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
+      - {in: query, name: connect_account_id, required: true, schema: {type: string}, example: id_7b2c4e}
       responses:
-        "200":
-          description: Connect account
-  /connect-accounts/{id}/link:
+        "200": {description: Connect account.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /link_connect_account:
     post:
       tags: [Connect Accounts]
-      summary: Link a connect account
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
+      operationId: linkConnectAccount
+      summary: Link a Connect Account
+      description: Link a MealMe Connect account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connect_account_id: {type: string}
+            examples:
+              LinkConnectAccountRequestExample:
+                summary: Default linkConnectAccount request
+                x-microcks-default: true
+                value:
+                  connect_account_id: id_7b2c4e
       responses:
-        "200":
-          description: Linked
-  /connect-accounts/{id}/challenge:
+        "200": {description: Linked.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /connect_account_challenge:
     post:
       tags: [Connect Accounts]
-      summary: Solve a connect account challenge
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
+      operationId: solveConnectAccountChallenge
+      summary: Solve a Connect Account Challenge
+      description: Solve a verification challenge for a Connect account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connect_account_id: {type: string}
+                challenge_response: {type: string}
+            examples:
+              SolveConnectAccountChallengeRequestExample:
+                summary: Default solveConnectAccountChallenge request
+                x-microcks-default: true
+                value:
+                  connect_account_id: id_7b2c4e
+                  challenge_response: example
       responses:
-        "200":
-          description: Challenge solved
-  /connect-accounts/{id}/payment-methods:
+        "200": {description: Challenge solved.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /get_connect_account_payment_methods:
     get:
       tags: [Connect Accounts]
-      summary: Get connect account payment methods
+      operationId: getConnectAccountPaymentMethods
+      summary: Get Connect Account Payment Methods
+      description: Retrieve payment methods for a Connect account.
       parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
+      - {in: query, name: connect_account_id, required: true, schema: {type: string}, example: id_7b2c4e}
       responses:
-        "200":
-          description: Payment methods
-  /connect-accounts/{id}/carts:
+        "200": {description: Payment methods.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /connect_account_cart:
     post:
       tags: [Connect Accounts]
-      summary: Add a connect account cart item
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
+      operationId: addConnectAccountCartItem
+      summary: Add a Connect Account Cart Item
+      description: Add an item to a Connect account cart.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connect_account_id: {type: string}
+                items:
+                  type: array
+                  items: {$ref: "#/components/schemas/CartItem"}
+            examples:
+              AddConnectAccountCartItemRequestExample:
+                summary: Default addConnectAccountCartItem request
+                x-microcks-default: true
+                value:
+                  connect_account_id: id_7b2c4e
+                  items:
+                  - product_id: prod_5a3e9d12
+                    quantity: 1
+                    product_marked_price: 1299
+                    selected_options: *id003
+                    notes: Leave at the front desk
       responses:
-        "200":
-          description: Item added
+        "200": {description: Item added.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       tags: [Connect Accounts]
-      summary: Delete a connect account cart
+      operationId: deleteConnectAccountCart
+      summary: Delete a Connect Account Cart
+      description: Delete a Connect account cart.
       parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
+      - {in: query, name: connect_account_id, required: true, schema: {type: string}, example: id_7b2c4e}
       responses:
-        "200":
-          description: Deleted
-  /connect-accounts/{id}/orders:
+        "200": {description: Deleted.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /place_connect_account_order:
     post:
       tags: [Connect Accounts]
-      summary: Place a connect account order
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
-      responses:
-        "200":
-          description: Order placed
-  /orders:
-    post:
-      tags: [Orders]
-      summary: Create an order
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema: { $ref: "#/components/schemas/Order" }
-      responses:
-        "200":
-          description: Order created
-          content:
-            application/json:
-              schema: { $ref: "#/components/schemas/Order" }
-    get:
-      tags: [Orders]
-      summary: List orders
-      responses:
-        "200":
-          description: Orders
-          content:
-            application/json:
-              schema:
-                type: array
-                items: { $ref: "#/components/schemas/Order" }
-  /orders/{id}/finalize:
-    post:
-      tags: [Orders]
-      summary: Finalize an order
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
-      responses:
-        "200":
-          description: Order finalized
-  /orders/v4:
-    post:
-      tags: [Orders]
-      summary: Create an order (v4)
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema: { $ref: "#/components/schemas/Order" }
-      responses:
-        "200":
-          description: Order created
-  /search/stores:
-    get:
-      tags: [Search]
-      summary: Search for a store
-      parameters:
-        - in: query
-          name: query
-          schema: { type: string }
-        - in: query
-          name: latitude
-          schema: { type: number }
-        - in: query
-          name: longitude
-          schema: { type: number }
-      responses:
-        "200":
-          description: Stores
-          content:
-            application/json:
-              schema:
-                type: array
-                items: { $ref: "#/components/schemas/Store" }
-  /search/products:
-    get:
-      tags: [Search]
-      summary: Search for a product
-      parameters:
-        - in: query
-          name: query
-          schema: { type: string }
-      responses:
-        "200":
-          description: Products
-          content:
-            application/json:
-              schema:
-                type: array
-                items: { $ref: "#/components/schemas/Product" }
-  /search/carts:
-    get:
-      tags: [Search]
-      summary: Search for a cart
-      responses:
-        "200":
-          description: Carts
-  /search/places:
-    get:
-      tags: [Search]
-      summary: Search for a place
-      parameters:
-        - in: query
-          name: query
-          schema: { type: string }
-      responses:
-        "200":
-          description: Places
-  /stores/{id}:
-    get:
-      tags: [Stores]
-      summary: Get a MealMe store
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
-      responses:
-        "200":
-          description: Store
-          content:
-            application/json:
-              schema: { $ref: "#/components/schemas/Store" }
-  /stores/add:
-    post:
-      tags: [Stores]
-      summary: Add a Google Place to MealMe
+      operationId: placeConnectAccountOrder
+      summary: Place a Connect Account Order
+      description: Place an order using a Connect account.
       requestBody:
         required: true
         content:
@@ -380,75 +1105,37 @@ paths:
             schema:
               type: object
               properties:
-                place_id: { type: string }
+                connect_account_id: {type: string}
+            examples:
+              PlaceConnectAccountOrderRequestExample:
+                summary: Default placeConnectAccountOrder request
+                x-microcks-default: true
+                value:
+                  connect_account_id: id_7b2c4e
       responses:
-        "200":
-          description: Store added
-  /inventory:
-    get:
-      tags: [Inventory]
-      summary: Get inventory
-      parameters:
-        - in: query
-          name: store_id
-          schema: { type: string }
-      responses:
-        "200":
-          description: Inventory
-  /products/{id}:
-    get:
-      tags: [Products]
-      summary: Get product details
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
-      responses:
-        "200":
-          description: Product
-          content:
-            application/json:
-              schema: { $ref: "#/components/schemas/Product" }
-  /payment-methods:
+        "200": {description: Order placed.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /chat_initiate:
     post:
-      tags: [Payments]
-      summary: Create a payment method
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema: { $ref: "#/components/schemas/PaymentMethod" }
+      tags: [Support Chat]
+      operationId: initiateChat
+      summary: Initiate Customer Support Chat
+      description: Initiate a customer support chat session.
       responses:
-        "200":
-          description: Payment method created
-    get:
-      tags: [Payments]
-      summary: List payment methods
-      responses:
-        "200":
-          description: Payment methods
-          content:
-            application/json:
-              schema:
-                type: array
-                items: { $ref: "#/components/schemas/PaymentMethod" }
-  /payment-methods/{id}/delete:
+        "200": {description: Chat initiated.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /exit_chat:
     post:
-      tags: [Payments]
-      summary: Delete a payment method
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
-      responses:
-        "200":
-          description: Deleted
-  /payment-intent:
-    post:
-      tags: [Payments]
-      summary: Get a payment intent
+      tags: [Support Chat]
+      operationId: exitChat
+      summary: Exit a Customer Support Chat
+      description: Exit a customer support chat session.
       requestBody:
         required: true
         content:
@@ -456,40 +1143,25 @@ paths:
             schema:
               type: object
               properties:
-                cart_id: { type: string }
-                amount: { type: number }
-                currency: { type: string }
+                chat_id: {type: string}
+            examples:
+              ExitChatRequestExample:
+                summary: Default exitChat request
+                x-microcks-default: true
+                value:
+                  chat_id: id_7b2c4e
       responses:
-        "200":
-          description: Payment intent
-  /chat/initiate:
+        "200": {description: Exited.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /send_message:
     post:
       tags: [Support Chat]
-      summary: Initiate customer support chat
-      responses:
-        "200":
-          description: Chat initiated
-  /chat/{id}/exit:
-    post:
-      tags: [Support Chat]
-      summary: Exit a customer support chat
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
-      responses:
-        "200":
-          description: Exited
-  /chat/{id}/messages:
-    post:
-      tags: [Support Chat]
-      summary: Send a customer support chat message
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
+      operationId: sendMessage
+      summary: Send a Customer Support Chat Message
+      description: Send a message in a customer support chat.
       requestBody:
         required: true
         content:
@@ -497,73 +1169,143 @@ paths:
             schema:
               type: object
               properties:
-                message: { type: string }
+                chat_id: {type: string}
+                message: {type: string}
+            examples:
+              SendMessageRequestExample:
+                summary: Default sendMessage request
+                x-microcks-default: true
+                value:
+                  chat_id: id_7b2c4e
+                  message: Where is my order?
       responses:
-        "200":
-          description: Message sent
-  /chat/{id}/messages/read:
+        "200": {description: Message sent.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /read_message:
     post:
       tags: [Support Chat]
-      summary: Mark chat messages as read
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema: { type: string }
+      operationId: readMessages
+      summary: Mark Chat Messages as Read
+      description: Mark customer support chat messages as read.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chat_id: {type: string}
+            examples:
+              ReadMessagesRequestExample:
+                summary: Default readMessages request
+                x-microcks-default: true
+                value:
+                  chat_id: id_7b2c4e
       responses:
-        "200":
-          description: Marked read
-  /chat/fetch-ids:
+        "200": {description: Marked read.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /fetch_chat_ids:
     post:
       tags: [Support Chat]
-      summary: Fetch customer support chat IDs
+      operationId: fetchChatIds
+      summary: Fetch Customer Support Chat IDs
+      description: Fetch the chat IDs available for the account.
       responses:
-        "200":
-          description: Chat IDs
-  /tracking/webhooks:
+        "200": {description: Chat IDs.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /account/tracking/add_webhook:
     post:
       tags: [Tracking]
-      summary: Add a tracking webhook
+      operationId: addTrackingWebhook
+      summary: Add a Tracking Webhook
+      description: Register a webhook to receive order tracking updates.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
+              required: [url]
               properties:
-                url: { type: string, format: uri }
-                event: { type: string }
+                url: {type: string, format: uri}
+                event: {type: string}
+            examples:
+              AddTrackingWebhookRequestExample:
+                summary: Default addTrackingWebhook request
+                x-microcks-default: true
+                value:
+                  url: https://example.com/webhook
+                  event: order_status_update
       responses:
-        "200":
-          description: Webhook added
-  /geocode:
+        "200": {description: Webhook added.}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /location/geocode/v2:
     post:
       tags: [Geocoding]
-      summary: Geocode an address
+      operationId: geocodeAddress
+      summary: Geocode an Address
+      description: Convert an address into geographic coordinates.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
+              required: [address]
               properties:
-                address: { type: string }
+                address: {type: string}
+            examples:
+              GeocodeAddressRequestExample:
+                summary: Default geocodeAddress request
+                x-microcks-default: true
+                value:
+                  address: 188 King Street, San Francisco, CA 94107
       responses:
-        "200":
-          description: Geocode result
-  /reverse-geocode:
+        "200": {description: Geocode result.}
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /location/reverse_geocode/v2:
     post:
       tags: [Geocoding]
-      summary: Reverse geocode coordinates
+      operationId: reverseGeocodeAddress
+      summary: Reverse Geocode Coordinates
+      description: Convert geographic coordinates into an address.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
+              required: [latitude, longitude]
               properties:
-                latitude: { type: number }
-                longitude: { type: number }
+                latitude: {type: number}
+                longitude: {type: number}
+            examples:
+              ReverseGeocodeAddressRequestExample:
+                summary: Default reverseGeocodeAddress request
+                x-microcks-default: true
+                value:
+                  latitude: 37.7786357
+                  longitude: -122.3918135
       responses:
-        "200":
-          description: Reverse geocode result
+        "200": {description: Reverse geocode result.}
+        "400": {description: Input Validation Error}
+        "401": {description: Missing Authorization}
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK

@@ -16,7 +16,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/apis.yml
 created: '2025-03-01'
-modified: '2026-04-28'
+modified: '2026-06-02'
 specificationVersion: '0.19'
 apis:
   - aid: mealme:mealme-api
@@ -26,7 +26,7 @@ apis:
       the POS of over 1 million restaurants and grocery stores. Every menu item
       includes real-time availability, prices, and customizations.
     humanURL: https://www.mealme.ai/
-    baseURL: https://api.mealme.ai/v2
+    baseURL: https://api.mealme.ai
     tags:
       - Food
       - Grocery
@@ -37,6 +37,35 @@ apis:
         url: https://docs.mealme.ai/docs/api-features
       - type: GettingStarted
         url: https://docs.mealme.ai/docs/create-order
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/openapi/mealme-openapi.yml
+      - type: Reference
+        url: https://docs.mealme.ai/reference
+      - type: Overview
+        url: https://docs.mealme.ai/docs/endpoints-overview
+      - type: Authentication
+        url: https://docs.mealme.ai/docs/api-features
+      - type: Tutorials
+        url: https://docs.mealme.ai/docs/store-search-order-flow
+      - type: NaftikoCapability
+        url: capabilities/mealme-search.yaml
+      - type: NaftikoCapability
+        url: capabilities/mealme-stores.yaml
+      - type: NaftikoCapability
+        url: capabilities/mealme-carts.yaml
+      - type: NaftikoCapability
+        url: capabilities/mealme-orders.yaml
+      - type: NaftikoCapability
+        url: capabilities/mealme-payments.yaml
+      - type: NaftikoCapability
+        url: capabilities/mealme-connect-accounts.yaml
+      - type: NaftikoCapability
+        url: capabilities/mealme-support-chat.yaml
+      - type: NaftikoCapability
+        url: capabilities/mealme-tracking.yaml
+      - type: NaftikoCapability
+        url: capabilities/mealme-geocoding.yaml
 common:
   - type: GitHubOrganization
     url: https://github.com/MealMe-Ai
@@ -48,6 +77,18 @@ common:
     url: https://docs.mealme.ai/
   - type: LLMsTxt
     url: https://api.mealme.ai/llms.txt
+  - type: Spectral
+    url: rules/mealme-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/mealme-vocabulary.yaml
+  - type: JSONLD
+    url: json-ld/mealme-api-context.jsonld
+  - type: Plans
+    url: plans/mealme-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/mealme-rate-limits.yml
+  - type: FinOps
+    url: finops/mealme-finops.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

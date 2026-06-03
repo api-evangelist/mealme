@@ -1,0 +1,374 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: MealMe Food Ordering API — Connect Accounts
+  description: 'MealMe Food Ordering API — Connect Accounts. 8 operations. Lead operation: Create a Connect Account. Self-contained Naftiko capability covering one MealMe business surface.'
+  tags:
+  - MealMe
+  - Food Ordering
+  - Connect Accounts
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    MEALME_API_KEY: MEALME_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mealme-connect-accounts
+    baseUri: https://api.mealme.ai
+    description: MealMe Food Ordering API — Connect Accounts business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.MEALME_API_KEY}}'
+      placement: header
+    resources:
+    - name: connect-account
+      path: /connect_account
+      operations:
+      - name: createConnectAccount
+        method: POST
+        description: Create a Connect Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+    - name: connect-account
+      path: /connect_account
+      operations:
+      - name: getConnectAccount
+        method: GET
+        description: Get a Connect Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connect_account_id
+          in: query
+          type: string
+          required: true
+          description: connect_account_id
+    - name: link-connect-account
+      path: /link_connect_account
+      operations:
+      - name: linkConnectAccount
+        method: POST
+        description: Link a Connect Account
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+    - name: connect-account-challenge
+      path: /connect_account_challenge
+      operations:
+      - name: solveConnectAccountChallenge
+        method: POST
+        description: Solve a Connect Account Challenge
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+    - name: get-connect-account-payment-methods
+      path: /get_connect_account_payment_methods
+      operations:
+      - name: getConnectAccountPaymentMethods
+        method: GET
+        description: Get Connect Account Payment Methods
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connect_account_id
+          in: query
+          type: string
+          required: true
+          description: connect_account_id
+    - name: connect-account-cart
+      path: /connect_account_cart
+      operations:
+      - name: addConnectAccountCartItem
+        method: POST
+        description: Add a Connect Account Cart Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+    - name: connect-account-cart
+      path: /connect_account_cart
+      operations:
+      - name: deleteConnectAccountCart
+        method: DELETE
+        description: Delete a Connect Account Cart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: connect_account_id
+          in: query
+          type: string
+          required: true
+          description: connect_account_id
+    - name: place-connect-account-order
+      path: /place_connect_account_order
+      operations:
+      - name: placeConnectAccountOrder
+        method: POST
+        description: Place a Connect Account Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+  exposes:
+  - type: rest
+    namespace: mealme-connect-accounts-rest
+    port: 8080
+    description: REST adapter for MealMe Food Ordering API — Connect Accounts. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/connect-account
+      name: connect-account
+      description: REST surface for Create a Connect Account.
+      operations:
+      - method: POST
+        name: createConnectAccount
+        description: Create a Connect Account
+        call: mealme-connect-accounts.createConnectAccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connect-account
+      name: connect-account
+      description: REST surface for Get a Connect Account.
+      operations:
+      - method: GET
+        name: getConnectAccount
+        description: Get a Connect Account
+        call: mealme-connect-accounts.getConnectAccount
+        with:
+          connect_account_id: rest.connect_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/link-connect-account
+      name: link-connect-account
+      description: REST surface for Link a Connect Account.
+      operations:
+      - method: POST
+        name: linkConnectAccount
+        description: Link a Connect Account
+        call: mealme-connect-accounts.linkConnectAccount
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connect-account-challenge
+      name: connect-account-challenge
+      description: REST surface for Solve a Connect Account Challenge.
+      operations:
+      - method: POST
+        name: solveConnectAccountChallenge
+        description: Solve a Connect Account Challenge
+        call: mealme-connect-accounts.solveConnectAccountChallenge
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/get-connect-account-payment-methods
+      name: get-connect-account-payment-methods
+      description: REST surface for Get Connect Account Payment Methods.
+      operations:
+      - method: GET
+        name: getConnectAccountPaymentMethods
+        description: Get Connect Account Payment Methods
+        call: mealme-connect-accounts.getConnectAccountPaymentMethods
+        with:
+          connect_account_id: rest.connect_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connect-account-cart
+      name: connect-account-cart
+      description: REST surface for Add a Connect Account Cart Item.
+      operations:
+      - method: POST
+        name: addConnectAccountCartItem
+        description: Add a Connect Account Cart Item
+        call: mealme-connect-accounts.addConnectAccountCartItem
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/connect-account-cart
+      name: connect-account-cart
+      description: REST surface for Delete a Connect Account Cart.
+      operations:
+      - method: DELETE
+        name: deleteConnectAccountCart
+        description: Delete a Connect Account Cart
+        call: mealme-connect-accounts.deleteConnectAccountCart
+        with:
+          connect_account_id: rest.connect_account_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/place-connect-account-order
+      name: place-connect-account-order
+      description: REST surface for Place a Connect Account Order.
+      operations:
+      - method: POST
+        name: placeConnectAccountOrder
+        description: Place a Connect Account Order
+        call: mealme-connect-accounts.placeConnectAccountOrder
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mealme-connect-accounts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for MealMe Food Ordering API — Connect Accounts. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: create-connect-account
+      description: Create a Connect Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-connect-accounts.createConnectAccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-connect-account
+      description: Get a Connect Account
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mealme-connect-accounts.getConnectAccount
+      with:
+        connect_account_id: tools.connect_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: link-connect-account
+      description: Link a Connect Account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-connect-accounts.linkConnectAccount
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: solve-connect-account-challenge
+      description: Solve a Connect Account Challenge
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-connect-accounts.solveConnectAccountChallenge
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-connect-account-payment-methods
+      description: Get Connect Account Payment Methods
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mealme-connect-accounts.getConnectAccountPaymentMethods
+      with:
+        connect_account_id: tools.connect_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-connect-account-cart-item
+      description: Add a Connect Account Cart Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-connect-accounts.addConnectAccountCartItem
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-connect-account-cart
+      description: Delete a Connect Account Cart
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: mealme-connect-accounts.deleteConnectAccountCart
+      with:
+        connect_account_id: tools.connect_account_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: place-connect-account-order
+      description: Place a Connect Account Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-connect-accounts.placeConnectAccountOrder
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -30,7 +30,7 @@ plans:
         timeFrame: month
         geo: global
         domains:
-          - https://api.mealme.ai/v2
+          - https://api.mealme.ai
         unit: 1
         price: '0.00'
         userMultiplied: false
@@ -43,7 +43,7 @@ plans:
         timeFrame: minute
         geo: global
         domains:
-          - https://api.mealme.ai/v2
+          - https://api.mealme.ai
         unit: 1
         price: '0.00'
         userMultiplied: false
@@ -67,7 +67,7 @@ plans:
         timeFrame: month
         geo: global
         domains:
-          - https://api.mealme.ai/v2
+          - https://api.mealme.ai
         unit: 1
         price: TBD
         userMultiplied: false
@@ -80,7 +80,7 @@ plans:
         timeFrame: minute
         geo: global
         domains:
-          - https://api.mealme.ai/v2
+          - https://api.mealme.ai
         unit: 1
         price: '0.00'
         userMultiplied: false
@@ -93,7 +93,7 @@ plans:
         timeFrame: month
         geo: global
         domains:
-          - https://api.mealme.ai/v2
+          - https://api.mealme.ai
         unit: 1000
         price: TBD
         userMultiplied: false
@@ -118,7 +118,7 @@ plans:
         timeFrame: month
         geo: configurable
         domains:
-          - https://api.mealme.ai/v2
+          - https://api.mealme.ai
         unit: 1
         price: custom
         userMultiplied: false
@@ -131,7 +131,7 @@ plans:
         timeFrame: minute
         geo: configurable
         domains:
-          - https://api.mealme.ai/v2
+          - https://api.mealme.ai
         unit: 1
         price: custom
         userMultiplied: false

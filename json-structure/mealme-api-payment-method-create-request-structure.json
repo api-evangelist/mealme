@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/json-structure/mealme-api-payment-method-create-request-structure.json",
+  "name": "PaymentMethodCreateRequest",
+  "description": "PaymentMethodCreateRequest schema from MealMe Food Ordering API",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "example": "diner@example.com"
+    },
+    "user_id": {
+      "type": "string",
+      "example": "user_abc123"
+    },
+    "payment_method": {
+      "type": "object",
+      "description": "Payment method details.",
+      "example": {}
+    }
+  },
+  "required": [
+    "user_email",
+    "user_id",
+    "payment_method"
+  ]
+}

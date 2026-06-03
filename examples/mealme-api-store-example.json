@@ -1,0 +1,15 @@
+{
+  "_id": "8c9f33d5-d138-4a49-9a4f-162f195c89b8",
+  "name": "Tony's Pizza Napoletana",
+  "address": "188 King Street, San Francisco, CA 94107",
+  "type": "restaurant",
+  "is_open": false,
+  "phone_number": "+14155550123",
+  "cuisines": [
+    "Pizza",
+    "Italian"
+  ],
+  "rating": 4.5,
+  "miles": 1.5,
+  "quotes": []
+}

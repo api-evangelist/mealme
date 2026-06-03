@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: MealMe Food Ordering API — Geocoding
+  description: 'MealMe Food Ordering API — Geocoding. 2 operations. Lead operation: Geocode an Address. Self-contained Naftiko capability covering one MealMe business surface.'
+  tags:
+  - MealMe
+  - Food Ordering
+  - Geocoding
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    MEALME_API_KEY: MEALME_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mealme-geocoding
+    baseUri: https://api.mealme.ai
+    description: MealMe Food Ordering API — Geocoding business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.MEALME_API_KEY}}'
+      placement: header
+    resources:
+    - name: location-geocode-v2
+      path: /location/geocode/v2
+      operations:
+      - name: geocodeAddress
+        method: POST
+        description: Geocode an Address
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+    - name: location-reverse-geocode-v2
+      path: /location/reverse_geocode/v2
+      operations:
+      - name: reverseGeocodeAddress
+        method: POST
+        description: Reverse Geocode Coordinates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+  exposes:
+  - type: rest
+    namespace: mealme-geocoding-rest
+    port: 8080
+    description: REST adapter for MealMe Food Ordering API — Geocoding. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/location-geocode-v2
+      name: location-geocode-v2
+      description: REST surface for Geocode an Address.
+      operations:
+      - method: POST
+        name: geocodeAddress
+        description: Geocode an Address
+        call: mealme-geocoding.geocodeAddress
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/location-reverse-geocode-v2
+      name: location-reverse-geocode-v2
+      description: REST surface for Reverse Geocode Coordinates.
+      operations:
+      - method: POST
+        name: reverseGeocodeAddress
+        description: Reverse Geocode Coordinates
+        call: mealme-geocoding.reverseGeocodeAddress
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mealme-geocoding-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for MealMe Food Ordering API — Geocoding. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: geocode-address
+      description: Geocode an Address
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-geocoding.geocodeAddress
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reverse-geocode-coordinates
+      description: Reverse Geocode Coordinates
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-geocoding.reverseGeocodeAddress
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

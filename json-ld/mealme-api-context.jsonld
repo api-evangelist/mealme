@@ -1,0 +1,241 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "mealme": "https://mealme.ai/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "CartItem": "mealme:CartItem",
+    "CartRequest": "mealme:CartRequest",
+    "Cart": "mealme:Cart",
+    "OrderRequest": "mealme:OrderRequest",
+    "Order": "mealme:Order",
+    "Store": "mealme:Store",
+    "Product": "mealme:Product",
+    "PaymentMethod": "mealme:PaymentMethod",
+    "PaymentMethodCreateRequest": "mealme:PaymentMethodCreateRequest",
+    "productId": {
+      "@id": "mealme:product_id",
+      "@type": "xsd:string"
+    },
+    "quantity": {
+      "@id": "mealme:quantity",
+      "@type": "xsd:integer"
+    },
+    "productMarkedPrice": {
+      "@id": "mealme:product_marked_price",
+      "@type": "xsd:integer"
+    },
+    "selectedOptions": {
+      "@id": "mealme:selected_options",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "notes": {
+      "@id": "mealme:notes",
+      "@type": "xsd:string"
+    },
+    "cartId": {
+      "@id": "mealme:cart_id",
+      "@type": "xsd:string"
+    },
+    "items": {
+      "@id": "mealme:items",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "pickup": {
+      "@id": "mealme:pickup",
+      "@type": "xsd:boolean"
+    },
+    "driverTipCents": {
+      "@id": "mealme:driver_tip_cents",
+      "@type": "xsd:integer"
+    },
+    "userLatitude": {
+      "@id": "mealme:user_latitude",
+      "@type": "xsd:double"
+    },
+    "userLongitude": {
+      "@id": "mealme:user_longitude",
+      "@type": "xsd:double"
+    },
+    "userStreetNum": {
+      "@id": "mealme:user_street_num",
+      "@type": "xsd:string"
+    },
+    "userStreetName": {
+      "@id": "mealme:user_street_name",
+      "@type": "xsd:string"
+    },
+    "userAptNum": {
+      "@id": "mealme:user_apt_num",
+      "@type": "xsd:string"
+    },
+    "userCity": {
+      "@id": "mealme:user_city",
+      "@type": "xsd:string"
+    },
+    "userState": {
+      "@id": "mealme:user_state",
+      "@type": "xsd:string"
+    },
+    "userCountry": {
+      "@id": "mealme:user_country",
+      "@type": "xsd:string"
+    },
+    "userZipcode": {
+      "@id": "mealme:user_zipcode",
+      "@type": "xsd:string"
+    },
+    "userDropoffNotes": {
+      "@id": "mealme:user_dropoff_notes",
+      "@type": "xsd:string"
+    },
+    "userName": {
+      "@id": "mealme:user_name",
+      "@type": "xsd:string"
+    },
+    "userEmail": {
+      "@id": "mealme:user_email",
+      "@type": "xsd:string"
+    },
+    "userPhone": {
+      "@id": "mealme:user_phone",
+      "@type": "xsd:integer"
+    },
+    "userId": {
+      "@id": "mealme:user_id",
+      "@type": "xsd:string"
+    },
+    "disableSms": {
+      "@id": "mealme:disable_sms",
+      "@type": "xsd:boolean"
+    },
+    "customerOrderId": {
+      "@id": "mealme:customer_order_id",
+      "@type": "xsd:string"
+    },
+    "autofillSelectedOptions": {
+      "@id": "mealme:autofill_selected_options",
+      "@type": "xsd:boolean"
+    },
+    "storeId": {
+      "@id": "mealme:store_id",
+      "@type": "xsd:string"
+    },
+    "subtotal": {
+      "@id": "mealme:subtotal",
+      "@type": "xsd:integer"
+    },
+    "placeOrder": {
+      "@id": "mealme:place_order",
+      "@type": "xsd:boolean"
+    },
+    "orderId": {
+      "@id": "mealme:order_id",
+      "@type": "xsd:string"
+    },
+    "scheduledId": {
+      "@id": "mealme:scheduled_id",
+      "@type": "xsd:string"
+    },
+    "pickupTipCents": {
+      "@id": "mealme:pickup_tip_cents",
+      "@type": "xsd:integer"
+    },
+    "userPickupNotes": {
+      "@id": "mealme:user_pickup_notes",
+      "@type": "xsd:string"
+    },
+    "paymentMethodId": {
+      "@id": "mealme:payment_method_id",
+      "@type": "xsd:string"
+    },
+    "chargeUser": {
+      "@id": "mealme:charge_user",
+      "@type": "xsd:boolean"
+    },
+    "includeFinalQuote": {
+      "@id": "mealme:include_final_quote",
+      "@type": "xsd:boolean"
+    },
+    "metadata": {
+      "@id": "mealme:metadata",
+      "@type": "@id"
+    },
+    "trackingLink": {
+      "@id": "mealme:tracking_link",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "mealme:status",
+      "@type": "xsd:string"
+    },
+    "total": {
+      "@id": "mealme:total",
+      "@type": "xsd:integer"
+    },
+    "id": {
+      "@id": "mealme:_id",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "address": {
+      "@id": "schema:address"
+    },
+    "type": {
+      "@id": "mealme:type",
+      "@type": "xsd:string"
+    },
+    "isOpen": {
+      "@id": "mealme:is_open",
+      "@type": "xsd:boolean"
+    },
+    "phoneNumber": {
+      "@id": "schema:telephone"
+    },
+    "cuisines": {
+      "@id": "mealme:cuisines",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "rating": {
+      "@id": "schema:aggregateRating"
+    },
+    "miles": {
+      "@id": "mealme:miles",
+      "@type": "xsd:double"
+    },
+    "quotes": {
+      "@id": "mealme:quotes",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "price": {
+      "@id": "schema:price"
+    },
+    "available": {
+      "@id": "mealme:available",
+      "@type": "xsd:boolean"
+    },
+    "storeName": {
+      "@id": "mealme:store_name",
+      "@type": "xsd:string"
+    },
+    "menuId": {
+      "@id": "mealme:menu_id",
+      "@type": "xsd:string"
+    },
+    "last4": {
+      "@id": "mealme:last4",
+      "@type": "xsd:string"
+    },
+    "paymentMethod": {
+      "@id": "mealme:payment_method",
+      "@type": "@id"
+    }
+  }
+}

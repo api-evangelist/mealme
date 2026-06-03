@@ -1,0 +1,297 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "MealMe"
+  description: >-
+    Unified vocabulary for the MealMe Food Ordering API, mapping the
+    operational dimension (OpenAPI resources, actions, schemas, parameters,
+    and enums) to the capability dimension (Naftiko REST and MCP workflows)
+    across food and grocery search, ordering, payments, Connect accounts,
+    support chat, tracking, and geocoding.
+  created: "2026-06-02"
+  modified: "2026-06-02"
+
+# OPERATIONAL DIMENSION (from OpenAPI)
+operational:
+  apis:
+    - name: "MealMe Food Ordering API"
+      namespace: mealme
+      version: "4.1.0"
+      baseUrl: "https://api.mealme.ai"
+      status: active
+  resources:
+    - name: stores
+      api: mealme
+      actions: [search, lookup, get, add]
+    - name: products
+      api: mealme
+      actions: [search, get]
+    - name: inventory
+      api: mealme
+      actions: [get]
+    - name: places
+      api: mealme
+      actions: [search]
+    - name: carts
+      api: mealme
+      actions: [create, retrieve, list, add, remove]
+    - name: orders
+      api: mealme
+      actions: [create, finalize, list]
+    - name: payment_methods
+      api: mealme
+      actions: [create, list, delete]
+    - name: payment_intents
+      api: mealme
+      actions: [create]
+    - name: connect_accounts
+      api: mealme
+      actions: [create, get, link, challenge, order]
+    - name: chats
+      api: mealme
+      actions: [initiate, exit, send, read, fetch]
+    - name: webhooks
+      api: mealme
+      actions: [add]
+    - name: geocodes
+      api: mealme
+      actions: [geocode, reverse]
+  actions:
+    - verb: search
+      methods: [GET]
+      pattern: query
+    - verb: get
+      methods: [GET]
+      pattern: read
+    - verb: list
+      methods: [GET]
+      pattern: read
+    - verb: lookup
+      methods: [GET]
+      pattern: read
+    - verb: create
+      methods: [POST]
+      pattern: write
+    - verb: finalize
+      methods: [POST]
+      pattern: write
+    - verb: add
+      methods: [POST]
+      pattern: write
+    - verb: remove
+      methods: [POST]
+      pattern: write
+    - verb: delete
+      methods: [POST, DELETE]
+      pattern: destructive
+  schemas:
+    core:
+      - name: Store
+        properties: [_id, name, address, type, is_open, rating, miles]
+      - name: Product
+        properties: [product_id, name, price, available, store_name, menu_id]
+    cart:
+      - name: Cart
+        properties: [cart_id, store_id, subtotal, items]
+      - name: CartItem
+        properties: [product_id, quantity, product_marked_price, selected_options, notes]
+      - name: CartRequest
+        properties: [items, pickup, user_id, driver_tip_cents]
+    order:
+      - name: Order
+        properties: [order_id, cart_id, status, total]
+      - name: OrderRequest
+        properties: [items, pickup, payment_method_id, place_order, user_id]
+    payment:
+      - name: PaymentMethod
+        properties: [payment_method_id, type, last4]
+      - name: PaymentMethodCreateRequest
+        properties: [user_email, user_id, payment_method]
+  parameters:
+    pagination:
+      - page
+    identifiers:
+      - cart_id
+      - order_id
+      - product_id
+      - store_id
+      - store_ids
+      - menu_id
+      - user_id
+    filters:
+      - store_type
+      - cuisine
+      - sort
+      - open
+      - pickup
+      - dollar_signs
+      - minimum_rating
+      - maximum_miles
+    measurement:
+      - latitude
+      - longitude
+      - budget
+  enums:
+    store_types:
+      - restaurant
+      - grocery
+    sort_orders:
+      - relevance
+      - cheapest
+      - fastest
+      - rating
+      - distance
+    order_states:
+      - unplaced
+      - awaiting_confirmation
+      - in_progress
+      - canceled
+      - completed
+    countries:
+      - US
+      - CA
+  authentication:
+    - scheme: apiKey
+      placement: header
+      header: Authorization
+      apis: [mealme]
+
+# CAPABILITY DIMENSION (from Naftiko)
+capability:
+  workflows:
+    - name: Search
+      file: capabilities/mealme-search.yaml
+      apis: [mealme]
+      tools: 4
+      personas: [Developer, Diner]
+      domains: [Discovery]
+    - name: Stores
+      file: capabilities/mealme-stores.yaml
+      apis: [mealme]
+      tools: 4
+      personas: [Developer, Merchant]
+      domains: [Catalog]
+    - name: Carts
+      file: capabilities/mealme-carts.yaml
+      apis: [mealme]
+      tools: 5
+      personas: [Developer, Diner]
+      domains: [Ordering]
+    - name: Orders
+      file: capabilities/mealme-orders.yaml
+      apis: [mealme]
+      tools: 3
+      personas: [Developer, Diner]
+      domains: [Ordering]
+    - name: Payments
+      file: capabilities/mealme-payments.yaml
+      apis: [mealme]
+      tools: 4
+      personas: [Developer]
+      domains: [Payments]
+    - name: Connect Accounts
+      file: capabilities/mealme-connect-accounts.yaml
+      apis: [mealme]
+      tools: 8
+      personas: [Developer, Merchant]
+      domains: [Connect]
+    - name: Support Chat
+      file: capabilities/mealme-support-chat.yaml
+      apis: [mealme]
+      tools: 5
+      personas: [Support Agent, Diner]
+      domains: [Support]
+    - name: Tracking
+      file: capabilities/mealme-tracking.yaml
+      apis: [mealme]
+      tools: 1
+      personas: [Developer]
+      domains: [Ordering]
+    - name: Geocoding
+      file: capabilities/mealme-geocoding.yaml
+      apis: [mealme]
+      tools: 2
+      personas: [Developer]
+      domains: [Location]
+  personas:
+    - id: developer
+      name: Developer
+      description: Integrates MealMe search, cart, and ordering into an app.
+      workflows: [Search, Stores, Carts, Orders, Payments, Connect Accounts, Tracking, Geocoding]
+    - id: diner
+      name: Diner
+      description: End user discovering stores and placing food or grocery orders.
+      workflows: [Search, Carts, Orders, Support Chat]
+    - id: merchant
+      name: Merchant
+      description: Store operator managed through MealMe Connect.
+      workflows: [Stores, Connect Accounts]
+    - id: support-agent
+      name: Support Agent
+      description: Handles customer support chat for orders.
+      workflows: [Support Chat]
+  domains:
+    - name: Discovery
+      resources: [stores, products, places]
+    - name: Catalog
+      resources: [stores, inventory, products]
+    - name: Ordering
+      resources: [carts, orders, webhooks]
+    - name: Payments
+      resources: [payment_methods, payment_intents]
+    - name: Connect
+      resources: [connect_accounts]
+    - name: Support
+      resources: [chats]
+    - name: Location
+      resources: [geocodes, places]
+  namespaces:
+    - consumed: mealme-search
+      rest: mealme-search-rest
+      mcp: mealme-search-mcp
+      restPort: 8080
+      mcpPort: 9090
+    - consumed: mealme-carts
+      rest: mealme-carts-rest
+      mcp: mealme-carts-mcp
+      restPort: 8080
+      mcpPort: 9090
+    - consumed: mealme-orders
+      rest: mealme-orders-rest
+      mcp: mealme-orders-mcp
+      restPort: 8080
+      mcpPort: 9090
+  binds:
+    - key: MEALME_API_KEY
+      workflows: [Search, Stores, Carts, Orders, Payments, Connect Accounts, Support Chat, Tracking, Geocoding]
+
+# CROSS-REFERENCE
+crossReference:
+  - resource: stores
+    operations: [searchStores, storeLookup, addStore]
+    workflows: [Search, Stores]
+    personas: [Developer, Diner, Merchant]
+  - resource: products
+    operations: [searchProducts, getProductDetails]
+    workflows: [Search, Stores]
+    personas: [Developer, Diner]
+  - resource: carts
+    operations: [createCart, retrieveCart, listCarts, addToCart, removeFromCart]
+    workflows: [Carts]
+    personas: [Developer, Diner]
+  - resource: orders
+    operations: [createOrder, finalizeOrder, getOrders]
+    workflows: [Orders]
+    personas: [Developer, Diner]
+  - resource: payment_methods
+    operations: [createPaymentMethod, listPaymentMethods, deletePaymentMethod]
+    workflows: [Payments]
+    personas: [Developer]
+  - resource: connect_accounts
+    operations: [createConnectAccount, getConnectAccount, linkConnectAccount, placeConnectAccountOrder]
+    workflows: [Connect Accounts]
+    personas: [Developer, Merchant]
+  - resource: geocodes
+    operations: [geocodeAddress, reverseGeocodeAddress]
+    workflows: [Geocoding]
+    personas: [Developer]

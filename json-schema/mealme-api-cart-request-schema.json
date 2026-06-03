@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/json-schema/mealme-api-cart-request-schema.json",
+  "title": "CartRequest",
+  "description": "CartRequest schema from MealMe Food Ordering API",
+  "type": "object",
+  "properties": {
+    "cart_id": {
+      "type": "string",
+      "description": "ID of an existing cart to update.",
+      "example": "kQ8vZEd-UnW_gZu6c4iO"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CartItem"
+      }
+    },
+    "pickup": {
+      "type": "boolean",
+      "description": "Fulfillment type. true for pickup, false for delivery.",
+      "example": false
+    },
+    "driver_tip_cents": {
+      "type": "integer",
+      "default": 100,
+      "example": 100
+    },
+    "user_latitude": {
+      "type": "number",
+      "example": 37.7786357
+    },
+    "user_longitude": {
+      "type": "number",
+      "example": -122.3918135
+    },
+    "user_street_num": {
+      "type": "string",
+      "example": "188"
+    },
+    "user_street_name": {
+      "type": "string",
+      "example": "King Street"
+    },
+    "user_apt_num": {
+      "type": "string",
+      "example": "example"
+    },
+    "user_city": {
+      "type": "string",
+      "example": "San Francisco"
+    },
+    "user_state": {
+      "type": "string",
+      "example": "CA"
+    },
+    "user_country": {
+      "type": "string",
+      "enum": [
+        "US",
+        "CA"
+      ],
+      "example": "US"
+    },
+    "user_zipcode": {
+      "type": "string",
+      "example": "94107"
+    },
+    "user_dropoff_notes": {
+      "type": "string",
+      "example": "Leave at the front desk"
+    },
+    "user_name": {
+      "type": "string",
+      "example": "Steve Jobs"
+    },
+    "user_email": {
+      "type": "string",
+      "format": "email",
+      "example": "diner@example.com"
+    },
+    "user_phone": {
+      "type": "integer",
+      "example": 14155550123
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Unique self-provided customer user ID.",
+      "example": "user_abc123"
+    },
+    "disable_sms": {
+      "type": "boolean",
+      "default": false,
+      "example": false
+    },
+    "customer_order_id": {
+      "type": "string",
+      "example": "id_7b2c4e"
+    },
+    "autofill_selected_options": {
+      "type": "boolean",
+      "default": false,
+      "example": false
+    }
+  },
+  "required": [
+    "items",
+    "pickup",
+    "user_id"
+  ]
+}

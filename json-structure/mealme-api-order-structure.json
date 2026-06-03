@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/json-structure/mealme-api-order-structure.json",
+  "name": "Order",
+  "description": "Order schema from MealMe Food Ordering API",
+  "type": "object",
+  "properties": {
+    "order_id": {
+      "type": "string",
+      "example": "ord_8f2a1c9b"
+    },
+    "cart_id": {
+      "type": "string",
+      "example": "kQ8vZEd-UnW_gZu6c4iO"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "unplaced",
+        "awaiting_confirmation",
+        "in_progress",
+        "canceled",
+        "completed"
+      ],
+      "example": "unplaced"
+    },
+    "total": {
+      "type": "int32",
+      "description": "Total in cents.",
+      "example": 1299
+    }
+  }
+}

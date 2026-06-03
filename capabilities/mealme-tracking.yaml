@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: MealMe Food Ordering API — Tracking
+  description: 'MealMe Food Ordering API — Tracking. 1 operations. Lead operation: Add a Tracking Webhook. Self-contained Naftiko capability covering one MealMe business surface.'
+  tags:
+  - MealMe
+  - Food Ordering
+  - Tracking
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    MEALME_API_KEY: MEALME_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mealme-tracking
+    baseUri: https://api.mealme.ai
+    description: MealMe Food Ordering API — Tracking business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.MEALME_API_KEY}}'
+      placement: header
+    resources:
+    - name: account-tracking-add-webhook
+      path: /account/tracking/add_webhook
+      operations:
+      - name: addTrackingWebhook
+        method: POST
+        description: Add a Tracking Webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+  exposes:
+  - type: rest
+    namespace: mealme-tracking-rest
+    port: 8080
+    description: REST adapter for MealMe Food Ordering API — Tracking. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/account-tracking-add-webhook
+      name: account-tracking-add-webhook
+      description: REST surface for Add a Tracking Webhook.
+      operations:
+      - method: POST
+        name: addTrackingWebhook
+        description: Add a Tracking Webhook
+        call: mealme-tracking.addTrackingWebhook
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mealme-tracking-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for MealMe Food Ordering API — Tracking. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: add-tracking-webhook
+      description: Add a Tracking Webhook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-tracking.addTrackingWebhook
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

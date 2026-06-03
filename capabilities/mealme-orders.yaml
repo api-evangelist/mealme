@@ -1,0 +1,213 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: MealMe Food Ordering API — Orders
+  description: 'MealMe Food Ordering API — Orders. 3 operations. Lead operation: Create an Order. Self-contained Naftiko capability covering one MealMe business surface.'
+  tags:
+  - MealMe
+  - Food Ordering
+  - Orders
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    MEALME_API_KEY: MEALME_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mealme-orders
+    baseUri: https://api.mealme.ai
+    description: MealMe Food Ordering API — Orders business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.MEALME_API_KEY}}'
+      placement: header
+    resources:
+    - name: order-order-v4
+      path: /order/order/v4
+      operations:
+      - name: createOrder
+        method: POST
+        description: Create an Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+    - name: order-finalize
+      path: /order/finalize
+      operations:
+      - name: finalizeOrder
+        method: POST
+        description: Finalize an Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+    - name: account-orders
+      path: /account/orders
+      operations:
+      - name: getOrders
+        method: GET
+        description: Get Orders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: order_id
+          in: query
+          type: string
+          required: false
+          description: order_id
+        - name: start_date
+          in: query
+          type: string
+          required: false
+          description: start_date
+        - name: end_date
+          in: query
+          type: string
+          required: false
+          description: end_date
+        - name: status
+          in: query
+          type: string
+          required: false
+          description: status
+        - name: favorited
+          in: query
+          type: boolean
+          required: false
+          description: favorited
+        - name: user_id
+          in: query
+          type: string
+          required: false
+          description: user_id
+        - name: include_order_count
+          in: query
+          type: boolean
+          required: false
+          description: include_order_count
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: page
+  exposes:
+  - type: rest
+    namespace: mealme-orders-rest
+    port: 8080
+    description: REST adapter for MealMe Food Ordering API — Orders. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/order-order-v4
+      name: order-order-v4
+      description: REST surface for Create an Order.
+      operations:
+      - method: POST
+        name: createOrder
+        description: Create an Order
+        call: mealme-orders.createOrder
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/order-finalize
+      name: order-finalize
+      description: REST surface for Finalize an Order.
+      operations:
+      - method: POST
+        name: finalizeOrder
+        description: Finalize an Order
+        call: mealme-orders.finalizeOrder
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/account-orders
+      name: account-orders
+      description: REST surface for Get Orders.
+      operations:
+      - method: GET
+        name: getOrders
+        description: Get Orders
+        call: mealme-orders.getOrders
+        with:
+          order_id: rest.order_id
+          start_date: rest.start_date
+          end_date: rest.end_date
+          status: rest.status
+          favorited: rest.favorited
+          user_id: rest.user_id
+          include_order_count: rest.include_order_count
+          page: rest.page
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mealme-orders-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for MealMe Food Ordering API — Orders. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: create-order
+      description: Create an Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-orders.createOrder
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: finalize-order
+      description: Finalize an Order
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-orders.finalizeOrder
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-orders
+      description: Get Orders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mealme-orders.getOrders
+      with:
+        order_id: tools.order_id
+        start_date: tools.start_date
+        end_date: tools.end_date
+        status: tools.status
+        favorited: tools.favorited
+        user_id: tools.user_id
+        include_order_count: tools.include_order_count
+        page: tools.page
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,240 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: MealMe Food Ordering API — Carts
+  description: 'MealMe Food Ordering API — Carts. 5 operations. Lead operation: Create a Cart. Self-contained Naftiko capability covering one MealMe business surface.'
+  tags:
+  - MealMe
+  - Food Ordering
+  - Carts
+  created: '2026-06-02'
+  modified: '2026-06-02'
+binds:
+- namespace: env
+  keys:
+    MEALME_API_KEY: MEALME_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: mealme-carts
+    baseUri: https://api.mealme.ai
+    description: MealMe Food Ordering API — Carts business capability. Self-contained, no shared references.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.MEALME_API_KEY}}'
+      placement: header
+    resources:
+    - name: cart-create
+      path: /cart/create
+      operations:
+      - name: createCart
+        method: POST
+        description: Create a Cart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+    - name: cart-retrieve-v2
+      path: /cart/retrieve/v2
+      operations:
+      - name: retrieveCart
+        method: GET
+        description: Retrieve a Cart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: cart_id
+          in: query
+          type: string
+          required: true
+          description: cart_id
+    - name: cart-list-v2
+      path: /cart/list/v2
+      operations:
+      - name: listCarts
+        method: GET
+        description: List Carts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: add-to-cart
+      path: /add_to_cart
+      operations:
+      - name: addToCart
+        method: POST
+        description: Add an Item to a Cart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+    - name: remove-from-cart
+      path: /remove_from_cart
+      operations:
+      - name: removeFromCart
+        method: POST
+        description: Remove an Item from a Cart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          required: true
+          description: Request body.
+  exposes:
+  - type: rest
+    namespace: mealme-carts-rest
+    port: 8080
+    description: REST adapter for MealMe Food Ordering API — Carts. One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/cart-create
+      name: cart-create
+      description: REST surface for Create a Cart.
+      operations:
+      - method: POST
+        name: createCart
+        description: Create a Cart
+        call: mealme-carts.createCart
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cart-retrieve-v2
+      name: cart-retrieve-v2
+      description: REST surface for Retrieve a Cart.
+      operations:
+      - method: GET
+        name: retrieveCart
+        description: Retrieve a Cart
+        call: mealme-carts.retrieveCart
+        with:
+          cart_id: rest.cart_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/cart-list-v2
+      name: cart-list-v2
+      description: REST surface for List Carts.
+      operations:
+      - method: GET
+        name: listCarts
+        description: List Carts
+        call: mealme-carts.listCarts
+        with: {}
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/add-to-cart
+      name: add-to-cart
+      description: REST surface for Add an Item to a Cart.
+      operations:
+      - method: POST
+        name: addToCart
+        description: Add an Item to a Cart
+        call: mealme-carts.addToCart
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/remove-from-cart
+      name: remove-from-cart
+      description: REST surface for Remove an Item from a Cart.
+      operations:
+      - method: POST
+        name: removeFromCart
+        description: Remove an Item from a Cart
+        call: mealme-carts.removeFromCart
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: mealme-carts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for MealMe Food Ordering API — Carts. One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: create-cart
+      description: Create a Cart
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-carts.createCart
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-cart
+      description: Retrieve a Cart
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mealme-carts.retrieveCart
+      with:
+        cart_id: tools.cart_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-carts
+      description: List Carts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: mealme-carts.listCarts
+      with: {}
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-item-cart
+      description: Add an Item to a Cart
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-carts.addToCart
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-item-cart
+      description: Remove an Item from a Cart
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: mealme-carts.removeFromCart
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

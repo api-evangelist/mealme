@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/json-schema/mealme-api-cart-item-schema.json",
+  "title": "CartItem",
+  "description": "CartItem schema from MealMe Food Ordering API",
+  "type": "object",
+  "properties": {
+    "product_id": {
+      "type": "string",
+      "description": "Product identifier from a search or inventory result.",
+      "example": "prod_5a3e9d12"
+    },
+    "quantity": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1,
+      "example": 1
+    },
+    "product_marked_price": {
+      "type": "integer",
+      "description": "Marked price in cents.",
+      "example": 1299
+    },
+    "selected_options": {
+      "type": "array",
+      "description": "Selected product customizations and modifiers.",
+      "items": {
+        "type": "object"
+      },
+      "example": []
+    },
+    "notes": {
+      "type": "string",
+      "description": "Special instructions for the store.",
+      "example": "Leave at the front desk"
+    }
+  },
+  "required": [
+    "product_id"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/json-schema/mealme-api-store-schema.json",
+  "title": "Store",
+  "description": "Store schema from MealMe Food Ordering API",
+  "type": "object",
+  "properties": {
+    "_id": {
+      "type": "string",
+      "example": "8c9f33d5-d138-4a49-9a4f-162f195c89b8"
+    },
+    "name": {
+      "type": "string",
+      "example": "Tony's Pizza Napoletana"
+    },
+    "address": {
+      "type": "string",
+      "example": "188 King Street, San Francisco, CA 94107"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "restaurant",
+        "grocery"
+      ],
+      "example": "restaurant"
+    },
+    "is_open": {
+      "type": "boolean",
+      "example": false
+    },
+    "phone_number": {
+      "type": "string",
+      "example": "+14155550123"
+    },
+    "cuisines": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "Pizza",
+        "Italian"
+      ]
+    },
+    "rating": {
+      "type": "number",
+      "example": 4.5
+    },
+    "miles": {
+      "type": "number",
+      "example": 1.5
+    },
+    "quotes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "example": []
+    }
+  }
+}
