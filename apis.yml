@@ -1,10 +1,9 @@
 aid: mealme
 name: MealMe
 description: >-
-  MealMe provides the largest food ordering API, enabling developers to get
-  menus, inventory, and send orders to the point of sale at over 1 million
-  restaurants and grocery stores for pickup or delivery. Includes a Food Search
-  API, Menu API, and Grocery Ordering API.
+  MealMe provides the largest food ordering API, enabling developers to get menus, inventory, and send orders to the
+  point of sale at over 1 million restaurants and grocery stores for pickup or delivery. Includes a Food Search API,
+  Menu API, and Grocery Ordering API.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -13,8 +12,7 @@ tags:
   - Grocery
   - Ordering
   - Restaurants
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/apis.yml
 created: '2025-03-01'
 modified: '2026-06-02'
 specificationVersion: '0.19'
@@ -22,9 +20,8 @@ apis:
   - aid: mealme:mealme-api
     name: MealMe Food Ordering API
     description: >-
-      The MealMe API enables getting menus and inventory and sending orders to
-      the POS of over 1 million restaurants and grocery stores. Every menu item
-      includes real-time availability, prices, and customizations.
+      The MealMe API enables getting menus and inventory and sending orders to the POS of over 1 million restaurants and
+      grocery stores. Every menu item includes real-time availability, prices, and customizations.
     humanURL: https://www.mealme.ai/
     baseURL: https://api.mealme.ai
     tags:
@@ -38,8 +35,7 @@ apis:
       - type: GettingStarted
         url: https://docs.mealme.ai/docs/create-order
       - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/openapi/mealme-openapi.yml
+        url: https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/openapi/mealme-openapi.yml
       - type: Reference
         url: https://docs.mealme.ai/reference
       - type: Overview
@@ -48,24 +44,6 @@ apis:
         url: https://docs.mealme.ai/docs/api-features
       - type: Tutorials
         url: https://docs.mealme.ai/docs/store-search-order-flow
-      - type: NaftikoCapability
-        url: capabilities/mealme-search.yaml
-      - type: NaftikoCapability
-        url: capabilities/mealme-stores.yaml
-      - type: NaftikoCapability
-        url: capabilities/mealme-carts.yaml
-      - type: NaftikoCapability
-        url: capabilities/mealme-orders.yaml
-      - type: NaftikoCapability
-        url: capabilities/mealme-payments.yaml
-      - type: NaftikoCapability
-        url: capabilities/mealme-connect-accounts.yaml
-      - type: NaftikoCapability
-        url: capabilities/mealme-support-chat.yaml
-      - type: NaftikoCapability
-        url: capabilities/mealme-tracking.yaml
-      - type: NaftikoCapability
-        url: capabilities/mealme-geocoding.yaml
 common:
   - type: GitHubOrganization
     url: https://github.com/MealMe-Ai

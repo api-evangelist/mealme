@@ -1,0 +1,898 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MealMe Food Ordering API",
+    "version": "4.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for a Store",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/search/store/v3",
+            "params": [
+              {
+                "name": "query",
+                "value": "pizza",
+                "type": "query"
+              },
+              {
+                "name": "latitude",
+                "value": "37.7786357",
+                "type": "query"
+              },
+              {
+                "name": "longitude",
+                "value": "-122.3918135",
+                "type": "query"
+              },
+              {
+                "name": "store_type",
+                "value": "restaurant",
+                "type": "query"
+              },
+              {
+                "name": "budget",
+                "value": "20",
+                "type": "query"
+              },
+              {
+                "name": "pickup",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "fetch_quotes",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "cheapest",
+                "type": "query"
+              },
+              {
+                "name": "open",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "maximum_miles",
+                "value": "3",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search restaurants and grocery stores near a location."
+        },
+        {
+          "info": {
+            "name": "Search for a Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/search/product/v4",
+            "params": [
+              {
+                "name": "query",
+                "value": "pizza",
+                "type": "query"
+              },
+              {
+                "name": "product_id",
+                "value": "prod_5a3e9d12",
+                "type": "query"
+              },
+              {
+                "name": "store_name",
+                "value": "Tony's Pizza Napoletana",
+                "type": "query"
+              },
+              {
+                "name": "menu_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              },
+              {
+                "name": "user_latitude",
+                "value": "37.7786357",
+                "type": "query"
+              },
+              {
+                "name": "user_longitude",
+                "value": "-122.3918135",
+                "type": "query"
+              },
+              {
+                "name": "pickup",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "upc_codes",
+                "value": "example",
+                "type": "query"
+              },
+              {
+                "name": "fetch_quotes",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "relevance",
+                "type": "query"
+              },
+              {
+                "name": "fuzzy_search",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "maximum_miles",
+                "value": "1.5",
+                "type": "query"
+              },
+              {
+                "name": "sale",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search products across restaurants, grocery, and retail stores."
+        },
+        {
+          "info": {
+            "name": "Search for a Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/search/cart"
+          },
+          "docs": "Search for a set of products to build a cart in one call."
+        },
+        {
+          "info": {
+            "name": "Search for a Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/places/search",
+            "params": [
+              {
+                "name": "search",
+                "value": "pizza",
+                "type": "query"
+              },
+              {
+                "name": "location_bias_latitude",
+                "value": "37.7786357",
+                "type": "query"
+              },
+              {
+                "name": "location_bias_longitude",
+                "value": "-122.3918135",
+                "type": "query"
+              },
+              {
+                "name": "location_bias_radius",
+                "value": "10000",
+                "type": "query"
+              },
+              {
+                "name": "search_type",
+                "value": "place",
+                "type": "query"
+              },
+              {
+                "name": "open_filter",
+                "value": "false",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for a place or address with optional location bias."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a MealMe Store",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/utils/store_lookup/v3",
+            "params": [
+              {
+                "name": "store_ids",
+                "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8",
+                "type": "query"
+              },
+              {
+                "name": "use_new_db",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch stores by a comma-delimited list of store IDs (max 50)."
+        },
+        {
+          "info": {
+            "name": "Add a Google Place to MealMe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/utils/add_store",
+            "params": [
+              {
+                "name": "place_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Add a store to MealMe by its Google Place identifier."
+        },
+        {
+          "info": {
+            "name": "Get Inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/details/inventory/v4",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8",
+                "type": "query"
+              },
+              {
+                "name": "subcategory_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              },
+              {
+                "name": "pickup",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "include_quote",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "include_customizations",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "available",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "menu_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a store's menu or grocery inventory."
+        },
+        {
+          "info": {
+            "name": "Get Product Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/details/product/v2",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "prod_5a3e9d12",
+                "type": "query"
+              },
+              {
+                "name": "pickup",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "include_quote",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "user_latitude",
+                "value": "37.7786357",
+                "type": "query"
+              },
+              {
+                "name": "user_longitude",
+                "value": "-122.3918135",
+                "type": "query"
+              },
+              {
+                "name": "include_fees",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a single product including customizations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Carts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/cart/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a cart from a list of products and a fulfillment mode."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/cart/retrieve/v2",
+            "params": [
+              {
+                "name": "cart_id",
+                "value": "kQ8vZEd-UnW_gZu6c4iO",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a previously created cart by its ID."
+        },
+        {
+          "info": {
+            "name": "List Carts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/cart/list/v2"
+          },
+          "docs": "List the carts associated with the account."
+        },
+        {
+          "info": {
+            "name": "Add an Item to a Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/add_to_cart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add one or more items to an existing cart."
+        },
+        {
+          "info": {
+            "name": "Remove an Item from a Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/remove_from_cart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove an item from an existing cart."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/order/order/v4",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an order from a list of items. When place_order is false the\nresponse returns a finalizable quote; when true the order is placed.\n"
+        },
+        {
+          "info": {
+            "name": "Finalize an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/order/finalize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Finalize a previously created order quote (place_order=false)."
+        },
+        {
+          "info": {
+            "name": "Get Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/account/orders",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "ord_8f2a1c9b",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "example",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "example",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "completed",
+                "type": "query"
+              },
+              {
+                "name": "favorited",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "user_abc123",
+                "type": "query"
+              },
+              {
+                "name": "include_order_count",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve account orders with optional filters."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Payment Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/payment/create/v2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a payment method for a user."
+        },
+        {
+          "info": {
+            "name": "List Payment Methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/payment/list",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "user_abc123",
+                "type": "query"
+              },
+              {
+                "name": "user_email",
+                "value": "diner@example.com",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List a user's payment methods."
+        },
+        {
+          "info": {
+            "name": "Delete a Payment Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/payment/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete a user's payment method."
+        },
+        {
+          "info": {
+            "name": "Get a Payment Intent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/get_payment_intent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a payment intent for a cart."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Connect Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Connect Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/connect_account",
+            "params": [
+              {
+                "name": "connect_account_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a MealMe Connect account."
+        },
+        {
+          "info": {
+            "name": "Create a Connect Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/connect_account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a MealMe Connect account for a store."
+        },
+        {
+          "info": {
+            "name": "Link a Connect Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/link_connect_account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Link a MealMe Connect account."
+        },
+        {
+          "info": {
+            "name": "Solve a Connect Account Challenge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/connect_account_challenge",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Solve a verification challenge for a Connect account."
+        },
+        {
+          "info": {
+            "name": "Get Connect Account Payment Methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/get_connect_account_payment_methods",
+            "params": [
+              {
+                "name": "connect_account_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve payment methods for a Connect account."
+        },
+        {
+          "info": {
+            "name": "Add a Connect Account Cart Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/connect_account_cart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an item to a Connect account cart."
+        },
+        {
+          "info": {
+            "name": "Delete a Connect Account Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mealme.ai/connect_account_cart",
+            "params": [
+              {
+                "name": "connect_account_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a Connect account cart."
+        },
+        {
+          "info": {
+            "name": "Place a Connect Account Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/place_connect_account_order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Place an order using a Connect account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Support Chat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate Customer Support Chat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/chat_initiate"
+          },
+          "docs": "Initiate a customer support chat session."
+        },
+        {
+          "info": {
+            "name": "Exit a Customer Support Chat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/exit_chat",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exit a customer support chat session."
+        },
+        {
+          "info": {
+            "name": "Send a Customer Support Chat Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/send_message",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a message in a customer support chat."
+        },
+        {
+          "info": {
+            "name": "Mark Chat Messages as Read",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/read_message",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mark customer support chat messages as read."
+        },
+        {
+          "info": {
+            "name": "Fetch Customer Support Chat IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/fetch_chat_ids"
+          },
+          "docs": "Fetch the chat IDs available for the account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tracking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a Tracking Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/account/tracking/add_webhook",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a webhook to receive order tracking updates."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Geocoding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Geocode an Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/location/geocode/v2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert an address into geographic coordinates."
+        },
+        {
+          "info": {
+            "name": "Reverse Geocode Coordinates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/location/reverse_geocode/v2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert geographic coordinates into an address."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
