@@ -53,7 +53,7 @@ common:
     url: https://www.mealme.ai/
   - type: Documentation
     url: https://docs.mealme.ai/
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://api.mealme.ai/llms.txt
   - type: Spectral
     url: rules/mealme-spectral-rules.yml
