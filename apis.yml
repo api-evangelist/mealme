@@ -45,6 +45,12 @@ apis:
       - type: Tutorials
         url: https://docs.mealme.ai/docs/store-search-order-flow
 common:
+  - type: DomainSecurity
+    url: security/mealme-domain-security.yml
+  - type: Authentication
+    url: authentication/mealme-authentication.yml
+  - type: Blog
+    url: https://www.mealme.ai/blog-feed.xml
   - type: GitHubOrganization
     url: https://github.com/MealMe-Ai
   - type: LinkedIn
