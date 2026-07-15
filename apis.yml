@@ -45,6 +45,8 @@ apis:
       - type: Tutorials
         url: https://docs.mealme.ai/docs/store-search-order-flow
 common:
+  - type: AgenticAccess
+    url: agentic-access/mealme-agentic-access.yml
   - type: DomainSecurity
     url: security/mealme-domain-security.yml
   - type: Authentication
