@@ -1,0 +1,174 @@
+openapi: 3.1.0
+info:
+  title: MealMe Food Ordering Carts Support Chat API
+  version: 4.1.0
+  description: 'MealMe provides a food and grocery ordering API for menus, inventory, and
+
+    order placement at over one million restaurants and grocery stores in the
+
+    United States and Canada. The API covers store and product search, store
+
+    lookup, inventory/menu retrieval, product details, cart creation and
+
+    management, order creation and finalization, payment methods, MealMe
+
+    Connect accounts, customer support chat, order tracking webhooks, places
+
+    search, and geocoding. Every menu item and grocery product returned
+
+    includes real-time availability, prices, and customizations or modifiers.
+
+    The current reference is version 4.1.0.
+
+
+    Paths in this specification mirror the documented MealMe endpoints under
+
+    https://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,
+
+    and `/order/order/v4`). Authentication uses an API key passed in the
+
+    Authorization header.
+
+    '
+  contact:
+    name: MealMe API Reference
+    url: https://docs.mealme.ai/reference
+servers:
+- url: https://api.mealme.ai
+  description: MealMe production API
+security:
+- apiKeyHeader: []
+tags:
+- name: Support Chat
+  description: Customer support chat.
+paths:
+  /chat_initiate:
+    post:
+      tags:
+      - Support Chat
+      operationId: initiateChat
+      summary: Initiate Customer Support Chat
+      description: Initiate a customer support chat session.
+      responses:
+        '200':
+          description: Chat initiated.
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /exit_chat:
+    post:
+      tags:
+      - Support Chat
+      operationId: exitChat
+      summary: Exit a Customer Support Chat
+      description: Exit a customer support chat session.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chat_id:
+                  type: string
+            examples:
+              ExitChatRequestExample:
+                summary: Default exitChat request
+                x-microcks-default: true
+                value:
+                  chat_id: id_7b2c4e
+      responses:
+        '200':
+          description: Exited.
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /send_message:
+    post:
+      tags:
+      - Support Chat
+      operationId: sendMessage
+      summary: Send a Customer Support Chat Message
+      description: Send a message in a customer support chat.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chat_id:
+                  type: string
+                message:
+                  type: string
+            examples:
+              SendMessageRequestExample:
+                summary: Default sendMessage request
+                x-microcks-default: true
+                value:
+                  chat_id: id_7b2c4e
+                  message: Where is my order?
+      responses:
+        '200':
+          description: Message sent.
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /read_message:
+    post:
+      tags:
+      - Support Chat
+      operationId: readMessages
+      summary: Mark Chat Messages as Read
+      description: Mark customer support chat messages as read.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chat_id:
+                  type: string
+            examples:
+              ReadMessagesRequestExample:
+                summary: Default readMessages request
+                x-microcks-default: true
+                value:
+                  chat_id: id_7b2c4e
+      responses:
+        '200':
+          description: Marked read.
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /fetch_chat_ids:
+    post:
+      tags:
+      - Support Chat
+      operationId: fetchChatIds
+      summary: Fetch Customer Support Chat IDs
+      description: Fetch the chat IDs available for the account.
+      responses:
+        '200':
+          description: Chat IDs.
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key issued by MealMe, passed in the Authorization header.

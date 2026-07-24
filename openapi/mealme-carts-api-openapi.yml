@@ -1,0 +1,412 @@
+openapi: 3.1.0
+info:
+  title: MealMe Food Ordering Carts API
+  version: 4.1.0
+  description: 'MealMe provides a food and grocery ordering API for menus, inventory, and
+
+    order placement at over one million restaurants and grocery stores in the
+
+    United States and Canada. The API covers store and product search, store
+
+    lookup, inventory/menu retrieval, product details, cart creation and
+
+    management, order creation and finalization, payment methods, MealMe
+
+    Connect accounts, customer support chat, order tracking webhooks, places
+
+    search, and geocoding. Every menu item and grocery product returned
+
+    includes real-time availability, prices, and customizations or modifiers.
+
+    The current reference is version 4.1.0.
+
+
+    Paths in this specification mirror the documented MealMe endpoints under
+
+    https://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,
+
+    and `/order/order/v4`). Authentication uses an API key passed in the
+
+    Authorization header.
+
+    '
+  contact:
+    name: MealMe API Reference
+    url: https://docs.mealme.ai/reference
+servers:
+- url: https://api.mealme.ai
+  description: MealMe production API
+security:
+- apiKeyHeader: []
+tags:
+- name: Carts
+  description: Cart creation, retrieval, and item management.
+paths:
+  /cart/create:
+    post:
+      tags:
+      - Carts
+      operationId: createCart
+      summary: Create a Cart
+      description: Create or update a cart from a list of products and a fulfillment mode.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CartRequest'
+            examples:
+              CreateCartRequestExample:
+                summary: Default createCart request
+                x-microcks-default: true
+                value:
+                  cart_id: kQ8vZEd-UnW_gZu6c4iO
+                  items:
+                  - product_id: prod_5a3e9d12
+                    quantity: 1
+                    product_marked_price: 1299
+                    selected_options: &id001 []
+                    notes: Leave at the front desk
+                  pickup: false
+                  driver_tip_cents: 100
+                  user_latitude: 37.7786357
+                  user_longitude: -122.3918135
+                  user_street_num: '188'
+                  user_street_name: King Street
+                  user_apt_num: example
+                  user_city: San Francisco
+                  user_state: CA
+                  user_country: US
+                  user_zipcode: '94107'
+                  user_dropoff_notes: Leave at the front desk
+                  user_name: Steve Jobs
+                  user_email: diner@example.com
+                  user_phone: 14155550123
+                  user_id: user_abc123
+                  disable_sms: false
+                  customer_order_id: id_7b2c4e
+                  autofill_selected_options: false
+      responses:
+        '200':
+          description: Cart created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+              examples:
+                CreateCart200Example:
+                  summary: Default createCart 200 response
+                  x-microcks-default: true
+                  value:
+                    cart_id: kQ8vZEd-UnW_gZu6c4iO
+                    store_id: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+                    subtotal: 1299
+                    items:
+                    - product_id: prod_5a3e9d12
+                      quantity: 1
+                      product_marked_price: 1299
+                      selected_options: *id001
+                      notes: Leave at the front desk
+        '400':
+          description: Input Validation Error
+        '401':
+          description: Missing Authorization
+        '429':
+          description: Too Many Requests
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /cart/retrieve/v2:
+    get:
+      tags:
+      - Carts
+      operationId: retrieveCart
+      summary: Retrieve a Cart
+      description: Retrieve a previously created cart by its ID.
+      parameters:
+      - in: query
+        name: cart_id
+        required: true
+        schema:
+          type: string
+        example: kQ8vZEd-UnW_gZu6c4iO
+      responses:
+        '200':
+          description: Cart.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cart'
+              examples:
+                RetrieveCart200Example:
+                  summary: Default retrieveCart 200 response
+                  x-microcks-default: true
+                  value:
+                    cart_id: kQ8vZEd-UnW_gZu6c4iO
+                    store_id: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+                    subtotal: 1299
+                    items:
+                    - product_id: prod_5a3e9d12
+                      quantity: 1
+                      product_marked_price: 1299
+                      selected_options: []
+                      notes: Leave at the front desk
+        '400':
+          description: Input Validation Error
+        '401':
+          description: Missing Authorization
+        '404':
+          description: Unknown Cart ID
+        '429':
+          description: Too Many Requests
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /cart/list/v2:
+    get:
+      tags:
+      - Carts
+      operationId: listCarts
+      summary: List Carts
+      description: List the carts associated with the account.
+      responses:
+        '200':
+          description: Carts.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cart'
+              examples:
+                ListCarts200Example:
+                  summary: Default listCarts 200 response
+                  x-microcks-default: true
+                  value:
+                  - cart_id: kQ8vZEd-UnW_gZu6c4iO
+                    store_id: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+                    subtotal: 1299
+                    items:
+                    - {}
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /add_to_cart:
+    post:
+      tags:
+      - Carts
+      operationId: addToCart
+      summary: Add an Item to a Cart
+      description: Add one or more items to an existing cart.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cart_id
+              - items
+              properties:
+                cart_id:
+                  type: string
+                items:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/CartItem'
+            examples:
+              AddToCartRequestExample:
+                summary: Default addToCart request
+                x-microcks-default: true
+                value:
+                  cart_id: kQ8vZEd-UnW_gZu6c4iO
+                  items:
+                  - product_id: prod_5a3e9d12
+                    quantity: 1
+                    product_marked_price: 1299
+                    selected_options: []
+                    notes: Leave at the front desk
+      responses:
+        '200':
+          description: Cart updated.
+        '400':
+          description: Input Validation Error
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /remove_from_cart:
+    post:
+      tags:
+      - Carts
+      operationId: removeFromCart
+      summary: Remove an Item from a Cart
+      description: Remove an item from an existing cart.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - cart_id
+              - product_id
+              properties:
+                cart_id:
+                  type: string
+                product_id:
+                  type: string
+            examples:
+              RemoveFromCartRequestExample:
+                summary: Default removeFromCart request
+                x-microcks-default: true
+                value:
+                  cart_id: kQ8vZEd-UnW_gZu6c4iO
+                  product_id: prod_5a3e9d12
+      responses:
+        '200':
+          description: Item removed.
+        '400':
+          description: Input Validation Error
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CartItem:
+      type: object
+      required:
+      - product_id
+      properties:
+        product_id:
+          type: string
+          description: Product identifier from a search or inventory result.
+          example: prod_5a3e9d12
+        quantity:
+          type: integer
+          minimum: 1
+          default: 1
+          example: 1
+        product_marked_price:
+          type: integer
+          description: Marked price in cents.
+          example: 1299
+        selected_options:
+          type: array
+          description: Selected product customizations and modifiers.
+          items:
+            type: object
+          example: []
+        notes:
+          type: string
+          description: Special instructions for the store.
+          example: Leave at the front desk
+    Cart:
+      type: object
+      properties:
+        cart_id:
+          type: string
+          example: kQ8vZEd-UnW_gZu6c4iO
+        store_id:
+          type: string
+          example: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+        subtotal:
+          type: integer
+          description: Subtotal in cents.
+          example: 1299
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+    CartRequest:
+      type: object
+      required:
+      - items
+      - pickup
+      - user_id
+      properties:
+        cart_id:
+          type: string
+          description: ID of an existing cart to update.
+          example: kQ8vZEd-UnW_gZu6c4iO
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
+        pickup:
+          type: boolean
+          description: Fulfillment type. true for pickup, false for delivery.
+          example: false
+        driver_tip_cents:
+          type: integer
+          default: 100
+          example: 100
+        user_latitude:
+          type: number
+          example: 37.7786357
+        user_longitude:
+          type: number
+          example: -122.3918135
+        user_street_num:
+          type: string
+          example: '188'
+        user_street_name:
+          type: string
+          example: King Street
+        user_apt_num:
+          type: string
+          example: example
+        user_city:
+          type: string
+          example: San Francisco
+        user_state:
+          type: string
+          example: CA
+        user_country:
+          type: string
+          enum:
+          - US
+          - CA
+          example: US
+        user_zipcode:
+          type: string
+          example: '94107'
+        user_dropoff_notes:
+          type: string
+          example: Leave at the front desk
+        user_name:
+          type: string
+          example: Steve Jobs
+        user_email:
+          type: string
+          format: email
+          example: diner@example.com
+        user_phone:
+          type: integer
+          example: 14155550123
+        user_id:
+          type: string
+          description: Unique self-provided customer user ID.
+          example: user_abc123
+        disable_sms:
+          type: boolean
+          default: false
+          example: false
+        customer_order_id:
+          type: string
+          example: id_7b2c4e
+        autofill_selected_options:
+          type: boolean
+          default: false
+          example: false
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key issued by MealMe, passed in the Authorization header.

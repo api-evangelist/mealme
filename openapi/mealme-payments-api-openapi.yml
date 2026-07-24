@@ -1,0 +1,250 @@
+openapi: 3.1.0
+info:
+  title: MealMe Food Ordering Carts Payments API
+  version: 4.1.0
+  description: 'MealMe provides a food and grocery ordering API for menus, inventory, and
+
+    order placement at over one million restaurants and grocery stores in the
+
+    United States and Canada. The API covers store and product search, store
+
+    lookup, inventory/menu retrieval, product details, cart creation and
+
+    management, order creation and finalization, payment methods, MealMe
+
+    Connect accounts, customer support chat, order tracking webhooks, places
+
+    search, and geocoding. Every menu item and grocery product returned
+
+    includes real-time availability, prices, and customizations or modifiers.
+
+    The current reference is version 4.1.0.
+
+
+    Paths in this specification mirror the documented MealMe endpoints under
+
+    https://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,
+
+    and `/order/order/v4`). Authentication uses an API key passed in the
+
+    Authorization header.
+
+    '
+  contact:
+    name: MealMe API Reference
+    url: https://docs.mealme.ai/reference
+servers:
+- url: https://api.mealme.ai
+  description: MealMe production API
+security:
+- apiKeyHeader: []
+tags:
+- name: Payments
+  description: Payment method management and payment intents.
+paths:
+  /payment/create/v2:
+    post:
+      tags:
+      - Payments
+      operationId: createPaymentMethod
+      summary: Create a Payment Method
+      description: Create a payment method for a user.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentMethodCreateRequest'
+            examples:
+              CreatePaymentMethodRequestExample:
+                summary: Default createPaymentMethod request
+                x-microcks-default: true
+                value:
+                  user_email: diner@example.com
+                  user_id: user_abc123
+                  payment_method: {}
+      responses:
+        '200':
+          description: Payment method created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethod'
+              examples:
+                CreatePaymentMethod200Example:
+                  summary: Default createPaymentMethod 200 response
+                  x-microcks-default: true
+                  value:
+                    payment_method_id: id_7b2c4e
+                    type: card
+                    last4: '4242'
+        '400':
+          description: Input Validation Error
+        '401':
+          description: Missing Authorization
+        '422':
+          description: User ID does not match user email
+        '429':
+          description: Too Many Requests
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /payment/list:
+    get:
+      tags:
+      - Payments
+      operationId: listPaymentMethods
+      summary: List Payment Methods
+      description: List a user's payment methods.
+      parameters:
+      - in: query
+        name: user_id
+        required: true
+        schema:
+          type: string
+        example: user_abc123
+      - in: query
+        name: user_email
+        required: true
+        schema:
+          type: string
+          format: email
+        example: diner@example.com
+      responses:
+        '200':
+          description: Payment methods.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PaymentMethod'
+              examples:
+                ListPaymentMethods200Example:
+                  summary: Default listPaymentMethods 200 response
+                  x-microcks-default: true
+                  value:
+                  - payment_method_id: id_7b2c4e
+                    type: card
+                    last4: '4242'
+        '400':
+          description: Input Validation Error
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /payment/delete:
+    post:
+      tags:
+      - Payments
+      operationId: deletePaymentMethod
+      summary: Delete a Payment Method
+      description: Delete a user's payment method.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - payment_method_id
+              properties:
+                payment_method_id:
+                  type: string
+                user_id:
+                  type: string
+                user_email:
+                  type: string
+                  format: email
+            examples:
+              DeletePaymentMethodRequestExample:
+                summary: Default deletePaymentMethod request
+                x-microcks-default: true
+                value:
+                  payment_method_id: id_7b2c4e
+                  user_id: user_abc123
+                  user_email: diner@example.com
+      responses:
+        '200':
+          description: Deleted.
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /get_payment_intent:
+    post:
+      tags:
+      - Payments
+      operationId: getPaymentIntent
+      summary: Get a Payment Intent
+      description: Create a payment intent for a cart.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cart_id:
+                  type: string
+                amount:
+                  type: integer
+                  description: Amount in cents.
+                currency:
+                  type: string
+            examples:
+              GetPaymentIntentRequestExample:
+                summary: Default getPaymentIntent request
+                x-microcks-default: true
+                value:
+                  cart_id: kQ8vZEd-UnW_gZu6c4iO
+                  amount: 1299
+                  currency: usd
+      responses:
+        '200':
+          description: Payment intent.
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    PaymentMethod:
+      type: object
+      properties:
+        payment_method_id:
+          type: string
+          example: id_7b2c4e
+        type:
+          type: string
+          example: card
+        last4:
+          type: string
+          example: '4242'
+    PaymentMethodCreateRequest:
+      type: object
+      required:
+      - user_email
+      - user_id
+      - payment_method
+      properties:
+        user_email:
+          type: string
+          format: email
+          example: diner@example.com
+        user_id:
+          type: string
+          example: user_abc123
+        payment_method:
+          type: object
+          description: Payment method details.
+          example: {}
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key issued by MealMe, passed in the Authorization header.

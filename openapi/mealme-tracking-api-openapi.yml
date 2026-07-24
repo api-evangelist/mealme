@@ -1,0 +1,87 @@
+openapi: 3.1.0
+info:
+  title: MealMe Food Ordering Carts Tracking API
+  version: 4.1.0
+  description: 'MealMe provides a food and grocery ordering API for menus, inventory, and
+
+    order placement at over one million restaurants and grocery stores in the
+
+    United States and Canada. The API covers store and product search, store
+
+    lookup, inventory/menu retrieval, product details, cart creation and
+
+    management, order creation and finalization, payment methods, MealMe
+
+    Connect accounts, customer support chat, order tracking webhooks, places
+
+    search, and geocoding. Every menu item and grocery product returned
+
+    includes real-time availability, prices, and customizations or modifiers.
+
+    The current reference is version 4.1.0.
+
+
+    Paths in this specification mirror the documented MealMe endpoints under
+
+    https://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,
+
+    and `/order/order/v4`). Authentication uses an API key passed in the
+
+    Authorization header.
+
+    '
+  contact:
+    name: MealMe API Reference
+    url: https://docs.mealme.ai/reference
+servers:
+- url: https://api.mealme.ai
+  description: MealMe production API
+security:
+- apiKeyHeader: []
+tags:
+- name: Tracking
+  description: Order tracking webhooks.
+paths:
+  /account/tracking/add_webhook:
+    post:
+      tags:
+      - Tracking
+      operationId: addTrackingWebhook
+      summary: Add a Tracking Webhook
+      description: Register a webhook to receive order tracking updates.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url
+              properties:
+                url:
+                  type: string
+                  format: uri
+                event:
+                  type: string
+            examples:
+              AddTrackingWebhookRequestExample:
+                summary: Default addTrackingWebhook request
+                x-microcks-default: true
+                value:
+                  url: https://example.com/webhook
+                  event: order_status_update
+      responses:
+        '200':
+          description: Webhook added.
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key issued by MealMe, passed in the Authorization header.

@@ -1,0 +1,421 @@
+openapi: 3.1.0
+info:
+  title: MealMe Food Ordering Carts Search API
+  version: 4.1.0
+  description: 'MealMe provides a food and grocery ordering API for menus, inventory, and
+
+    order placement at over one million restaurants and grocery stores in the
+
+    United States and Canada. The API covers store and product search, store
+
+    lookup, inventory/menu retrieval, product details, cart creation and
+
+    management, order creation and finalization, payment methods, MealMe
+
+    Connect accounts, customer support chat, order tracking webhooks, places
+
+    search, and geocoding. Every menu item and grocery product returned
+
+    includes real-time availability, prices, and customizations or modifiers.
+
+    The current reference is version 4.1.0.
+
+
+    Paths in this specification mirror the documented MealMe endpoints under
+
+    https://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,
+
+    and `/order/order/v4`). Authentication uses an API key passed in the
+
+    Authorization header.
+
+    '
+  contact:
+    name: MealMe API Reference
+    url: https://docs.mealme.ai/reference
+servers:
+- url: https://api.mealme.ai
+  description: MealMe production API
+security:
+- apiKeyHeader: []
+tags:
+- name: Search
+  description: Store, product, and place search.
+paths:
+  /search/store/v3:
+    get:
+      tags:
+      - Search
+      operationId: searchStores
+      summary: Search for a Store
+      description: Search restaurants and grocery stores near a location.
+      parameters:
+      - in: query
+        name: query
+        schema:
+          type: string
+        example: pizza
+      - in: query
+        name: latitude
+        required: true
+        schema:
+          type: number
+        example: 37.7786357
+      - in: query
+        name: longitude
+        required: true
+        schema:
+          type: number
+        example: -122.3918135
+      - in: query
+        name: store_type
+        schema:
+          type: string
+          enum:
+          - restaurant
+          - grocery
+        example: restaurant
+      - in: query
+        name: budget
+        schema:
+          type: number
+          default: 20
+        example: 20
+      - in: query
+        name: pickup
+        schema:
+          type: boolean
+          default: false
+        example: false
+      - in: query
+        name: fetch_quotes
+        schema:
+          type: boolean
+          default: false
+        example: false
+      - in: query
+        name: sort
+        schema:
+          type: string
+          enum:
+          - cheapest
+          - fastest
+          - rating
+          - distance
+          - relevance
+        example: cheapest
+      - in: query
+        name: open
+        schema:
+          type: boolean
+          default: false
+        example: false
+      - in: query
+        name: maximum_miles
+        schema:
+          type: number
+          default: 3
+        example: 3
+      - in: query
+        name: page
+        schema:
+          type: integer
+        example: 0
+      responses:
+        '200':
+          description: Matching stores.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Store'
+              examples:
+                SearchStores200Example:
+                  summary: Default searchStores 200 response
+                  x-microcks-default: true
+                  value:
+                  - _id: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+                    name: Tony's Pizza Napoletana
+                    address: 188 King Street, San Francisco, CA 94107
+                    type: restaurant
+                    is_open: false
+                    phone_number: '+14155550123'
+                    cuisines:
+                    - Pizza
+                    - Italian
+                    rating: 4.5
+                    miles: 1.5
+                    quotes: []
+        '400':
+          description: Input Validation Error
+        '401':
+          description: Missing Authorization
+        '429':
+          description: Too Many Requests
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /search/product/v4:
+    get:
+      tags:
+      - Search
+      operationId: searchProducts
+      summary: Search for a Product
+      description: Search products across restaurants, grocery, and retail stores.
+      parameters:
+      - in: query
+        name: query
+        schema:
+          type: string
+        example: pizza
+      - in: query
+        name: product_id
+        schema:
+          type: string
+        example: prod_5a3e9d12
+      - in: query
+        name: store_name
+        schema:
+          type: string
+        example: Tony's Pizza Napoletana
+      - in: query
+        name: menu_id
+        schema:
+          type: string
+        example: id_7b2c4e
+      - in: query
+        name: user_latitude
+        required: true
+        schema:
+          type: number
+        example: 37.7786357
+      - in: query
+        name: user_longitude
+        required: true
+        schema:
+          type: number
+        example: -122.3918135
+      - in: query
+        name: pickup
+        schema:
+          type: boolean
+          default: false
+        example: false
+      - in: query
+        name: upc_codes
+        schema:
+          type: string
+        example: example
+      - in: query
+        name: fetch_quotes
+        schema:
+          type: boolean
+          default: false
+        example: false
+      - in: query
+        name: sort
+        schema:
+          type: string
+          enum:
+          - relevance
+          - cheapest
+          - fastest
+          - rating
+          - distance
+        example: relevance
+      - in: query
+        name: fuzzy_search
+        schema:
+          type: boolean
+          default: false
+        example: false
+      - in: query
+        name: maximum_miles
+        schema:
+          type: number
+          default: 1.5
+        example: 1.5
+      - in: query
+        name: sale
+        schema:
+          type: boolean
+          default: false
+        example: false
+      - in: query
+        name: page
+        schema:
+          type: integer
+        example: 0
+      responses:
+        '200':
+          description: Matching products.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+              examples:
+                SearchProducts200Example:
+                  summary: Default searchProducts 200 response
+                  x-microcks-default: true
+                  value:
+                  - product_id: prod_5a3e9d12
+                    name: Tony's Pizza Napoletana
+                    price: 1299
+                    available: false
+                    store_name: Tony's Pizza Napoletana
+                    menu_id: id_7b2c4e
+        '400':
+          description: Input Validation Error
+        '401':
+          description: Missing Authorization
+        '429':
+          description: Too Many Requests
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /search/cart:
+    get:
+      tags:
+      - Search
+      operationId: searchCart
+      summary: Search for a Cart
+      description: Search for a set of products to build a cart in one call.
+      responses:
+        '200':
+          description: Cart search results.
+        '401':
+          description: Missing Authorization
+        '429':
+          description: Too Many Requests
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /places/search:
+    get:
+      tags:
+      - Search
+      operationId: searchPlaces
+      summary: Search for a Place
+      description: Search for a place or address with optional location bias.
+      parameters:
+      - in: query
+        name: search
+        required: true
+        schema:
+          type: string
+        example: pizza
+      - in: query
+        name: location_bias_latitude
+        schema:
+          type: number
+        example: 37.7786357
+      - in: query
+        name: location_bias_longitude
+        schema:
+          type: number
+        example: -122.3918135
+      - in: query
+        name: location_bias_radius
+        schema:
+          type: integer
+          default: 10000
+        example: 10000
+      - in: query
+        name: search_type
+        schema:
+          type: string
+          enum:
+          - place
+          - address
+          - addresses
+          default: place
+        example: place
+      - in: query
+        name: open_filter
+        schema:
+          type: boolean
+          default: false
+        example: false
+      responses:
+        '200':
+          description: Matching places.
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        product_id:
+          type: string
+          example: prod_5a3e9d12
+        name:
+          type: string
+          example: Tony's Pizza Napoletana
+        price:
+          type: integer
+          description: Price in cents.
+          example: 1299
+        available:
+          type: boolean
+          example: false
+        store_name:
+          type: string
+          example: Tony's Pizza Napoletana
+        menu_id:
+          type: string
+          example: id_7b2c4e
+    Store:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+        name:
+          type: string
+          example: Tony's Pizza Napoletana
+        address:
+          type: string
+          example: 188 King Street, San Francisco, CA 94107
+        type:
+          type: string
+          enum:
+          - restaurant
+          - grocery
+          example: restaurant
+        is_open:
+          type: boolean
+          example: false
+        phone_number:
+          type: string
+          example: '+14155550123'
+        cuisines:
+          type: array
+          items:
+            type: string
+          example:
+          - Pizza
+          - Italian
+        rating:
+          type: number
+          example: 4.5
+        miles:
+          type: number
+          example: 1.5
+        quotes:
+          type: array
+          items:
+            type: object
+          example: []
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key issued by MealMe, passed in the Authorization header.

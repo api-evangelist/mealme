@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: MealMe Food Ordering Carts Geocoding API
+  version: 4.1.0
+  description: 'MealMe provides a food and grocery ordering API for menus, inventory, and
+
+    order placement at over one million restaurants and grocery stores in the
+
+    United States and Canada. The API covers store and product search, store
+
+    lookup, inventory/menu retrieval, product details, cart creation and
+
+    management, order creation and finalization, payment methods, MealMe
+
+    Connect accounts, customer support chat, order tracking webhooks, places
+
+    search, and geocoding. Every menu item and grocery product returned
+
+    includes real-time availability, prices, and customizations or modifiers.
+
+    The current reference is version 4.1.0.
+
+
+    Paths in this specification mirror the documented MealMe endpoints under
+
+    https://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,
+
+    and `/order/order/v4`). Authentication uses an API key passed in the
+
+    Authorization header.
+
+    '
+  contact:
+    name: MealMe API Reference
+    url: https://docs.mealme.ai/reference
+servers:
+- url: https://api.mealme.ai
+  description: MealMe production API
+security:
+- apiKeyHeader: []
+tags:
+- name: Geocoding
+  description: Address geocoding and reverse geocoding.
+paths:
+  /location/geocode/v2:
+    post:
+      tags:
+      - Geocoding
+      operationId: geocodeAddress
+      summary: Geocode an Address
+      description: Convert an address into geographic coordinates.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - address
+              properties:
+                address:
+                  type: string
+            examples:
+              GeocodeAddressRequestExample:
+                summary: Default geocodeAddress request
+                x-microcks-default: true
+                value:
+                  address: 188 King Street, San Francisco, CA 94107
+      responses:
+        '200':
+          description: Geocode result.
+        '400':
+          description: Input Validation Error
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /location/reverse_geocode/v2:
+    post:
+      tags:
+      - Geocoding
+      operationId: reverseGeocodeAddress
+      summary: Reverse Geocode Coordinates
+      description: Convert geographic coordinates into an address.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - latitude
+              - longitude
+              properties:
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+            examples:
+              ReverseGeocodeAddressRequestExample:
+                summary: Default reverseGeocodeAddress request
+                x-microcks-default: true
+                value:
+                  latitude: 37.7786357
+                  longitude: -122.3918135
+      responses:
+        '200':
+          description: Reverse geocode result.
+        '400':
+          description: Input Validation Error
+        '401':
+          description: Missing Authorization
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key issued by MealMe, passed in the Authorization header.
