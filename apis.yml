@@ -5,7 +5,20 @@ description: >-
   point of sale at over 1 million restaurants and grocery stores for pickup or delivery. Includes a Food Search API,
   Menu API, and Grocery Ordering API.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mealme.png
 tags:
   - Delivery
   - Food
@@ -17,33 +30,204 @@ created: '2025-03-01'
 modified: '2026-06-02'
 specificationVersion: '0.19'
 apis:
-  - aid: mealme:mealme-api
-    name: MealMe Food Ordering API
-    description: >-
-      The MealMe API enables getting menus and inventory and sending orders to the POS of over 1 million restaurants and
-      grocery stores. Every menu item includes real-time availability, prices, and customizations.
-    humanURL: https://www.mealme.ai/
-    baseURL: https://api.mealme.ai
-    tags:
-      - Food
-      - Grocery
-      - Ordering
-      - Restaurants
-    properties:
-      - type: Documentation
-        url: https://docs.mealme.ai/docs/api-features
-      - type: GettingStarted
-        url: https://docs.mealme.ai/docs/create-order
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/openapi/mealme-openapi.yml
-      - type: Reference
-        url: https://docs.mealme.ai/reference
-      - type: Overview
-        url: https://docs.mealme.ai/docs/endpoints-overview
-      - type: Authentication
-        url: https://docs.mealme.ai/docs/api-features
-      - type: Tutorials
-        url: https://docs.mealme.ai/docs/store-search-order-flow
+- aid: mealme:mealme-carts-api
+  name: MealMe Carts API
+  description: Cart creation, retrieval, and item management.
+  humanURL: https://www.mealme.ai/
+  baseURL: https://api.mealme.ai
+  tags:
+  - Carts
+  properties:
+  - type: OpenAPI
+    url: openapi/mealme-carts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mealme.ai/docs/api-features
+  - type: GettingStarted
+    url: https://docs.mealme.ai/docs/create-order
+  - type: Reference
+    url: https://docs.mealme.ai/reference
+  - type: Overview
+    url: https://docs.mealme.ai/docs/endpoints-overview
+  - type: Authentication
+    url: https://docs.mealme.ai/docs/api-features
+  - type: Tutorials
+    url: https://docs.mealme.ai/docs/store-search-order-flow
+- aid: mealme:mealme-connect-accounts-api
+  name: MealMe Connect Accounts API
+  description: MealMe Connect account linking and ordering.
+  humanURL: https://www.mealme.ai/
+  baseURL: https://api.mealme.ai
+  tags:
+  - Connect Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/mealme-connect-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mealme.ai/docs/api-features
+  - type: GettingStarted
+    url: https://docs.mealme.ai/docs/create-order
+  - type: Reference
+    url: https://docs.mealme.ai/reference
+  - type: Overview
+    url: https://docs.mealme.ai/docs/endpoints-overview
+  - type: Authentication
+    url: https://docs.mealme.ai/docs/api-features
+  - type: Tutorials
+    url: https://docs.mealme.ai/docs/store-search-order-flow
+- aid: mealme:mealme-geocoding-api
+  name: MealMe Geocoding API
+  description: Address geocoding and reverse geocoding.
+  humanURL: https://www.mealme.ai/
+  baseURL: https://api.mealme.ai
+  tags:
+  - Geocoding
+  properties:
+  - type: OpenAPI
+    url: openapi/mealme-geocoding-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mealme.ai/docs/api-features
+  - type: GettingStarted
+    url: https://docs.mealme.ai/docs/create-order
+  - type: Reference
+    url: https://docs.mealme.ai/reference
+  - type: Overview
+    url: https://docs.mealme.ai/docs/endpoints-overview
+  - type: Authentication
+    url: https://docs.mealme.ai/docs/api-features
+  - type: Tutorials
+    url: https://docs.mealme.ai/docs/store-search-order-flow
+- aid: mealme:mealme-orders-api
+  name: MealMe Orders API
+  description: Order creation, finalization, and history.
+  humanURL: https://www.mealme.ai/
+  baseURL: https://api.mealme.ai
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/mealme-orders-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mealme.ai/docs/api-features
+  - type: GettingStarted
+    url: https://docs.mealme.ai/docs/create-order
+  - type: Reference
+    url: https://docs.mealme.ai/reference
+  - type: Overview
+    url: https://docs.mealme.ai/docs/endpoints-overview
+  - type: Authentication
+    url: https://docs.mealme.ai/docs/api-features
+  - type: Tutorials
+    url: https://docs.mealme.ai/docs/store-search-order-flow
+- aid: mealme:mealme-payments-api
+  name: MealMe Payments API
+  description: Payment method management and payment intents.
+  humanURL: https://www.mealme.ai/
+  baseURL: https://api.mealme.ai
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/mealme-payments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mealme.ai/docs/api-features
+  - type: GettingStarted
+    url: https://docs.mealme.ai/docs/create-order
+  - type: Reference
+    url: https://docs.mealme.ai/reference
+  - type: Overview
+    url: https://docs.mealme.ai/docs/endpoints-overview
+  - type: Authentication
+    url: https://docs.mealme.ai/docs/api-features
+  - type: Tutorials
+    url: https://docs.mealme.ai/docs/store-search-order-flow
+- aid: mealme:mealme-search-api
+  name: MealMe Search API
+  description: Store, product, and place search.
+  humanURL: https://www.mealme.ai/
+  baseURL: https://api.mealme.ai
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/mealme-search-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mealme.ai/docs/api-features
+  - type: GettingStarted
+    url: https://docs.mealme.ai/docs/create-order
+  - type: Reference
+    url: https://docs.mealme.ai/reference
+  - type: Overview
+    url: https://docs.mealme.ai/docs/endpoints-overview
+  - type: Authentication
+    url: https://docs.mealme.ai/docs/api-features
+  - type: Tutorials
+    url: https://docs.mealme.ai/docs/store-search-order-flow
+- aid: mealme:mealme-stores-api
+  name: MealMe Stores API
+  description: Store lookup, inventory, and product details.
+  humanURL: https://www.mealme.ai/
+  baseURL: https://api.mealme.ai
+  tags:
+  - Stores
+  properties:
+  - type: OpenAPI
+    url: openapi/mealme-stores-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mealme.ai/docs/api-features
+  - type: GettingStarted
+    url: https://docs.mealme.ai/docs/create-order
+  - type: Reference
+    url: https://docs.mealme.ai/reference
+  - type: Overview
+    url: https://docs.mealme.ai/docs/endpoints-overview
+  - type: Authentication
+    url: https://docs.mealme.ai/docs/api-features
+  - type: Tutorials
+    url: https://docs.mealme.ai/docs/store-search-order-flow
+- aid: mealme:mealme-support-chat-api
+  name: MealMe Support Chat API
+  description: Customer support chat.
+  humanURL: https://www.mealme.ai/
+  baseURL: https://api.mealme.ai
+  tags:
+  - Support Chat
+  properties:
+  - type: OpenAPI
+    url: openapi/mealme-support-chat-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mealme.ai/docs/api-features
+  - type: GettingStarted
+    url: https://docs.mealme.ai/docs/create-order
+  - type: Reference
+    url: https://docs.mealme.ai/reference
+  - type: Overview
+    url: https://docs.mealme.ai/docs/endpoints-overview
+  - type: Authentication
+    url: https://docs.mealme.ai/docs/api-features
+  - type: Tutorials
+    url: https://docs.mealme.ai/docs/store-search-order-flow
+- aid: mealme:mealme-tracking-api
+  name: MealMe Tracking API
+  description: Order tracking webhooks.
+  humanURL: https://www.mealme.ai/
+  baseURL: https://api.mealme.ai
+  tags:
+  - Tracking
+  properties:
+  - type: OpenAPI
+    url: openapi/mealme-tracking-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mealme.ai/docs/api-features
+  - type: GettingStarted
+    url: https://docs.mealme.ai/docs/create-order
+  - type: Reference
+    url: https://docs.mealme.ai/reference
+  - type: Overview
+    url: https://docs.mealme.ai/docs/endpoints-overview
+  - type: Authentication
+    url: https://docs.mealme.ai/docs/api-features
+  - type: Tutorials
+    url: https://docs.mealme.ai/docs/store-search-order-flow
 common:
   - type: AgenticAccess
     url: agentic-access/mealme-agentic-access.yml
