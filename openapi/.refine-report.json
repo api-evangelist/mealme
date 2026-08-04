@@ -1,0 +1,30 @@
+{
+  "provider": "mealme",
+  "sources": [
+    "mealme-carts-api-openapi.yml",
+    "mealme-connect-accounts-api-openapi.yml",
+    "mealme-geocoding-api-openapi.yml",
+    "mealme-orders-api-openapi.yml",
+    "mealme-payments-api-openapi.yml",
+    "mealme-search-api-openapi.yml",
+    "mealme-stores-api-openapi.yml",
+    "mealme-support-chat-api-openapi.yml",
+    "mealme-tracking-api-openapi.yml"
+  ],
+  "outputs": [
+    "mealme-carts-api-openapi.yml",
+    "mealme-connect-accounts-api-openapi.yml",
+    "mealme-geocoding-api-openapi.yml",
+    "mealme-orders-api-openapi.yml",
+    "mealme-payments-api-openapi.yml",
+    "mealme-search-api-openapi.yml",
+    "mealme-stores-api-openapi.yml",
+    "mealme-support-chat-api-openapi.yml",
+    "mealme-tracking-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
