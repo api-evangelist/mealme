@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MealMe Food Ordering Carts Orders API",
+    "version": "4.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/order/order/v4",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an order from a list of items. When place_order is false the\nresponse returns a finalizable quote; when true the order is placed.\n"
+        },
+        {
+          "info": {
+            "name": "Finalize an Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/order/finalize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Finalize a previously created order quote (place_order=false)."
+        },
+        {
+          "info": {
+            "name": "Get Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/account/orders",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "ord_8f2a1c9b",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "example",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "example",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "completed",
+                "type": "query"
+              },
+              {
+                "name": "favorited",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "user_abc123",
+                "type": "query"
+              },
+              {
+                "name": "include_order_count",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve account orders with optional filters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MealMe Food Ordering Carts API",
+    "version": "4.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Carts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/cart/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a cart from a list of products and a fulfillment mode."
+        },
+        {
+          "info": {
+            "name": "Retrieve a Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/cart/retrieve/v2",
+            "params": [
+              {
+                "name": "cart_id",
+                "value": "kQ8vZEd-UnW_gZu6c4iO",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a previously created cart by its ID."
+        },
+        {
+          "info": {
+            "name": "List Carts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/cart/list/v2"
+          },
+          "docs": "List the carts associated with the account."
+        },
+        {
+          "info": {
+            "name": "Add an Item to a Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/add_to_cart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add one or more items to an existing cart."
+        },
+        {
+          "info": {
+            "name": "Remove an Item from a Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/remove_from_cart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove an item from an existing cart."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1340 @@
+{
+  "item": [
+    {
+      "id": "e51998f9-97a1-4392-ada9-1ebff398270f",
+      "name": "Search",
+      "description": {
+        "content": "Store, product, and place search.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e109beb8-8fac-467f-bcea-80079b1ca45b",
+          "name": "Search for a Store",
+          "request": {
+            "name": "Search for a Store",
+            "description": {
+              "content": "Search restaurants and grocery stores near a location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "store",
+                "v3"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "store_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "budget",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "pickup",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "fetch_quotes",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "open",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "maximum_miles",
+                  "value": "3"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fc70906-6b9c-4c78-b2b9-2a5f229e910d",
+              "name": "Matching stores.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "store",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "pizza"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "37.7786357"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "-122.3918135"
+                    },
+                    {
+                      "key": "store_type",
+                      "value": "restaurant"
+                    },
+                    {
+                      "key": "budget",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pickup",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fetch_quotes",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "cheapest"
+                    },
+                    {
+                      "key": "open",
+                      "value": "false"
+                    },
+                    {
+                      "key": "maximum_miles",
+                      "value": "3"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"_id\": \"8c9f33d5-d138-4a49-9a4f-162f195c89b8\",\n    \"name\": \"Tony's Pizza Napoletana\",\n    \"address\": \"188 King Street, San Francisco, CA 94107\",\n    \"type\": \"restaurant\",\n    \"is_open\": false,\n    \"phone_number\": \"+14155550123\",\n    \"cuisines\": [\n      \"Pizza\",\n      \"Italian\"\n    ],\n    \"rating\": 4.5,\n    \"miles\": 1.5,\n    \"quotes\": []\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1439c506-8298-4385-802f-6e32d038bc1c",
+              "name": "Input Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "store",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "pizza"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "37.7786357"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "-122.3918135"
+                    },
+                    {
+                      "key": "store_type",
+                      "value": "restaurant"
+                    },
+                    {
+                      "key": "budget",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pickup",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fetch_quotes",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "cheapest"
+                    },
+                    {
+                      "key": "open",
+                      "value": "false"
+                    },
+                    {
+                      "key": "maximum_miles",
+                      "value": "3"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd6fcd2b-fbaf-4f47-8420-a6db61b1a2a2",
+              "name": "Missing Authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "store",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "pizza"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "37.7786357"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "-122.3918135"
+                    },
+                    {
+                      "key": "store_type",
+                      "value": "restaurant"
+                    },
+                    {
+                      "key": "budget",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pickup",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fetch_quotes",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "cheapest"
+                    },
+                    {
+                      "key": "open",
+                      "value": "false"
+                    },
+                    {
+                      "key": "maximum_miles",
+                      "value": "3"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f9c03c3d-673f-44d8-a5fb-b4f2ae8f4f13",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "store",
+                    "v3"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "pizza"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "37.7786357"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "-122.3918135"
+                    },
+                    {
+                      "key": "store_type",
+                      "value": "restaurant"
+                    },
+                    {
+                      "key": "budget",
+                      "value": "20"
+                    },
+                    {
+                      "key": "pickup",
+                      "value": "false"
+                    },
+                    {
+                      "key": "fetch_quotes",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "cheapest"
+                    },
+                    {
+                      "key": "open",
+                      "value": "false"
+                    },
+                    {
+                      "key": "maximum_miles",
+                      "value": "3"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1623729d-4ee0-4009-bb76-1c0a84cd57bf",
+          "name": "Search for a Product",
+          "request": {
+            "name": "Search for a Product",
+            "description": {
+              "content": "Search products across restaurants, grocery, and retail stores.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "product",
+                "v4"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "product_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "store_name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "menu_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_latitude",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "user_longitude",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "pickup",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "upc_codes",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fetch_quotes",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fuzzy_search",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "maximum_miles",
+                  "value": "1.5"
+                },
+                {
+                  "disabled": false,
+                  "key": "sale",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "660a5807-2258-47a8-8828-b046ecdf5e46",
+              "name": "Matching products.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "product",
+                    "v4"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "pizza"
+                    },
+                    {
+                      "key": "product_id",
+                      "value": "prod_5a3e9d12"
+                    },
+                    {
+                      "key": "store_name",
+                      "value": "Tony's Pizza Napoletana"
+                    },
+                    {
+                      "key": "menu_id",
+                      "value": "id_7b2c4e"
+                    },
+                    {
+                      "key": "user_latitude",
+                      "value": "37.7786357"
+                    },
+                    {
+                      "key": "user_longitude",
+                      "value": "-122.3918135"
+                    },
+                    {
+                      "key": "pickup",
+                      "value": "false"
+                    },
+                    {
+                      "key": "upc_codes",
+                      "value": "example"
+                    },
+                    {
+                      "key": "fetch_quotes",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "fuzzy_search",
+                      "value": "false"
+                    },
+                    {
+                      "key": "maximum_miles",
+                      "value": "1.5"
+                    },
+                    {
+                      "key": "sale",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"product_id\": \"prod_5a3e9d12\",\n    \"name\": \"Tony's Pizza Napoletana\",\n    \"price\": 1299,\n    \"available\": false,\n    \"store_name\": \"Tony's Pizza Napoletana\",\n    \"menu_id\": \"id_7b2c4e\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f88a639b-b1ed-481d-8216-b1b955e1abfe",
+              "name": "Input Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "product",
+                    "v4"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "pizza"
+                    },
+                    {
+                      "key": "product_id",
+                      "value": "prod_5a3e9d12"
+                    },
+                    {
+                      "key": "store_name",
+                      "value": "Tony's Pizza Napoletana"
+                    },
+                    {
+                      "key": "menu_id",
+                      "value": "id_7b2c4e"
+                    },
+                    {
+                      "key": "user_latitude",
+                      "value": "37.7786357"
+                    },
+                    {
+                      "key": "user_longitude",
+                      "value": "-122.3918135"
+                    },
+                    {
+                      "key": "pickup",
+                      "value": "false"
+                    },
+                    {
+                      "key": "upc_codes",
+                      "value": "example"
+                    },
+                    {
+                      "key": "fetch_quotes",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "fuzzy_search",
+                      "value": "false"
+                    },
+                    {
+                      "key": "maximum_miles",
+                      "value": "1.5"
+                    },
+                    {
+                      "key": "sale",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41d57482-3960-4a6f-9bd5-c43edf51eafc",
+              "name": "Missing Authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "product",
+                    "v4"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "pizza"
+                    },
+                    {
+                      "key": "product_id",
+                      "value": "prod_5a3e9d12"
+                    },
+                    {
+                      "key": "store_name",
+                      "value": "Tony's Pizza Napoletana"
+                    },
+                    {
+                      "key": "menu_id",
+                      "value": "id_7b2c4e"
+                    },
+                    {
+                      "key": "user_latitude",
+                      "value": "37.7786357"
+                    },
+                    {
+                      "key": "user_longitude",
+                      "value": "-122.3918135"
+                    },
+                    {
+                      "key": "pickup",
+                      "value": "false"
+                    },
+                    {
+                      "key": "upc_codes",
+                      "value": "example"
+                    },
+                    {
+                      "key": "fetch_quotes",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "fuzzy_search",
+                      "value": "false"
+                    },
+                    {
+                      "key": "maximum_miles",
+                      "value": "1.5"
+                    },
+                    {
+                      "key": "sale",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "68545676-88ff-41e4-b256-c32593552c7c",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "product",
+                    "v4"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "pizza"
+                    },
+                    {
+                      "key": "product_id",
+                      "value": "prod_5a3e9d12"
+                    },
+                    {
+                      "key": "store_name",
+                      "value": "Tony's Pizza Napoletana"
+                    },
+                    {
+                      "key": "menu_id",
+                      "value": "id_7b2c4e"
+                    },
+                    {
+                      "key": "user_latitude",
+                      "value": "37.7786357"
+                    },
+                    {
+                      "key": "user_longitude",
+                      "value": "-122.3918135"
+                    },
+                    {
+                      "key": "pickup",
+                      "value": "false"
+                    },
+                    {
+                      "key": "upc_codes",
+                      "value": "example"
+                    },
+                    {
+                      "key": "fetch_quotes",
+                      "value": "false"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevance"
+                    },
+                    {
+                      "key": "fuzzy_search",
+                      "value": "false"
+                    },
+                    {
+                      "key": "maximum_miles",
+                      "value": "1.5"
+                    },
+                    {
+                      "key": "sale",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "626fb753-cf09-480a-bc87-3ba6ef36c86c",
+          "name": "Search for a Cart",
+          "request": {
+            "name": "Search for a Cart",
+            "description": {
+              "content": "Search for a set of products to build a cart in one call.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                "cart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "686062dc-d004-4d7e-8554-90f1cb2ba2ee",
+              "name": "Cart search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f02ee532-9ad3-4915-92bc-283198c892e9",
+              "name": "Missing Authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "388dc74f-8842-4cf9-8a61-4f9f6efe65f4",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    "cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "418d42e6-b1b9-41c9-af30-f04a4b318033",
+          "name": "Search for a Place",
+          "request": {
+            "name": "Search for a Place",
+            "description": {
+              "content": "Search for a place or address with optional location bias.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "places",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "location_bias_latitude",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "location_bias_longitude",
+                  "value": "<number>"
+                },
+                {
+                  "disabled": false,
+                  "key": "location_bias_radius",
+                  "value": "10000"
+                },
+                {
+                  "disabled": false,
+                  "key": "search_type",
+                  "value": "place"
+                },
+                {
+                  "disabled": false,
+                  "key": "open_filter",
+                  "value": "false"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "23eef53e-bba5-426b-9c20-b29fd9c29969",
+              "name": "Matching places.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "places",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "pizza"
+                    },
+                    {
+                      "key": "location_bias_latitude",
+                      "value": "37.7786357"
+                    },
+                    {
+                      "key": "location_bias_longitude",
+                      "value": "-122.3918135"
+                    },
+                    {
+                      "key": "location_bias_radius",
+                      "value": "10000"
+                    },
+                    {
+                      "key": "search_type",
+                      "value": "place"
+                    },
+                    {
+                      "key": "open_filter",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2fd317a9-89da-462c-b560-0901511b7010",
+              "name": "Missing Authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "places",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "pizza"
+                    },
+                    {
+                      "key": "location_bias_latitude",
+                      "value": "37.7786357"
+                    },
+                    {
+                      "key": "location_bias_longitude",
+                      "value": "-122.3918135"
+                    },
+                    {
+                      "key": "location_bias_radius",
+                      "value": "10000"
+                    },
+                    {
+                      "key": "search_type",
+                      "value": "place"
+                    },
+                    {
+                      "key": "open_filter",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mealme.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "069c5f5e-a03a-4ad9-b19a-cc23c13e1f97",
+    "name": "MealMe Food Ordering Carts Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada. The API covers store and product search, store\nlookup, inventory/menu retrieval, product details, cart creation and\nmanagement, order creation and finalization, payment methods, MealMe\nConnect accounts, customer support chat, order tracking webhooks, places\nsearch, and geocoding. Every menu item and grocery product returned\nincludes real-time availability, prices, and customizations or modifiers.\nThe current reference is version 4.1.0.\n\nPaths in this specification mirror the documented MealMe endpoints under\nhttps://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,\nand `/order/order/v4`). Authentication uses an API key passed in the\nAuthorization header.\n\n\nContact Support:\n Name: MealMe API Reference",
+      "type": "text/plain"
+    }
+  }
+}

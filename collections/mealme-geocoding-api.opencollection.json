@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MealMe Food Ordering Carts Geocoding API",
+    "version": "4.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Geocoding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Geocode an Address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/location/geocode/v2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert an address into geographic coordinates."
+        },
+        {
+          "info": {
+            "name": "Reverse Geocode Coordinates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/location/reverse_geocode/v2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert geographic coordinates into an address."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

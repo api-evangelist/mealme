@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MealMe Food Ordering Carts Stores API",
+    "version": "4.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a MealMe Store",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/utils/store_lookup/v3",
+            "params": [
+              {
+                "name": "store_ids",
+                "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8",
+                "type": "query"
+              },
+              {
+                "name": "use_new_db",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetch stores by a comma-delimited list of store IDs (max 50)."
+        },
+        {
+          "info": {
+            "name": "Add a Google Place to MealMe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/utils/add_store",
+            "params": [
+              {
+                "name": "place_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Add a store to MealMe by its Google Place identifier."
+        },
+        {
+          "info": {
+            "name": "Get Inventory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/details/inventory/v4",
+            "params": [
+              {
+                "name": "store_id",
+                "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8",
+                "type": "query"
+              },
+              {
+                "name": "subcategory_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              },
+              {
+                "name": "pickup",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "include_quote",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "include_customizations",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "available",
+                "value": "true",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query"
+              },
+              {
+                "name": "menu_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a store's menu or grocery inventory."
+        },
+        {
+          "info": {
+            "name": "Get Product Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/details/product/v2",
+            "params": [
+              {
+                "name": "product_id",
+                "value": "prod_5a3e9d12",
+                "type": "query"
+              },
+              {
+                "name": "pickup",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "include_quote",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "user_latitude",
+                "value": "37.7786357",
+                "type": "query"
+              },
+              {
+                "name": "user_longitude",
+                "value": "-122.3918135",
+                "type": "query"
+              },
+              {
+                "name": "include_fees",
+                "value": "true",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a single product including customizations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

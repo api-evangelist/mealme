@@ -1,0 +1,231 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MealMe Food Ordering Carts Search API",
+    "version": "4.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search for a Store",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/search/store/v3",
+            "params": [
+              {
+                "name": "query",
+                "value": "pizza",
+                "type": "query"
+              },
+              {
+                "name": "latitude",
+                "value": "37.7786357",
+                "type": "query"
+              },
+              {
+                "name": "longitude",
+                "value": "-122.3918135",
+                "type": "query"
+              },
+              {
+                "name": "store_type",
+                "value": "restaurant",
+                "type": "query"
+              },
+              {
+                "name": "budget",
+                "value": "20",
+                "type": "query"
+              },
+              {
+                "name": "pickup",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "fetch_quotes",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "cheapest",
+                "type": "query"
+              },
+              {
+                "name": "open",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "maximum_miles",
+                "value": "3",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search restaurants and grocery stores near a location."
+        },
+        {
+          "info": {
+            "name": "Search for a Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/search/product/v4",
+            "params": [
+              {
+                "name": "query",
+                "value": "pizza",
+                "type": "query"
+              },
+              {
+                "name": "product_id",
+                "value": "prod_5a3e9d12",
+                "type": "query"
+              },
+              {
+                "name": "store_name",
+                "value": "Tony's Pizza Napoletana",
+                "type": "query"
+              },
+              {
+                "name": "menu_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              },
+              {
+                "name": "user_latitude",
+                "value": "37.7786357",
+                "type": "query"
+              },
+              {
+                "name": "user_longitude",
+                "value": "-122.3918135",
+                "type": "query"
+              },
+              {
+                "name": "pickup",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "upc_codes",
+                "value": "example",
+                "type": "query"
+              },
+              {
+                "name": "fetch_quotes",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "relevance",
+                "type": "query"
+              },
+              {
+                "name": "fuzzy_search",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "maximum_miles",
+                "value": "1.5",
+                "type": "query"
+              },
+              {
+                "name": "sale",
+                "value": "false",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "0",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search products across restaurants, grocery, and retail stores."
+        },
+        {
+          "info": {
+            "name": "Search for a Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/search/cart"
+          },
+          "docs": "Search for a set of products to build a cart in one call."
+        },
+        {
+          "info": {
+            "name": "Search for a Place",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/places/search",
+            "params": [
+              {
+                "name": "search",
+                "value": "pizza",
+                "type": "query"
+              },
+              {
+                "name": "location_bias_latitude",
+                "value": "37.7786357",
+                "type": "query"
+              },
+              {
+                "name": "location_bias_longitude",
+                "value": "-122.3918135",
+                "type": "query"
+              },
+              {
+                "name": "location_bias_radius",
+                "value": "10000",
+                "type": "query"
+              },
+              {
+                "name": "search_type",
+                "value": "place",
+                "type": "query"
+              },
+              {
+                "name": "open_filter",
+                "value": "false",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Search for a place or address with optional location bias."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

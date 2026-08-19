@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MealMe Food Ordering Carts Support Chat API",
+    "version": "4.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Support Chat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate Customer Support Chat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/chat_initiate"
+          },
+          "docs": "Initiate a customer support chat session."
+        },
+        {
+          "info": {
+            "name": "Exit a Customer Support Chat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/exit_chat",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exit a customer support chat session."
+        },
+        {
+          "info": {
+            "name": "Send a Customer Support Chat Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/send_message",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a message in a customer support chat."
+        },
+        {
+          "info": {
+            "name": "Mark Chat Messages as Read",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/read_message",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mark customer support chat messages as read."
+        },
+        {
+          "info": {
+            "name": "Fetch Customer Support Chat IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/fetch_chat_ids"
+          },
+          "docs": "Fetch the chat IDs available for the account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

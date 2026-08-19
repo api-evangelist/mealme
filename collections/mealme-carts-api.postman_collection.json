@@ -1,0 +1,1065 @@
+{
+  "item": [
+    {
+      "id": "d1548081-46df-4f4a-bccc-ebb9df5321e0",
+      "name": "Carts",
+      "description": {
+        "content": "Cart creation, retrieval, and item management.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8401c5f4-965c-4f44-8063-d6c17c0ee361",
+          "name": "Create a Cart",
+          "request": {
+            "name": "Create a Cart",
+            "description": {
+              "content": "Create or update a cart from a list of products and a fulfillment mode.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cart",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"selected_options\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"notes\": \"<string>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"selected_options\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"notes\": \"<string>\"\n    }\n  ],\n  \"pickup\": \"<boolean>\",\n  \"user_id\": \"<string>\",\n  \"cart_id\": \"<string>\",\n  \"driver_tip_cents\": 100,\n  \"user_latitude\": \"<number>\",\n  \"user_longitude\": \"<number>\",\n  \"user_street_num\": \"<string>\",\n  \"user_street_name\": \"<string>\",\n  \"user_apt_num\": \"<string>\",\n  \"user_city\": \"<string>\",\n  \"user_state\": \"<string>\",\n  \"user_country\": \"<string>\",\n  \"user_zipcode\": \"<string>\",\n  \"user_dropoff_notes\": \"<string>\",\n  \"user_name\": \"<string>\",\n  \"user_email\": \"<email>\",\n  \"user_phone\": \"<integer>\",\n  \"disable_sms\": false,\n  \"customer_order_id\": \"<string>\",\n  \"autofill_selected_options\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2fe4208c-0604-4a77-b30c-ad32d80cbd57",
+              "name": "Cart created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cart",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ],\n  \"pickup\": false,\n  \"driver_tip_cents\": 100,\n  \"user_latitude\": 37.7786357,\n  \"user_longitude\": -122.3918135,\n  \"user_street_num\": \"188\",\n  \"user_street_name\": \"King Street\",\n  \"user_apt_num\": \"example\",\n  \"user_city\": \"San Francisco\",\n  \"user_state\": \"CA\",\n  \"user_country\": \"US\",\n  \"user_zipcode\": \"94107\",\n  \"user_dropoff_notes\": \"Leave at the front desk\",\n  \"user_name\": \"Steve Jobs\",\n  \"user_email\": \"diner@example.com\",\n  \"user_phone\": 14155550123,\n  \"user_id\": \"user_abc123\",\n  \"disable_sms\": false,\n  \"customer_order_id\": \"id_7b2c4e\",\n  \"autofill_selected_options\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"store_id\": \"8c9f33d5-d138-4a49-9a4f-162f195c89b8\",\n  \"subtotal\": 1299,\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fe3a6ef-c193-486e-9668-572aec05fd5b",
+              "name": "Input Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cart",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ],\n  \"pickup\": false,\n  \"driver_tip_cents\": 100,\n  \"user_latitude\": 37.7786357,\n  \"user_longitude\": -122.3918135,\n  \"user_street_num\": \"188\",\n  \"user_street_name\": \"King Street\",\n  \"user_apt_num\": \"example\",\n  \"user_city\": \"San Francisco\",\n  \"user_state\": \"CA\",\n  \"user_country\": \"US\",\n  \"user_zipcode\": \"94107\",\n  \"user_dropoff_notes\": \"Leave at the front desk\",\n  \"user_name\": \"Steve Jobs\",\n  \"user_email\": \"diner@example.com\",\n  \"user_phone\": 14155550123,\n  \"user_id\": \"user_abc123\",\n  \"disable_sms\": false,\n  \"customer_order_id\": \"id_7b2c4e\",\n  \"autofill_selected_options\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2cf6c3d5-8561-4a68-a090-613c035459a8",
+              "name": "Missing Authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cart",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ],\n  \"pickup\": false,\n  \"driver_tip_cents\": 100,\n  \"user_latitude\": 37.7786357,\n  \"user_longitude\": -122.3918135,\n  \"user_street_num\": \"188\",\n  \"user_street_name\": \"King Street\",\n  \"user_apt_num\": \"example\",\n  \"user_city\": \"San Francisco\",\n  \"user_state\": \"CA\",\n  \"user_country\": \"US\",\n  \"user_zipcode\": \"94107\",\n  \"user_dropoff_notes\": \"Leave at the front desk\",\n  \"user_name\": \"Steve Jobs\",\n  \"user_email\": \"diner@example.com\",\n  \"user_phone\": 14155550123,\n  \"user_id\": \"user_abc123\",\n  \"disable_sms\": false,\n  \"customer_order_id\": \"id_7b2c4e\",\n  \"autofill_selected_options\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "30c8e339-ade8-4fad-81f8-f7fcd5aad573",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cart",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ],\n  \"pickup\": false,\n  \"driver_tip_cents\": 100,\n  \"user_latitude\": 37.7786357,\n  \"user_longitude\": -122.3918135,\n  \"user_street_num\": \"188\",\n  \"user_street_name\": \"King Street\",\n  \"user_apt_num\": \"example\",\n  \"user_city\": \"San Francisco\",\n  \"user_state\": \"CA\",\n  \"user_country\": \"US\",\n  \"user_zipcode\": \"94107\",\n  \"user_dropoff_notes\": \"Leave at the front desk\",\n  \"user_name\": \"Steve Jobs\",\n  \"user_email\": \"diner@example.com\",\n  \"user_phone\": 14155550123,\n  \"user_id\": \"user_abc123\",\n  \"disable_sms\": false,\n  \"customer_order_id\": \"id_7b2c4e\",\n  \"autofill_selected_options\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a090868c-a92b-404c-a95f-d8628b45484f",
+          "name": "Retrieve a Cart",
+          "request": {
+            "name": "Retrieve a Cart",
+            "description": {
+              "content": "Retrieve a previously created cart by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cart",
+                "retrieve",
+                "v2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cart_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "83b90879-a493-43bd-9d8e-358c68cd7612",
+              "name": "Cart.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cart",
+                    "retrieve",
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cart_id",
+                      "value": "kQ8vZEd-UnW_gZu6c4iO"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"store_id\": \"8c9f33d5-d138-4a49-9a4f-162f195c89b8\",\n  \"subtotal\": 1299,\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f132e40d-b97a-4ac4-bbd1-e0b4acbdf048",
+              "name": "Input Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cart",
+                    "retrieve",
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cart_id",
+                      "value": "kQ8vZEd-UnW_gZu6c4iO"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "25033e07-7ae8-44c2-b442-83fb86183a53",
+              "name": "Missing Authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cart",
+                    "retrieve",
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cart_id",
+                      "value": "kQ8vZEd-UnW_gZu6c4iO"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "780f34c1-f539-4e7a-8b32-5e50e53111ef",
+              "name": "Unknown Cart ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cart",
+                    "retrieve",
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cart_id",
+                      "value": "kQ8vZEd-UnW_gZu6c4iO"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "165c60fc-b688-43e8-a37b-9ead53347500",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cart",
+                    "retrieve",
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cart_id",
+                      "value": "kQ8vZEd-UnW_gZu6c4iO"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b515c7a6-b7bc-42b8-98f8-849aa612f39c",
+          "name": "List Carts",
+          "request": {
+            "name": "List Carts",
+            "description": {
+              "content": "List the carts associated with the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cart",
+                "list",
+                "v2"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc09a23a-70de-4aff-8ae1-529484adb594",
+              "name": "Carts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cart",
+                    "list",
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n    \"store_id\": \"8c9f33d5-d138-4a49-9a4f-162f195c89b8\",\n    \"subtotal\": 1299,\n    \"items\": [\n      {}\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "971453e6-93bc-45dc-8be8-b68064e38459",
+              "name": "Missing Authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cart",
+                    "list",
+                    "v2"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08415763-3ad4-4c72-9b52-6c9bda2816b6",
+          "name": "Add an Item to a Cart",
+          "request": {
+            "name": "Add an Item to a Cart",
+            "description": {
+              "content": "Add one or more items to an existing cart.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "add_to_cart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart_id\": \"<string>\",\n  \"items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"selected_options\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"notes\": \"<string>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"selected_options\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"notes\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2e6f9513-2936-4ed8-854a-37a83d82ec89",
+              "name": "Cart updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "add_to_cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f1f921b-6d95-4994-a59a-f25ba2e6a0da",
+              "name": "Input Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "add_to_cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d9450fb-9d3d-4359-923c-20b4245c29ca",
+              "name": "Missing Authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "add_to_cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b1cd35f-ff6d-458c-aa9d-acb6ab09b484",
+          "name": "Remove an Item from a Cart",
+          "request": {
+            "name": "Remove an Item from a Cart",
+            "description": {
+              "content": "Remove an item from an existing cart.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "remove_from_cart"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cart_id\": \"<string>\",\n  \"product_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25fe4be5-ea63-4af7-9741-2f64f0424649",
+              "name": "Item removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "remove_from_cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"product_id\": \"prod_5a3e9d12\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "afe2c078-61ff-4730-a888-bce25ab20537",
+              "name": "Input Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "remove_from_cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"product_id\": \"prod_5a3e9d12\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd34b358-eefc-4f05-86de-2d4bc4bdc6e3",
+              "name": "Missing Authorization",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "remove_from_cart"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"product_id\": \"prod_5a3e9d12\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.mealme.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d44d12f0-6929-4427-a78a-e4dbfb7d7c4e",
+    "name": "MealMe Food Ordering Carts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada. The API covers store and product search, store\nlookup, inventory/menu retrieval, product details, cart creation and\nmanagement, order creation and finalization, payment methods, MealMe\nConnect accounts, customer support chat, order tracking webhooks, places\nsearch, and geocoding. Every menu item and grocery product returned\nincludes real-time availability, prices, and customizations or modifiers.\nThe current reference is version 4.1.0.\n\nPaths in this specification mirror the documented MealMe endpoints under\nhttps://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,\nand `/order/order/v4`). Authentication uses an API key passed in the\nAuthorization header.\n\n\nContact Support:\n Name: MealMe API Reference",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MealMe Food Ordering Carts Connect Accounts API",
+    "version": "4.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connect Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Connect Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/connect_account",
+            "params": [
+              {
+                "name": "connect_account_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a MealMe Connect account."
+        },
+        {
+          "info": {
+            "name": "Create a Connect Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/connect_account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a MealMe Connect account for a store."
+        },
+        {
+          "info": {
+            "name": "Link a Connect Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/link_connect_account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Link a MealMe Connect account."
+        },
+        {
+          "info": {
+            "name": "Solve a Connect Account Challenge",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/connect_account_challenge",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Solve a verification challenge for a Connect account."
+        },
+        {
+          "info": {
+            "name": "Get Connect Account Payment Methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.mealme.ai/get_connect_account_payment_methods",
+            "params": [
+              {
+                "name": "connect_account_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve payment methods for a Connect account."
+        },
+        {
+          "info": {
+            "name": "Add a Connect Account Cart Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/connect_account_cart",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an item to a Connect account cart."
+        },
+        {
+          "info": {
+            "name": "Delete a Connect Account Cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.mealme.ai/connect_account_cart",
+            "params": [
+              {
+                "name": "connect_account_id",
+                "value": "id_7b2c4e",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a Connect account cart."
+        },
+        {
+          "info": {
+            "name": "Place a Connect Account Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.mealme.ai/place_connect_account_order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Place an order using a Connect account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
