@@ -24,6 +24,12 @@ tags:
   - Food
   - Grocery
   - Ordering
+  - Restaurant
+tags_raw:
+  - Delivery
+  - Food
+  - Grocery
+  - Ordering
   - Restaurants
 url: https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/apis.yml
 created: '2025-03-01'
@@ -36,6 +42,8 @@ apis:
   humanURL: https://www.mealme.ai/
   baseURL: https://api.mealme.ai
   tags:
+  - Cart
+  tags_raw:
   - Carts
   properties:
   - type: OpenAPI
@@ -102,6 +110,8 @@ apis:
   humanURL: https://www.mealme.ai/
   baseURL: https://api.mealme.ai
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
