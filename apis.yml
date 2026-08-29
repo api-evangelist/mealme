@@ -251,6 +251,9 @@ apis:
   - type: Tutorials
     url: https://docs.mealme.ai/docs/store-search-order-flow
 common:
+  - type: CapabilityMap
+    url: capabilities/mealme-capability-edges.yml
+    name: MealMe Business Capability Map
   - type: AgenticAccess
     url: agentic-access/mealme-agentic-access.yml
   - type: DomainSecurity
