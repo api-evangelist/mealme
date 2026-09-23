@@ -1,35 +1,12 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: MealMe Food Ordering Carts Geocoding API
+  title: MealMe Food Ordering Geocoding API
   version: 4.1.0
   description: 'MealMe provides a food and grocery ordering API for menus, inventory, and
 
     order placement at over one million restaurants and grocery stores in the
 
-    United States and Canada. The API covers store and product search, store
-
-    lookup, inventory/menu retrieval, product details, cart creation and
-
-    management, order creation and finalization, payment methods, MealMe
-
-    Connect accounts, customer support chat, order tracking webhooks, places
-
-    search, and geocoding. Every menu item and grocery product returned
-
-    includes real-time availability, prices, and customizations or modifiers.
-
-    The current reference is version 4.1.0.
-
-
-    Paths in this specification mirror the documented MealMe endpoints under
-
-    https://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,
-
-    and `/order/order/v4`). Authentication uses an API key passed in the
-
-    Authorization header.
-
-    '
+    United States and Canada.'
   contact:
     name: MealMe API Reference
     url: https://docs.mealme.ai/reference
