@@ -255,6 +255,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Cart:
+      type: object
+      properties:
+        cart_id:
+          type: string
+          example: kQ8vZEd-UnW_gZu6c4iO
+        store_id:
+          type: string
+          example: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
+        subtotal:
+          type: integer
+          description: Subtotal in cents.
+          example: 1299
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartItem'
     CartRequest:
       type: object
       required:
@@ -364,23 +381,6 @@ components:
           type: string
           description: Special instructions for the store.
           example: Leave at the front desk
-    Cart:
-      type: object
-      properties:
-        cart_id:
-          type: string
-          example: kQ8vZEd-UnW_gZu6c4iO
-        store_id:
-          type: string
-          example: 8c9f33d5-d138-4a49-9a4f-162f195c89b8
-        subtotal:
-          type: integer
-          description: Subtotal in cents.
-          example: 1299
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartItem'
   securitySchemes:
     apiKeyHeader:
       type: apiKey

@@ -189,18 +189,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    PaymentMethod:
-      type: object
-      properties:
-        payment_method_id:
-          type: string
-          example: id_7b2c4e
-        type:
-          type: string
-          example: card
-        last4:
-          type: string
-          example: '4242'
     PaymentMethodCreateRequest:
       type: object
       required:
@@ -219,6 +207,18 @@ components:
           type: object
           description: Payment method details.
           example: {}
+    PaymentMethod:
+      type: object
+      properties:
+        payment_method_id:
+          type: string
+          example: id_7b2c4e
+        type:
+          type: string
+          example: card
+        last4:
+          type: string
+          example: '4242'
   securitySchemes:
     apiKeyHeader:
       type: apiKey

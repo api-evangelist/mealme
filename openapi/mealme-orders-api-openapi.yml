@@ -225,6 +225,56 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Order:
+      type: object
+      properties:
+        order_id:
+          type: string
+          example: ord_8f2a1c9b
+        cart_id:
+          type: string
+          example: kQ8vZEd-UnW_gZu6c4iO
+        status:
+          type: string
+          enum:
+          - unplaced
+          - awaiting_confirmation
+          - in_progress
+          - canceled
+          - completed
+          example: unplaced
+        total:
+          type: integer
+          description: Total in cents.
+          example: 1299
+    CartItem:
+      type: object
+      required:
+      - product_id
+      properties:
+        product_id:
+          type: string
+          description: Product identifier from a search or inventory result.
+          example: prod_5a3e9d12
+        quantity:
+          type: integer
+          minimum: 1
+          default: 1
+          example: 1
+        product_marked_price:
+          type: integer
+          description: Marked price in cents.
+          example: 1299
+        selected_options:
+          type: array
+          description: Selected product customizations and modifiers.
+          items:
+            type: object
+          example: []
+        notes:
+          type: string
+          description: Special instructions for the store.
+          example: Leave at the front desk
     OrderRequest:
       type: object
       required:
@@ -328,56 +378,6 @@ components:
         tracking_link:
           type: string
           example: https://example.com/webhook
-    CartItem:
-      type: object
-      required:
-      - product_id
-      properties:
-        product_id:
-          type: string
-          description: Product identifier from a search or inventory result.
-          example: prod_5a3e9d12
-        quantity:
-          type: integer
-          minimum: 1
-          default: 1
-          example: 1
-        product_marked_price:
-          type: integer
-          description: Marked price in cents.
-          example: 1299
-        selected_options:
-          type: array
-          description: Selected product customizations and modifiers.
-          items:
-            type: object
-          example: []
-        notes:
-          type: string
-          description: Special instructions for the store.
-          example: Leave at the front desk
-    Order:
-      type: object
-      properties:
-        order_id:
-          type: string
-          example: ord_8f2a1c9b
-        cart_id:
-          type: string
-          example: kQ8vZEd-UnW_gZu6c4iO
-        status:
-          type: string
-          enum:
-          - unplaced
-          - awaiting_confirmation
-          - in_progress
-          - canceled
-          - completed
-          example: unplaced
-        total:
-          type: integer
-          description: Total in cents.
-          example: 1299
   securitySchemes:
     apiKeyHeader:
       type: apiKey
