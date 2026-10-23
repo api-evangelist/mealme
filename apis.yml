@@ -252,6 +252,8 @@ apis:
   - type: Tutorials
     url: https://docs.mealme.ai/docs/store-search-order-flow
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/mealme/overview
   - type: Website
     url: https://www.mealme.ai/
   - type: CapabilityMap
