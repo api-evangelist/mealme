@@ -1,167 +1,182 @@
 {
+  "info": {
+    "_postman_id": "03427647-3255-4900-ab95-4f6ba1d3696f",
+    "name": "MealMe Food Ordering Tracking API",
+    "description": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada.\n\nContact Support:\n Name: MealMe API Reference",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:05:48.000Z",
+    "updatedAt": "2026-10-22T02:05:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-03427647-3255-4900-ab95-4f6ba1d3696f"
+  },
   "item": [
     {
-      "id": "7ab17e75-ae08-4e57-9f21-bd8b00638cb3",
-      "name": "Tracking",
-      "description": {
-        "content": "Order tracking webhooks.",
-        "type": "text/plain"
-      },
+      "name": "account",
       "item": [
         {
-          "id": "d2521bd2-8062-49e3-a9d6-ee272d662aec",
-          "name": "Add a Tracking Webhook",
-          "request": {
-            "name": "Add a Tracking Webhook",
-            "description": {
-              "content": "Register a webhook to receive order tracking updates.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "account",
-                "tracking",
-                "add_webhook"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"url\": \"<uri>\",\n  \"event\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "tracking",
+          "item": [
             {
-              "id": "2d04cbff-d126-475d-a60d-03b3956b659d",
-              "name": "Webhook added.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "account",
-                    "tracking",
-                    "add_webhook"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"url\": \"https://example.com/webhook\",\n  \"event\": \"order_status_update\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "add_webhook",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Add a Tracking Webhook",
+                  "id": "14dcfb07-3663-4a7d-8b2b-d7918d8362c1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"url\": \"<uri>\",\n  \"event\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/account/tracking/add_webhook",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "account",
+                        "tracking",
+                        "add_webhook"
+                      ]
+                    },
+                    "description": "Register a webhook to receive order tracking updates."
+                  },
+                  "response": [
+                    {
+                      "id": "cfe312a9-f2cc-4a49-b1d9-433f2c03140f",
+                      "name": "Webhook added.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"event\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/account/tracking/add_webhook",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "account",
+                            "tracking",
+                            "add_webhook"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:48.000Z",
+                      "updatedAt": "2026-10-22T02:05:48.000Z",
+                      "uid": "35240-cfe312a9-f2cc-4a49-b1d9-433f2c03140f"
+                    },
+                    {
+                      "id": "81a5f4c8-f6c8-416b-b374-376d5637f05d",
+                      "name": "Missing Authorization",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"url\": \"<uri>\",\n  \"event\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/account/tracking/add_webhook",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "account",
+                            "tracking",
+                            "add_webhook"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:48.000Z",
+                      "updatedAt": "2026-10-22T02:05:48.000Z",
+                      "uid": "35240-81a5f4c8-f6c8-416b-b374-376d5637f05d"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:05:48.000Z",
+                  "updatedAt": "2026-10-22T02:05:48.000Z",
+                  "uid": "35240-14dcfb07-3663-4a7d-8b2b-d7918d8362c1"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "528d4403-8bf3-4b28-9001-bef4184059c6",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "account",
-                    "tracking",
-                    "add_webhook"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"url\": \"https://example.com/webhook\",\n  \"event\": \"order_status_update\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "f7d18419-cbad-49f3-b54e-6ef0b29dbae9",
+              "createdAt": "2026-10-22T02:05:48.000Z",
+              "updatedAt": "2026-10-22T02:05:48.000Z",
+              "uid": "35240-f7d18419-cbad-49f3-b54e-6ef0b29dbae9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "26a30f11-e35c-41ff-a5c1-f628d34f32e3",
+          "createdAt": "2026-10-22T02:05:48.000Z",
+          "updatedAt": "2026-10-22T02:05:48.000Z",
+          "uid": "35240-26a30f11-e35c-41ff-a5c1-f628d34f32e3"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.mealme.ai",
-      "key": "baseUrl"
+      "id": "d5e5c4a8-a30e-4218-a6bc-7485c59f9903",
+      "createdAt": "2026-10-22T02:05:48.000Z",
+      "updatedAt": "2026-10-22T02:05:48.000Z",
+      "uid": "35240-d5e5c4a8-a30e-4218-a6bc-7485c59f9903"
     }
   ],
   "auth": {
@@ -169,25 +184,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "Authorization"
+        "value": "Authorization",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "a15a4dbd-8b3d-42e4-afd7-96627f5f6507",
-    "name": "MealMe Food Ordering Carts Tracking API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada. The API covers store and product search, store\nlookup, inventory/menu retrieval, product details, cart creation and\nmanagement, order creation and finalization, payment methods, MealMe\nConnect accounts, customer support chat, order tracking webhooks, places\nsearch, and geocoding. Every menu item and grocery product returned\nincludes real-time availability, prices, and customizations or modifiers.\nThe current reference is version 4.1.0.\n\nPaths in this specification mirror the documented MealMe endpoints under\nhttps://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,\nand `/order/order/v4`). Authentication uses an API key passed in the\nAuthorization header.\n\n\nContact Support:\n Name: MealMe API Reference",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mealme.ai"
     }
-  }
+  ]
 }

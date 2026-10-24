@@ -1,409 +1,439 @@
 {
+  "info": {
+    "_postman_id": "5742080a-8f99-4864-8be0-f16cc1dbce32",
+    "name": "MealMe Food Ordering Geocoding API",
+    "description": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada.\n\nContact Support:\n Name: MealMe API Reference",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:04:48.000Z",
+    "updatedAt": "2026-10-22T02:04:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5742080a-8f99-4864-8be0-f16cc1dbce32"
+  },
   "item": [
     {
-      "id": "0fdfddae-a3f9-4ff8-ad83-2903580f6e53",
-      "name": "Geocoding",
-      "description": {
-        "content": "Address geocoding and reverse geocoding.",
-        "type": "text/plain"
-      },
+      "name": "location",
       "item": [
         {
-          "id": "8b796d97-6afe-4b51-b4aa-5d46f7f6be11",
-          "name": "Geocode an Address",
-          "request": {
-            "name": "Geocode an Address",
-            "description": {
-              "content": "Convert an address into geographic coordinates.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "location",
-                "geocode",
-                "v2"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"address\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "geocode",
+          "item": [
             {
-              "id": "b54c46f4-4920-4fbf-a91d-771b7a76daac",
-              "name": "Geocode result.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "location",
-                    "geocode",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"188 King Street, San Francisco, CA 94107\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "v2",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Geocode an Address",
+                  "id": "3f779e5c-a7e0-4572-84b7-7bc1c335dc48",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"address\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/location/geocode/v2",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        "geocode",
+                        "v2"
+                      ]
+                    },
+                    "description": "Convert an address into geographic coordinates."
+                  },
+                  "response": [
+                    {
+                      "id": "0c242b2a-f870-44ae-9a1b-e4bf04514783",
+                      "name": "Geocode result.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/geocode/v2",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "geocode",
+                            "v2"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:49.000Z",
+                      "updatedAt": "2026-10-22T02:04:49.000Z",
+                      "uid": "35240-0c242b2a-f870-44ae-9a1b-e4bf04514783"
+                    },
+                    {
+                      "id": "8603d9a4-969b-4260-8a59-6e954219a5f9",
+                      "name": "Input Validation Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/geocode/v2",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "geocode",
+                            "v2"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:49.000Z",
+                      "updatedAt": "2026-10-22T02:04:49.000Z",
+                      "uid": "35240-8603d9a4-969b-4260-8a59-6e954219a5f9"
+                    },
+                    {
+                      "id": "54301088-0c9b-42ad-960e-50209165a4dc",
+                      "name": "Missing Authorization",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/geocode/v2",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "geocode",
+                            "v2"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:49.000Z",
+                      "updatedAt": "2026-10-22T02:04:49.000Z",
+                      "uid": "35240-54301088-0c9b-42ad-960e-50209165a4dc"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:04:49.000Z",
+                  "updatedAt": "2026-10-22T02:04:49.000Z",
+                  "uid": "35240-3f779e5c-a7e0-4572-84b7-7bc1c335dc48"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d65647af-e595-4bac-961f-12642e4de81a",
-              "name": "Input Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "location",
-                    "geocode",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"188 King Street, San Francisco, CA 94107\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5ffe159b-00a1-4b38-95ba-bcf5ea9c3d24",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "location",
-                    "geocode",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"address\": \"188 King Street, San Francisco, CA 94107\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "bcac2515-37aa-454a-bfa4-f340f5db7b46",
+              "createdAt": "2026-10-22T02:04:49.000Z",
+              "updatedAt": "2026-10-22T02:04:49.000Z",
+              "uid": "35240-bcac2515-37aa-454a-bfa4-f340f5db7b46"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "3d2f2e65-177f-4054-afbe-e3ac941bca96",
+          "createdAt": "2026-10-22T02:04:49.000Z",
+          "updatedAt": "2026-10-22T02:04:49.000Z",
+          "uid": "35240-3d2f2e65-177f-4054-afbe-e3ac941bca96"
         },
         {
-          "id": "a95b3641-2ef7-4c8a-9afa-41483980dc02",
-          "name": "Reverse Geocode Coordinates",
-          "request": {
-            "name": "Reverse Geocode Coordinates",
-            "description": {
-              "content": "Convert geographic coordinates into an address.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "location",
-                "reverse_geocode",
-                "v2"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "reverse_geocode",
+          "item": [
             {
-              "id": "78916446-f635-4af3-8dd3-94a5da0a4590",
-              "name": "Reverse geocode result.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "location",
-                    "reverse_geocode",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"latitude\": 37.7786357,\n  \"longitude\": -122.3918135\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "v2",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Reverse Geocode Coordinates",
+                  "id": "7818b4ed-ec0c-4c2f-9603-d01bde0bb435",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/location/reverse_geocode/v2",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "location",
+                        "reverse_geocode",
+                        "v2"
+                      ]
+                    },
+                    "description": "Convert geographic coordinates into an address."
+                  },
+                  "response": [
+                    {
+                      "id": "f207b006-d6cd-482f-8e71-f10f6bcf8716",
+                      "name": "Reverse geocode result.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/reverse_geocode/v2",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "reverse_geocode",
+                            "v2"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:49.000Z",
+                      "updatedAt": "2026-10-22T02:04:49.000Z",
+                      "uid": "35240-f207b006-d6cd-482f-8e71-f10f6bcf8716"
+                    },
+                    {
+                      "id": "9940fbec-92f1-41bc-a1ab-b1892f0c534a",
+                      "name": "Input Validation Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/reverse_geocode/v2",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "reverse_geocode",
+                            "v2"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:49.000Z",
+                      "updatedAt": "2026-10-22T02:04:49.000Z",
+                      "uid": "35240-9940fbec-92f1-41bc-a1ab-b1892f0c534a"
+                    },
+                    {
+                      "id": "aec031cd-0c69-4f6c-9090-2d3c6ed0f3e7",
+                      "name": "Missing Authorization",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/location/reverse_geocode/v2",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "location",
+                            "reverse_geocode",
+                            "v2"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:49.000Z",
+                      "updatedAt": "2026-10-22T02:04:49.000Z",
+                      "uid": "35240-aec031cd-0c69-4f6c-9090-2d3c6ed0f3e7"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:04:49.000Z",
+                  "updatedAt": "2026-10-22T02:04:49.000Z",
+                  "uid": "35240-7818b4ed-ec0c-4c2f-9603-d01bde0bb435"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "490c65e0-b9fd-42ba-ae11-40539511c177",
-              "name": "Input Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "location",
-                    "reverse_geocode",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"latitude\": 37.7786357,\n  \"longitude\": -122.3918135\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5700e4cf-6297-4f79-8bdd-65112bf7f3bb",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "location",
-                    "reverse_geocode",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"latitude\": 37.7786357,\n  \"longitude\": -122.3918135\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "d0526295-1362-4fea-9946-58898765c0ef",
+              "createdAt": "2026-10-22T02:04:49.000Z",
+              "updatedAt": "2026-10-22T02:04:49.000Z",
+              "uid": "35240-d0526295-1362-4fea-9946-58898765c0ef"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "9530d228-0fa1-401c-bb39-55379ddc3641",
+          "createdAt": "2026-10-22T02:04:49.000Z",
+          "updatedAt": "2026-10-22T02:04:49.000Z",
+          "uid": "35240-9530d228-0fa1-401c-bb39-55379ddc3641"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.mealme.ai",
-      "key": "baseUrl"
+      "id": "aff0d3d8-f3ec-47e8-b912-f4c0a34dd318",
+      "createdAt": "2026-10-22T02:04:49.000Z",
+      "updatedAt": "2026-10-22T02:04:49.000Z",
+      "uid": "35240-aff0d3d8-f3ec-47e8-b912-f4c0a34dd318"
     }
   ],
   "auth": {
@@ -411,25 +441,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "Authorization"
+        "value": "Authorization",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "64a56b62-251a-4870-a3ef-25f8efeee857",
-    "name": "MealMe Food Ordering Carts Geocoding API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada. The API covers store and product search, store\nlookup, inventory/menu retrieval, product details, cart creation and\nmanagement, order creation and finalization, payment methods, MealMe\nConnect accounts, customer support chat, order tracking webhooks, places\nsearch, and geocoding. Every menu item and grocery product returned\nincludes real-time availability, prices, and customizations or modifiers.\nThe current reference is version 4.1.0.\n\nPaths in this specification mirror the documented MealMe endpoints under\nhttps://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,\nand `/order/order/v4`). Authentication uses an API key passed in the\nAuthorization header.\n\n\nContact Support:\n Name: MealMe API Reference",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mealme.ai"
     }
-  }
+  ]
 }

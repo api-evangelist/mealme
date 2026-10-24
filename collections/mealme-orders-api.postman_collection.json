@@ -1,844 +1,877 @@
 {
+  "info": {
+    "_postman_id": "b830293f-6a72-49f1-b580-82611fa4157b",
+    "name": "MealMe Food Ordering Orders API",
+    "description": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada.\n\nContact Support:\n Name: MealMe API Reference",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:04:57.000Z",
+    "updatedAt": "2026-10-22T02:04:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b830293f-6a72-49f1-b580-82611fa4157b"
+  },
   "item": [
     {
-      "id": "1b50a67e-693a-41d8-94c0-6912b15eb436",
-      "name": "Orders",
-      "description": {
-        "content": "Order creation, finalization, and history.",
-        "type": "text/plain"
-      },
+      "name": "order",
       "item": [
         {
-          "id": "74d94253-1e02-4d08-b371-802e24e3325a",
-          "name": "Create an Order",
-          "request": {
-            "name": "Create an Order",
-            "description": {
-              "content": "Create an order from a list of items. When place_order is false the\nresponse returns a finalizable quote; when true the order is placed.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "order",
-                "order",
-                "v4"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"selected_options\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"notes\": \"<string>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"selected_options\": [\n        \"<object>\",\n        \"<object>\"\n      ],\n      \"notes\": \"<string>\"\n    }\n  ],\n  \"pickup\": \"<boolean>\",\n  \"user_name\": \"<string>\",\n  \"user_email\": \"<email>\",\n  \"user_phone\": \"<integer>\",\n  \"user_id\": \"<string>\",\n  \"place_order\": \"<boolean>\",\n  \"order_id\": \"<string>\",\n  \"scheduled_id\": \"<string>\",\n  \"driver_tip_cents\": \"<integer>\",\n  \"pickup_tip_cents\": \"<integer>\",\n  \"user_latitude\": \"<number>\",\n  \"user_longitude\": \"<number>\",\n  \"user_street_num\": \"<string>\",\n  \"user_street_name\": \"<string>\",\n  \"user_apt_num\": \"<string>\",\n  \"user_city\": \"<string>\",\n  \"user_state\": \"<string>\",\n  \"user_country\": \"<string>\",\n  \"user_zipcode\": \"<string>\",\n  \"user_dropoff_notes\": \"<string>\",\n  \"user_pickup_notes\": \"<string>\",\n  \"payment_method_id\": \"<string>\",\n  \"charge_user\": \"<boolean>\",\n  \"include_final_quote\": \"<boolean>\",\n  \"disable_sms\": \"<boolean>\",\n  \"customer_order_id\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"tracking_link\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "order",
+          "item": [
             {
-              "id": "551653e8-6dc9-430f-99d0-e795ff2bd930",
-              "name": "Order created.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "order",
-                    "order",
-                    "v4"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
+              "name": "v4",
+              "item": [
+                {
+                  "name": "Create an Order",
+                  "id": "53c8dce0-58f4-418b-a6b3-ce215620bbe4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"place_order\": false,\n  \"order_id\": \"ord_8f2a1c9b\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ],\n  \"pickup\": false,\n  \"scheduled_id\": \"id_7b2c4e\",\n  \"driver_tip_cents\": 1299,\n  \"pickup_tip_cents\": 1299,\n  \"user_latitude\": 37.7786357,\n  \"user_longitude\": -122.3918135,\n  \"user_street_num\": \"188\",\n  \"user_street_name\": \"King Street\",\n  \"user_apt_num\": \"example\",\n  \"user_city\": \"San Francisco\",\n  \"user_state\": \"CA\",\n  \"user_country\": \"US\",\n  \"user_zipcode\": \"94107\",\n  \"user_dropoff_notes\": \"Leave at the front desk\",\n  \"user_pickup_notes\": \"Leave at the front desk\",\n  \"user_name\": \"Steve Jobs\",\n  \"user_email\": \"diner@example.com\",\n  \"user_phone\": 14155550123,\n  \"user_id\": \"user_abc123\",\n  \"payment_method_id\": \"id_7b2c4e\",\n  \"charge_user\": false,\n  \"include_final_quote\": false,\n  \"disable_sms\": false,\n  \"customer_order_id\": \"id_7b2c4e\",\n  \"metadata\": {},\n  \"tracking_link\": \"https://example.com/webhook\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"order_id\": \"ord_8f2a1c9b\",\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"status\": \"unplaced\",\n  \"total\": 1299\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7973dd4b-a3e5-4a57-80c3-e815852310c8",
-              "name": "Order accepted.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "order",
-                    "order",
-                    "v4"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    }\n  ],\n  \"pickup\": \"<boolean>\",\n  \"user_name\": \"<string>\",\n  \"user_email\": \"<email>\",\n  \"user_phone\": \"<integer>\",\n  \"user_id\": \"<string>\",\n  \"place_order\": \"<boolean>\",\n  \"order_id\": \"<string>\",\n  \"scheduled_id\": \"<string>\",\n  \"driver_tip_cents\": \"<integer>\",\n  \"pickup_tip_cents\": \"<integer>\",\n  \"user_latitude\": \"<number>\",\n  \"user_longitude\": \"<number>\",\n  \"user_street_num\": \"<string>\",\n  \"user_street_name\": \"<string>\",\n  \"user_apt_num\": \"<string>\",\n  \"user_city\": \"<string>\",\n  \"user_state\": \"<string>\",\n  \"user_country\": \"CA\",\n  \"user_zipcode\": \"<string>\",\n  \"user_dropoff_notes\": \"<string>\",\n  \"user_pickup_notes\": \"<string>\",\n  \"payment_method_id\": \"<string>\",\n  \"charge_user\": \"<boolean>\",\n  \"include_final_quote\": \"<boolean>\",\n  \"disable_sms\": \"<boolean>\",\n  \"customer_order_id\": \"<string>\",\n  \"metadata\": {},\n  \"tracking_link\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"place_order\": false,\n  \"order_id\": \"ord_8f2a1c9b\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ],\n  \"pickup\": false,\n  \"scheduled_id\": \"id_7b2c4e\",\n  \"driver_tip_cents\": 1299,\n  \"pickup_tip_cents\": 1299,\n  \"user_latitude\": 37.7786357,\n  \"user_longitude\": -122.3918135,\n  \"user_street_num\": \"188\",\n  \"user_street_name\": \"King Street\",\n  \"user_apt_num\": \"example\",\n  \"user_city\": \"San Francisco\",\n  \"user_state\": \"CA\",\n  \"user_country\": \"US\",\n  \"user_zipcode\": \"94107\",\n  \"user_dropoff_notes\": \"Leave at the front desk\",\n  \"user_pickup_notes\": \"Leave at the front desk\",\n  \"user_name\": \"Steve Jobs\",\n  \"user_email\": \"diner@example.com\",\n  \"user_phone\": 14155550123,\n  \"user_id\": \"user_abc123\",\n  \"payment_method_id\": \"id_7b2c4e\",\n  \"charge_user\": false,\n  \"include_final_quote\": false,\n  \"disable_sms\": false,\n  \"customer_order_id\": \"id_7b2c4e\",\n  \"metadata\": {},\n  \"tracking_link\": \"https://example.com/webhook\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Accepted",
-              "code": 202,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9925994b-5246-4823-8ecc-8822019737d9",
-              "name": "Input Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "order",
-                    "order",
-                    "v4"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                    "url": {
+                      "raw": "{{baseUrl}}/order/order/v4",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "order",
+                        "order",
+                        "v4"
+                      ]
                     },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"place_order\": false,\n  \"order_id\": \"ord_8f2a1c9b\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ],\n  \"pickup\": false,\n  \"scheduled_id\": \"id_7b2c4e\",\n  \"driver_tip_cents\": 1299,\n  \"pickup_tip_cents\": 1299,\n  \"user_latitude\": 37.7786357,\n  \"user_longitude\": -122.3918135,\n  \"user_street_num\": \"188\",\n  \"user_street_name\": \"King Street\",\n  \"user_apt_num\": \"example\",\n  \"user_city\": \"San Francisco\",\n  \"user_state\": \"CA\",\n  \"user_country\": \"US\",\n  \"user_zipcode\": \"94107\",\n  \"user_dropoff_notes\": \"Leave at the front desk\",\n  \"user_pickup_notes\": \"Leave at the front desk\",\n  \"user_name\": \"Steve Jobs\",\n  \"user_email\": \"diner@example.com\",\n  \"user_phone\": 14155550123,\n  \"user_id\": \"user_abc123\",\n  \"payment_method_id\": \"id_7b2c4e\",\n  \"charge_user\": false,\n  \"include_final_quote\": false,\n  \"disable_sms\": false,\n  \"customer_order_id\": \"id_7b2c4e\",\n  \"metadata\": {},\n  \"tracking_link\": \"https://example.com/webhook\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c597c497-040c-4c23-8720-841c955e4545",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "order",
-                    "order",
-                    "v4"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                    "description": "Create an order from a list of items. When place_order is false the\nresponse returns a finalizable quote; when true the order is placed."
+                  },
+                  "response": [
+                    {
+                      "id": "5c41b3d1-e6d7-4478-b673-74442a9364b1",
+                      "name": "Order created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    }\n  ],\n  \"pickup\": \"<boolean>\",\n  \"user_name\": \"<string>\",\n  \"user_email\": \"<email>\",\n  \"user_phone\": \"<integer>\",\n  \"user_id\": \"<string>\",\n  \"place_order\": \"<boolean>\",\n  \"order_id\": \"<string>\",\n  \"scheduled_id\": \"<string>\",\n  \"driver_tip_cents\": \"<integer>\",\n  \"pickup_tip_cents\": \"<integer>\",\n  \"user_latitude\": \"<number>\",\n  \"user_longitude\": \"<number>\",\n  \"user_street_num\": \"<string>\",\n  \"user_street_name\": \"<string>\",\n  \"user_apt_num\": \"<string>\",\n  \"user_city\": \"<string>\",\n  \"user_state\": \"<string>\",\n  \"user_country\": \"CA\",\n  \"user_zipcode\": \"<string>\",\n  \"user_dropoff_notes\": \"<string>\",\n  \"user_pickup_notes\": \"<string>\",\n  \"payment_method_id\": \"<string>\",\n  \"charge_user\": \"<boolean>\",\n  \"include_final_quote\": \"<boolean>\",\n  \"disable_sms\": \"<boolean>\",\n  \"customer_order_id\": \"<string>\",\n  \"metadata\": {},\n  \"tracking_link\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/order/order/v4",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "order",
+                            "order",
+                            "v4"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"order_id\": \"<string>\",\n  \"cart_id\": \"<string>\",\n  \"status\": \"completed\",\n  \"total\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-22T02:04:57.000Z",
+                      "updatedAt": "2026-10-22T02:04:57.000Z",
+                      "uid": "35240-5c41b3d1-e6d7-4478-b673-74442a9364b1"
                     },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"place_order\": false,\n  \"order_id\": \"ord_8f2a1c9b\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ],\n  \"pickup\": false,\n  \"scheduled_id\": \"id_7b2c4e\",\n  \"driver_tip_cents\": 1299,\n  \"pickup_tip_cents\": 1299,\n  \"user_latitude\": 37.7786357,\n  \"user_longitude\": -122.3918135,\n  \"user_street_num\": \"188\",\n  \"user_street_name\": \"King Street\",\n  \"user_apt_num\": \"example\",\n  \"user_city\": \"San Francisco\",\n  \"user_state\": \"CA\",\n  \"user_country\": \"US\",\n  \"user_zipcode\": \"94107\",\n  \"user_dropoff_notes\": \"Leave at the front desk\",\n  \"user_pickup_notes\": \"Leave at the front desk\",\n  \"user_name\": \"Steve Jobs\",\n  \"user_email\": \"diner@example.com\",\n  \"user_phone\": 14155550123,\n  \"user_id\": \"user_abc123\",\n  \"payment_method_id\": \"id_7b2c4e\",\n  \"charge_user\": false,\n  \"include_final_quote\": false,\n  \"disable_sms\": false,\n  \"customer_order_id\": \"id_7b2c4e\",\n  \"metadata\": {},\n  \"tracking_link\": \"https://example.com/webhook\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ba90ae82-1362-49d8-a98e-000ecd67afd4",
-              "name": "Not Acceptable",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "order",
-                    "order",
-                    "v4"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                    {
+                      "id": "5b712304-528f-4d28-b429-341152a50f88",
+                      "name": "Order accepted.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    }\n  ],\n  \"pickup\": \"<boolean>\",\n  \"user_name\": \"<string>\",\n  \"user_email\": \"<email>\",\n  \"user_phone\": \"<integer>\",\n  \"user_id\": \"<string>\",\n  \"place_order\": \"<boolean>\",\n  \"order_id\": \"<string>\",\n  \"scheduled_id\": \"<string>\",\n  \"driver_tip_cents\": \"<integer>\",\n  \"pickup_tip_cents\": \"<integer>\",\n  \"user_latitude\": \"<number>\",\n  \"user_longitude\": \"<number>\",\n  \"user_street_num\": \"<string>\",\n  \"user_street_name\": \"<string>\",\n  \"user_apt_num\": \"<string>\",\n  \"user_city\": \"<string>\",\n  \"user_state\": \"<string>\",\n  \"user_country\": \"CA\",\n  \"user_zipcode\": \"<string>\",\n  \"user_dropoff_notes\": \"<string>\",\n  \"user_pickup_notes\": \"<string>\",\n  \"payment_method_id\": \"<string>\",\n  \"charge_user\": \"<boolean>\",\n  \"include_final_quote\": \"<boolean>\",\n  \"disable_sms\": \"<boolean>\",\n  \"customer_order_id\": \"<string>\",\n  \"metadata\": {},\n  \"tracking_link\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/order/order/v4",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "order",
+                            "order",
+                            "v4"
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:57.000Z",
+                      "updatedAt": "2026-10-22T02:04:57.000Z",
+                      "uid": "35240-5b712304-528f-4d28-b429-341152a50f88"
                     },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"place_order\": false,\n  \"order_id\": \"ord_8f2a1c9b\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ],\n  \"pickup\": false,\n  \"scheduled_id\": \"id_7b2c4e\",\n  \"driver_tip_cents\": 1299,\n  \"pickup_tip_cents\": 1299,\n  \"user_latitude\": 37.7786357,\n  \"user_longitude\": -122.3918135,\n  \"user_street_num\": \"188\",\n  \"user_street_name\": \"King Street\",\n  \"user_apt_num\": \"example\",\n  \"user_city\": \"San Francisco\",\n  \"user_state\": \"CA\",\n  \"user_country\": \"US\",\n  \"user_zipcode\": \"94107\",\n  \"user_dropoff_notes\": \"Leave at the front desk\",\n  \"user_pickup_notes\": \"Leave at the front desk\",\n  \"user_name\": \"Steve Jobs\",\n  \"user_email\": \"diner@example.com\",\n  \"user_phone\": 14155550123,\n  \"user_id\": \"user_abc123\",\n  \"payment_method_id\": \"id_7b2c4e\",\n  \"charge_user\": false,\n  \"include_final_quote\": false,\n  \"disable_sms\": false,\n  \"customer_order_id\": \"id_7b2c4e\",\n  \"metadata\": {},\n  \"tracking_link\": \"https://example.com/webhook\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Acceptable",
-              "code": 406,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b084f888-6128-445a-828a-e951eadfbe8e",
-              "name": "Unprocessable Entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "order",
-                    "order",
-                    "v4"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                    {
+                      "id": "5e3641be-9032-4bda-825a-10dd72cca780",
+                      "name": "Input Validation Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    }\n  ],\n  \"pickup\": \"<boolean>\",\n  \"user_name\": \"<string>\",\n  \"user_email\": \"<email>\",\n  \"user_phone\": \"<integer>\",\n  \"user_id\": \"<string>\",\n  \"place_order\": \"<boolean>\",\n  \"order_id\": \"<string>\",\n  \"scheduled_id\": \"<string>\",\n  \"driver_tip_cents\": \"<integer>\",\n  \"pickup_tip_cents\": \"<integer>\",\n  \"user_latitude\": \"<number>\",\n  \"user_longitude\": \"<number>\",\n  \"user_street_num\": \"<string>\",\n  \"user_street_name\": \"<string>\",\n  \"user_apt_num\": \"<string>\",\n  \"user_city\": \"<string>\",\n  \"user_state\": \"<string>\",\n  \"user_country\": \"CA\",\n  \"user_zipcode\": \"<string>\",\n  \"user_dropoff_notes\": \"<string>\",\n  \"user_pickup_notes\": \"<string>\",\n  \"payment_method_id\": \"<string>\",\n  \"charge_user\": \"<boolean>\",\n  \"include_final_quote\": \"<boolean>\",\n  \"disable_sms\": \"<boolean>\",\n  \"customer_order_id\": \"<string>\",\n  \"metadata\": {},\n  \"tracking_link\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/order/order/v4",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "order",
+                            "order",
+                            "v4"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:57.000Z",
+                      "updatedAt": "2026-10-22T02:04:57.000Z",
+                      "uid": "35240-5e3641be-9032-4bda-825a-10dd72cca780"
                     },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"place_order\": false,\n  \"order_id\": \"ord_8f2a1c9b\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ],\n  \"pickup\": false,\n  \"scheduled_id\": \"id_7b2c4e\",\n  \"driver_tip_cents\": 1299,\n  \"pickup_tip_cents\": 1299,\n  \"user_latitude\": 37.7786357,\n  \"user_longitude\": -122.3918135,\n  \"user_street_num\": \"188\",\n  \"user_street_name\": \"King Street\",\n  \"user_apt_num\": \"example\",\n  \"user_city\": \"San Francisco\",\n  \"user_state\": \"CA\",\n  \"user_country\": \"US\",\n  \"user_zipcode\": \"94107\",\n  \"user_dropoff_notes\": \"Leave at the front desk\",\n  \"user_pickup_notes\": \"Leave at the front desk\",\n  \"user_name\": \"Steve Jobs\",\n  \"user_email\": \"diner@example.com\",\n  \"user_phone\": 14155550123,\n  \"user_id\": \"user_abc123\",\n  \"payment_method_id\": \"id_7b2c4e\",\n  \"charge_user\": false,\n  \"include_final_quote\": false,\n  \"disable_sms\": false,\n  \"customer_order_id\": \"id_7b2c4e\",\n  \"metadata\": {},\n  \"tracking_link\": \"https://example.com/webhook\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e996ee77-0c7c-4ff8-b6b1-be48cbf9c77b",
-              "name": "Gateway Timeout",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "order",
-                    "order",
-                    "v4"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                    {
+                      "id": "ce8d5a98-6108-4b7b-bcbd-5e2b8e151f46",
+                      "name": "Missing Authorization",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    }\n  ],\n  \"pickup\": \"<boolean>\",\n  \"user_name\": \"<string>\",\n  \"user_email\": \"<email>\",\n  \"user_phone\": \"<integer>\",\n  \"user_id\": \"<string>\",\n  \"place_order\": \"<boolean>\",\n  \"order_id\": \"<string>\",\n  \"scheduled_id\": \"<string>\",\n  \"driver_tip_cents\": \"<integer>\",\n  \"pickup_tip_cents\": \"<integer>\",\n  \"user_latitude\": \"<number>\",\n  \"user_longitude\": \"<number>\",\n  \"user_street_num\": \"<string>\",\n  \"user_street_name\": \"<string>\",\n  \"user_apt_num\": \"<string>\",\n  \"user_city\": \"<string>\",\n  \"user_state\": \"<string>\",\n  \"user_country\": \"CA\",\n  \"user_zipcode\": \"<string>\",\n  \"user_dropoff_notes\": \"<string>\",\n  \"user_pickup_notes\": \"<string>\",\n  \"payment_method_id\": \"<string>\",\n  \"charge_user\": \"<boolean>\",\n  \"include_final_quote\": \"<boolean>\",\n  \"disable_sms\": \"<boolean>\",\n  \"customer_order_id\": \"<string>\",\n  \"metadata\": {},\n  \"tracking_link\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/order/order/v4",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "order",
+                            "order",
+                            "v4"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:57.000Z",
+                      "updatedAt": "2026-10-22T02:04:57.000Z",
+                      "uid": "35240-ce8d5a98-6108-4b7b-bcbd-5e2b8e151f46"
                     },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"place_order\": false,\n  \"order_id\": \"ord_8f2a1c9b\",\n  \"items\": [\n    {\n      \"product_id\": \"prod_5a3e9d12\",\n      \"quantity\": 1,\n      \"product_marked_price\": 1299,\n      \"selected_options\": [],\n      \"notes\": \"Leave at the front desk\"\n    }\n  ],\n  \"pickup\": false,\n  \"scheduled_id\": \"id_7b2c4e\",\n  \"driver_tip_cents\": 1299,\n  \"pickup_tip_cents\": 1299,\n  \"user_latitude\": 37.7786357,\n  \"user_longitude\": -122.3918135,\n  \"user_street_num\": \"188\",\n  \"user_street_name\": \"King Street\",\n  \"user_apt_num\": \"example\",\n  \"user_city\": \"San Francisco\",\n  \"user_state\": \"CA\",\n  \"user_country\": \"US\",\n  \"user_zipcode\": \"94107\",\n  \"user_dropoff_notes\": \"Leave at the front desk\",\n  \"user_pickup_notes\": \"Leave at the front desk\",\n  \"user_name\": \"Steve Jobs\",\n  \"user_email\": \"diner@example.com\",\n  \"user_phone\": 14155550123,\n  \"user_id\": \"user_abc123\",\n  \"payment_method_id\": \"id_7b2c4e\",\n  \"charge_user\": false,\n  \"include_final_quote\": false,\n  \"disable_sms\": false,\n  \"customer_order_id\": \"id_7b2c4e\",\n  \"metadata\": {},\n  \"tracking_link\": \"https://example.com/webhook\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                    {
+                      "id": "6b86b16e-b0c5-46fd-aa06-745a21adf372",
+                      "name": "Not Acceptable",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    }\n  ],\n  \"pickup\": \"<boolean>\",\n  \"user_name\": \"<string>\",\n  \"user_email\": \"<email>\",\n  \"user_phone\": \"<integer>\",\n  \"user_id\": \"<string>\",\n  \"place_order\": \"<boolean>\",\n  \"order_id\": \"<string>\",\n  \"scheduled_id\": \"<string>\",\n  \"driver_tip_cents\": \"<integer>\",\n  \"pickup_tip_cents\": \"<integer>\",\n  \"user_latitude\": \"<number>\",\n  \"user_longitude\": \"<number>\",\n  \"user_street_num\": \"<string>\",\n  \"user_street_name\": \"<string>\",\n  \"user_apt_num\": \"<string>\",\n  \"user_city\": \"<string>\",\n  \"user_state\": \"<string>\",\n  \"user_country\": \"CA\",\n  \"user_zipcode\": \"<string>\",\n  \"user_dropoff_notes\": \"<string>\",\n  \"user_pickup_notes\": \"<string>\",\n  \"payment_method_id\": \"<string>\",\n  \"charge_user\": \"<boolean>\",\n  \"include_final_quote\": \"<boolean>\",\n  \"disable_sms\": \"<boolean>\",\n  \"customer_order_id\": \"<string>\",\n  \"metadata\": {},\n  \"tracking_link\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/order/order/v4",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "order",
+                            "order",
+                            "v4"
+                          ]
+                        }
+                      },
+                      "status": "Not Acceptable",
+                      "code": 406,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:57.000Z",
+                      "updatedAt": "2026-10-22T02:04:57.000Z",
+                      "uid": "35240-6b86b16e-b0c5-46fd-aa06-745a21adf372"
+                    },
+                    {
+                      "id": "c139a2eb-fce2-416b-9c5a-63f24892c8dc",
+                      "name": "Unprocessable Entity",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    }\n  ],\n  \"pickup\": \"<boolean>\",\n  \"user_name\": \"<string>\",\n  \"user_email\": \"<email>\",\n  \"user_phone\": \"<integer>\",\n  \"user_id\": \"<string>\",\n  \"place_order\": \"<boolean>\",\n  \"order_id\": \"<string>\",\n  \"scheduled_id\": \"<string>\",\n  \"driver_tip_cents\": \"<integer>\",\n  \"pickup_tip_cents\": \"<integer>\",\n  \"user_latitude\": \"<number>\",\n  \"user_longitude\": \"<number>\",\n  \"user_street_num\": \"<string>\",\n  \"user_street_name\": \"<string>\",\n  \"user_apt_num\": \"<string>\",\n  \"user_city\": \"<string>\",\n  \"user_state\": \"<string>\",\n  \"user_country\": \"CA\",\n  \"user_zipcode\": \"<string>\",\n  \"user_dropoff_notes\": \"<string>\",\n  \"user_pickup_notes\": \"<string>\",\n  \"payment_method_id\": \"<string>\",\n  \"charge_user\": \"<boolean>\",\n  \"include_final_quote\": \"<boolean>\",\n  \"disable_sms\": \"<boolean>\",\n  \"customer_order_id\": \"<string>\",\n  \"metadata\": {},\n  \"tracking_link\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/order/order/v4",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "order",
+                            "order",
+                            "v4"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:57.000Z",
+                      "updatedAt": "2026-10-22T02:04:57.000Z",
+                      "uid": "35240-c139a2eb-fce2-416b-9c5a-63f24892c8dc"
+                    },
+                    {
+                      "id": "6bda25fb-8cd7-4cd7-b1b5-abc4f60b5266",
+                      "name": "Gateway Timeout",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"items\": [\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    },\n    {\n      \"product_id\": \"<string>\",\n      \"quantity\": 1,\n      \"product_marked_price\": \"<integer>\",\n      \"notes\": \"<string>\"\n    }\n  ],\n  \"pickup\": \"<boolean>\",\n  \"user_name\": \"<string>\",\n  \"user_email\": \"<email>\",\n  \"user_phone\": \"<integer>\",\n  \"user_id\": \"<string>\",\n  \"place_order\": \"<boolean>\",\n  \"order_id\": \"<string>\",\n  \"scheduled_id\": \"<string>\",\n  \"driver_tip_cents\": \"<integer>\",\n  \"pickup_tip_cents\": \"<integer>\",\n  \"user_latitude\": \"<number>\",\n  \"user_longitude\": \"<number>\",\n  \"user_street_num\": \"<string>\",\n  \"user_street_name\": \"<string>\",\n  \"user_apt_num\": \"<string>\",\n  \"user_city\": \"<string>\",\n  \"user_state\": \"<string>\",\n  \"user_country\": \"CA\",\n  \"user_zipcode\": \"<string>\",\n  \"user_dropoff_notes\": \"<string>\",\n  \"user_pickup_notes\": \"<string>\",\n  \"payment_method_id\": \"<string>\",\n  \"charge_user\": \"<boolean>\",\n  \"include_final_quote\": \"<boolean>\",\n  \"disable_sms\": \"<boolean>\",\n  \"customer_order_id\": \"<string>\",\n  \"metadata\": {},\n  \"tracking_link\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/order/order/v4",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "order",
+                            "order",
+                            "v4"
+                          ]
+                        }
+                      },
+                      "status": "Gateway Timeout",
+                      "code": 504,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:04:57.000Z",
+                      "updatedAt": "2026-10-22T02:04:57.000Z",
+                      "uid": "35240-6bda25fb-8cd7-4cd7-b1b5-abc4f60b5266"
                     }
-                  }
-                }
-              },
-              "status": "Gateway Timeout",
-              "code": 504,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "createdAt": "2026-10-22T02:04:57.000Z",
+                  "updatedAt": "2026-10-22T02:04:57.000Z",
+                  "uid": "35240-53c8dce0-58f4-418b-a6b3-ce215620bbe4"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "ed321381-b0dc-49fb-9590-9d66f9f01162",
+              "createdAt": "2026-10-22T02:04:57.000Z",
+              "updatedAt": "2026-10-22T02:04:57.000Z",
+              "uid": "35240-ed321381-b0dc-49fb-9590-9d66f9f01162"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "ca956cef-4a31-4c94-ac93-c0918aad7dd4",
+          "createdAt": "2026-10-22T02:04:57.000Z",
+          "updatedAt": "2026-10-22T02:04:57.000Z",
+          "uid": "35240-ca956cef-4a31-4c94-ac93-c0918aad7dd4"
         },
         {
-          "id": "669db120-e6a7-4d27-ac18-fb7c6877c20b",
-          "name": "Finalize an Order",
-          "request": {
-            "name": "Finalize an Order",
-            "description": {
-              "content": "Finalize a previously created order quote (place_order=false).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "order",
-                "finalize"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"order_id\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "finalize",
+          "item": [
             {
-              "id": "2eb10f75-b7fc-4b16-bab3-58a3fd293a2f",
-              "name": "Order finalized.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "order",
-                    "finalize"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Finalize an Order",
+              "id": "54a9e64a-8638-411e-a490-136a159d55e1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"order_id\": \"ord_8f2a1c9b\"\n}",
+                  "raw": "{\n  \"order_id\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"order_id\": \"ord_8f2a1c9b\",\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"status\": \"unplaced\",\n  \"total\": 1299\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8759d22a-aa1c-476e-9c36-621bad32b226",
-              "name": "Input Validation Error",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/order/finalize",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "order",
                     "finalize"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"order_id\": \"ord_8f2a1c9b\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "Finalize a previously created order quote (place_order=false)."
               },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "de2c1283-b8ff-47d5-af36-9b5ccbb35d84",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "order",
-                    "finalize"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
+                  "id": "b2a64b78-3c1d-4f4c-b4f1-3f50caa56ac6",
+                  "name": "Order finalized.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"order_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"order_id\": \"ord_8f2a1c9b\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                    "url": {
+                      "raw": "{{baseUrl}}/order/finalize",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "order",
+                        "finalize"
+                      ]
                     }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d3e92c94-01a7-4f94-b4d3-bd016dfe35f0",
-          "name": "Get Orders",
-          "request": {
-            "name": "Get Orders",
-            "description": {
-              "content": "Retrieve account orders with optional filters.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "account",
-                "orders"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "order_id",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "status",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "favorited",
-                  "value": "<boolean>"
-                },
-                {
-                  "disabled": false,
-                  "key": "user_id",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "include_order_count",
-                  "value": "<boolean>"
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "0"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "92e9e571-decb-406b-b430-34fdab99f766",
-              "name": "Orders.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "account",
-                    "orders"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "order_id",
-                      "value": "ord_8f2a1c9b"
-                    },
-                    {
-                      "key": "start_date",
-                      "value": "example"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "example"
-                    },
-                    {
-                      "key": "status",
-                      "value": "completed"
-                    },
-                    {
-                      "key": "favorited",
-                      "value": "false"
-                    },
-                    {
-                      "key": "user_id",
-                      "value": "user_abc123"
-                    },
-                    {
-                      "key": "include_order_count",
-                      "value": "false"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"order_id\": \"ord_8f2a1c9b\",\n    \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n    \"status\": \"unplaced\",\n    \"total\": 1299\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "17ed2f10-0bad-41e1-bec1-d1b0143e5753",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "account",
-                    "orders"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "order_id",
-                      "value": "ord_8f2a1c9b"
-                    },
-                    {
-                      "key": "start_date",
-                      "value": "example"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "example"
-                    },
-                    {
-                      "key": "status",
-                      "value": "completed"
-                    },
-                    {
-                      "key": "favorited",
-                      "value": "false"
-                    },
-                    {
-                      "key": "user_id",
-                      "value": "user_abc123"
-                    },
-                    {
-                      "key": "include_order_count",
-                      "value": "false"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"order_id\": \"<string>\",\n  \"cart_id\": \"<string>\",\n  \"status\": \"completed\",\n  \"total\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-22T02:04:57.000Z",
+                  "updatedAt": "2026-10-22T02:04:57.000Z",
+                  "uid": "35240-b2a64b78-3c1d-4f4c-b4f1-3f50caa56ac6"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "645a6594-2495-4e52-8c26-5ad25a671b82",
+                  "name": "Input Validation Error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"order_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/order/finalize",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "order",
+                        "finalize"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:04:57.000Z",
+                  "updatedAt": "2026-10-22T02:04:57.000Z",
+                  "uid": "35240-645a6594-2495-4e52-8c26-5ad25a671b82"
+                },
+                {
+                  "id": "eedfbf43-97ab-4807-a413-c08e46b72eab",
+                  "name": "Missing Authorization",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"order_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/order/finalize",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "order",
+                        "finalize"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:04:57.000Z",
+                  "updatedAt": "2026-10-22T02:04:57.000Z",
+                  "uid": "35240-eedfbf43-97ab-4807-a413-c08e46b72eab"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T02:04:57.000Z",
+              "updatedAt": "2026-10-22T02:04:57.000Z",
+              "uid": "35240-54a9e64a-8638-411e-a490-136a159d55e1"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "661642db-3b3d-40f6-9a2b-86e025749235",
+          "createdAt": "2026-10-22T02:04:57.000Z",
+          "updatedAt": "2026-10-22T02:04:57.000Z",
+          "uid": "35240-661642db-3b3d-40f6-9a2b-86e025749235"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "05e6fc00-91c8-411e-9f4e-bc3209a78f24",
+      "createdAt": "2026-10-22T02:04:57.000Z",
+      "updatedAt": "2026-10-22T02:04:57.000Z",
+      "uid": "35240-05e6fc00-91c8-411e-9f4e-bc3209a78f24"
+    },
     {
-      "type": "string",
-      "value": "https://api.mealme.ai",
-      "key": "baseUrl"
+      "name": "account",
+      "item": [
+        {
+          "name": "orders",
+          "item": [
+            {
+              "name": "Get Orders",
+              "id": "405719d2-95cc-4d95-a8c9-e5e3a3b16151",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/account/orders?order_id=<string>&start_date=<string>&end_date=<string>&status=<string>&favorited=<boolean>&user_id=<string>&include_order_count=<boolean>&page=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "account",
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "key": "order_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "favorited",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_order_count",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "0"
+                    }
+                  ]
+                },
+                "description": "Retrieve account orders with optional filters."
+              },
+              "response": [
+                {
+                  "id": "c34df431-bbfa-4a03-be91-5e12938f8b69",
+                  "name": "Orders.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/account/orders?order_id=<string>&start_date=<string>&end_date=<string>&status=<string>&favorited=<boolean>&user_id=<string>&include_order_count=<boolean>&page=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "account",
+                        "orders"
+                      ],
+                      "query": [
+                        {
+                          "key": "order_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "start_date",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "end_date",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "status",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "favorited",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "include_order_count",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "key": "page",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"order_id\": \"<string>\",\n    \"cart_id\": \"<string>\",\n    \"status\": \"unplaced\",\n    \"total\": \"<integer>\"\n  },\n  {\n    \"order_id\": \"<string>\",\n    \"cart_id\": \"<string>\",\n    \"status\": \"in_progress\",\n    \"total\": \"<integer>\"\n  }\n]",
+                  "createdAt": "2026-10-22T02:04:57.000Z",
+                  "updatedAt": "2026-10-22T02:04:57.000Z",
+                  "uid": "35240-c34df431-bbfa-4a03-be91-5e12938f8b69"
+                },
+                {
+                  "id": "2dd820d0-76a5-409e-a741-fc6f7f7ba4a4",
+                  "name": "Missing Authorization",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/account/orders?order_id=<string>&start_date=<string>&end_date=<string>&status=<string>&favorited=<boolean>&user_id=<string>&include_order_count=<boolean>&page=0",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "account",
+                        "orders"
+                      ],
+                      "query": [
+                        {
+                          "key": "order_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "start_date",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "end_date",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "status",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "favorited",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "include_order_count",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "key": "page",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:04:57.000Z",
+                  "updatedAt": "2026-10-22T02:04:57.000Z",
+                  "uid": "35240-2dd820d0-76a5-409e-a741-fc6f7f7ba4a4"
+                }
+              ],
+              "createdAt": "2026-10-22T02:04:57.000Z",
+              "updatedAt": "2026-10-22T02:04:57.000Z",
+              "uid": "35240-405719d2-95cc-4d95-a8c9-e5e3a3b16151"
+            }
+          ],
+          "id": "ba555fb3-583b-486e-a7fd-cc4d2d9fa69e",
+          "createdAt": "2026-10-22T02:04:57.000Z",
+          "updatedAt": "2026-10-22T02:04:57.000Z",
+          "uid": "35240-ba555fb3-583b-486e-a7fd-cc4d2d9fa69e"
+        }
+      ],
+      "id": "cde7f461-e725-42b1-849b-8a4d284a7ded",
+      "createdAt": "2026-10-22T02:04:57.000Z",
+      "updatedAt": "2026-10-22T02:04:57.000Z",
+      "uid": "35240-cde7f461-e725-42b1-849b-8a4d284a7ded"
     }
   ],
   "auth": {
@@ -846,25 +879,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "Authorization"
+        "value": "Authorization",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "9e3835ca-64a8-4c6f-937a-a15e8aa9d3bf",
-    "name": "MealMe Food Ordering Carts Orders API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada. The API covers store and product search, store\nlookup, inventory/menu retrieval, product details, cart creation and\nmanagement, order creation and finalization, payment methods, MealMe\nConnect accounts, customer support chat, order tracking webhooks, places\nsearch, and geocoding. Every menu item and grocery product returned\nincludes real-time availability, prices, and customizations or modifiers.\nThe current reference is version 4.1.0.\n\nPaths in this specification mirror the documented MealMe endpoints under\nhttps://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,\nand `/order/order/v4`). Authentication uses an API key passed in the\nAuthorization header.\n\n\nContact Support:\n Name: MealMe API Reference",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mealme.ai"
     }
-  }
+  ]
 }

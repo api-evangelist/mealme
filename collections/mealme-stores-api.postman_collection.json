@@ -1,1175 +1,1170 @@
 {
+  "info": {
+    "_postman_id": "bc9c96f8-6aff-4312-bd20-2a8475065ce9",
+    "name": "MealMe Food Ordering Stores API",
+    "description": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada.\n\nContact Support:\n Name: MealMe API Reference",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:05:32.000Z",
+    "updatedAt": "2026-10-22T02:05:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bc9c96f8-6aff-4312-bd20-2a8475065ce9"
+  },
   "item": [
     {
-      "id": "0846bcc3-5ba6-4af6-9833-b1be4a63ae71",
-      "name": "Stores",
-      "description": {
-        "content": "Store lookup, inventory, and product details.",
-        "type": "text/plain"
-      },
+      "name": "utils",
       "item": [
         {
-          "id": "6a5024c3-de49-4074-bf9d-4e17a45f6c37",
-          "name": "Get a MealMe Store",
-          "request": {
-            "name": "Get a MealMe Store",
-            "description": {
-              "content": "Fetch stores by a comma-delimited list of store IDs (max 50).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "utils",
-                "store_lookup",
-                "v3"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "store_ids",
-                  "value": "<string>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "use_new_db",
-                  "value": "true"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "store_lookup",
+          "item": [
             {
-              "id": "b9ce7c07-8056-459e-b552-4c5c9425c70d",
-              "name": "Stores.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "utils",
-                    "store_lookup",
-                    "v3"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "store_ids",
-                      "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8"
-                    },
-                    {
-                      "key": "use_new_db",
-                      "value": "true"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
+              "name": "v3",
+              "item": [
+                {
+                  "name": "Get a MealMe Store",
+                  "id": "f454b9af-84e6-4487-ab83-679105d8d6a1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"_id\": \"8c9f33d5-d138-4a49-9a4f-162f195c89b8\",\n    \"name\": \"Tony's Pizza Napoletana\",\n    \"address\": \"188 King Street, San Francisco, CA 94107\",\n    \"type\": \"restaurant\",\n    \"is_open\": false,\n    \"phone_number\": \"+14155550123\",\n    \"cuisines\": [\n      \"Pizza\",\n      \"Italian\"\n    ],\n    \"rating\": 4.5,\n    \"miles\": 1.5,\n    \"quotes\": []\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a990bd20-8905-460c-8922-9b3dac43fc8a",
-              "name": "Input Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "utils",
-                    "store_lookup",
-                    "v3"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/utils/store_lookup/v3?store_ids=<string>&use_new_db=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "utils",
+                        "store_lookup",
+                        "v3"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "store_ids",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "use_new_db",
+                          "value": "true"
+                        }
+                      ]
+                    },
+                    "description": "Fetch stores by a comma-delimited list of store IDs (max 50)."
+                  },
+                  "response": [
                     {
-                      "key": "store_ids",
-                      "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8"
+                      "id": "c97d91eb-3107-412c-9477-07bc4a1c27ce",
+                      "name": "Stores.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/utils/store_lookup/v3?store_ids=<string>&use_new_db=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "utils",
+                            "store_lookup",
+                            "v3"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "store_ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "use_new_db",
+                              "value": "true"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"type\": \"grocery\",\n    \"is_open\": \"<boolean>\",\n    \"phone_number\": \"<string>\",\n    \"cuisines\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"rating\": \"<number>\",\n    \"miles\": \"<number>\"\n  },\n  {\n    \"_id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"address\": \"<string>\",\n    \"type\": \"grocery\",\n    \"is_open\": \"<boolean>\",\n    \"phone_number\": \"<string>\",\n    \"cuisines\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"rating\": \"<number>\",\n    \"miles\": \"<number>\"\n  }\n]",
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-c97d91eb-3107-412c-9477-07bc4a1c27ce"
                     },
                     {
-                      "key": "use_new_db",
-                      "value": "true"
+                      "id": "2093d99e-c651-45f6-92eb-4ea88047ed29",
+                      "name": "Input Validation Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/utils/store_lookup/v3?store_ids=<string>&use_new_db=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "utils",
+                            "store_lookup",
+                            "v3"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "store_ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "use_new_db",
+                              "value": "true"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-2093d99e-c651-45f6-92eb-4ea88047ed29"
+                    },
+                    {
+                      "id": "69d68cb0-43c4-4a8c-9a41-24e109c7f0b3",
+                      "name": "Missing Authorization",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/utils/store_lookup/v3?store_ids=<string>&use_new_db=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "utils",
+                            "store_lookup",
+                            "v3"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "store_ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "use_new_db",
+                              "value": "true"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-69d68cb0-43c4-4a8c-9a41-24e109c7f0b3"
+                    },
+                    {
+                      "id": "99288c1c-1779-41a7-b27d-5a47c1957b8a",
+                      "name": "Too Many Requests",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/utils/store_lookup/v3?store_ids=<string>&use_new_db=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "utils",
+                            "store_lookup",
+                            "v3"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "store_ids",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "use_new_db",
+                              "value": "true"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-99288c1c-1779-41a7-b27d-5a47c1957b8a"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "createdAt": "2026-10-22T02:05:33.000Z",
+                  "updatedAt": "2026-10-22T02:05:33.000Z",
+                  "uid": "35240-f454b9af-84e6-4487-ab83-679105d8d6a1"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3345260f-5f58-40c9-bd36-9a93647f98ee",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "utils",
-                    "store_lookup",
-                    "v3"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "store_ids",
-                      "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8"
-                    },
-                    {
-                      "key": "use_new_db",
-                      "value": "true"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f22ed16c-817b-4df4-9c06-b707af94f6fc",
-              "name": "Too Many Requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "utils",
-                    "store_lookup",
-                    "v3"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "store_ids",
-                      "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8"
-                    },
-                    {
-                      "key": "use_new_db",
-                      "value": "true"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "302cb0b7-8b31-45e1-b80e-723db881919d",
+              "createdAt": "2026-10-22T02:05:33.000Z",
+              "updatedAt": "2026-10-22T02:05:33.000Z",
+              "uid": "35240-302cb0b7-8b31-45e1-b80e-723db881919d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "333e169e-5296-4161-a231-d1cbed2d0e41",
+          "createdAt": "2026-10-22T02:05:33.000Z",
+          "updatedAt": "2026-10-22T02:05:33.000Z",
+          "uid": "35240-333e169e-5296-4161-a231-d1cbed2d0e41"
         },
         {
-          "id": "afcd5a1e-a6e6-4041-b094-b1e890db0980",
-          "name": "Add a Google Place to MealMe",
-          "request": {
-            "name": "Add a Google Place to MealMe",
-            "description": {
-              "content": "Add a store to MealMe by its Google Place identifier.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "utils",
-                "add_store"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "place_id",
-                  "value": "<string>",
-                  "description": "(Required) "
-                }
-              ],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "add_store",
+          "item": [
             {
-              "id": "58a0d38d-9e32-4faa-8ed2-c3bd57be3c97",
-              "name": "Store added.",
-              "originalRequest": {
+              "name": "Add a Google Place to MealMe",
+              "id": "8fca3d63-41b7-4723-8b19-d273ea21bf53",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
                 "url": {
+                  "raw": "{{baseUrl}}/utils/add_store?place_id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "utils",
                     "add_store"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "place_id",
-                      "value": "id_7b2c4e"
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Add a store to MealMe by its Google Place identifier."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "a26b5ed4-ee51-49d4-a351-2f8dc2ff9ed3",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "utils",
-                    "add_store"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "place_id",
-                      "value": "id_7b2c4e"
+                  "id": "bf84aa88-ccf6-45f0-ac39-bb0f3c7d7ebe",
+                  "name": "Store added.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/utils/add_store?place_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "utils",
+                        "add_store"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "place_id",
+                          "value": "<string>"
+                        }
+                      ]
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0a6de9a4-5c77-4f47-9be8-b9631e7742a2",
-          "name": "Get Inventory",
-          "request": {
-            "name": "Get Inventory",
-            "description": {
-              "content": "Retrieve a store's menu or grocery inventory.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "details",
-                "inventory",
-                "v4"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "store_id",
-                  "value": "<string>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "subcategory_id",
-                  "value": "<string>"
-                },
-                {
-                  "disabled": false,
-                  "key": "pickup",
-                  "value": "false"
-                },
-                {
-                  "disabled": false,
-                  "key": "include_quote",
-                  "value": "false"
-                },
-                {
-                  "disabled": false,
-                  "key": "include_customizations",
-                  "value": "true"
-                },
-                {
-                  "disabled": false,
-                  "key": "available",
-                  "value": "true"
-                },
-                {
-                  "disabled": false,
-                  "key": "page",
-                  "value": "<integer>"
-                },
-                {
-                  "disabled": false,
-                  "key": "menu_id",
-                  "value": "<string>"
-                }
-              ],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "65db88bc-5ab5-4ae1-af14-b6f0cda8fe83",
-              "name": "Inventory.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "details",
-                    "inventory",
-                    "v4"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "store_id",
-                      "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8"
-                    },
-                    {
-                      "key": "subcategory_id",
-                      "value": "id_7b2c4e"
-                    },
-                    {
-                      "key": "pickup",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_quote",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_customizations",
-                      "value": "true"
-                    },
-                    {
-                      "key": "available",
-                      "value": "true"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "menu_id",
-                      "value": "id_7b2c4e"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1c686a7d-0b56-4a74-b700-c89a8217f71b",
-              "name": "Input Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "details",
-                    "inventory",
-                    "v4"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "store_id",
-                      "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8"
-                    },
-                    {
-                      "key": "subcategory_id",
-                      "value": "id_7b2c4e"
-                    },
-                    {
-                      "key": "pickup",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_quote",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_customizations",
-                      "value": "true"
-                    },
-                    {
-                      "key": "available",
-                      "value": "true"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "menu_id",
-                      "value": "id_7b2c4e"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "32d52f0c-4285-4f3d-a2b1-e6f0617c290c",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "details",
-                    "inventory",
-                    "v4"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "store_id",
-                      "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8"
-                    },
-                    {
-                      "key": "subcategory_id",
-                      "value": "id_7b2c4e"
-                    },
-                    {
-                      "key": "pickup",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_quote",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_customizations",
-                      "value": "true"
-                    },
-                    {
-                      "key": "available",
-                      "value": "true"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "menu_id",
-                      "value": "id_7b2c4e"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "84520af2-4496-4db2-8870-c3e8c61a0232",
-              "name": "Too Many Requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "details",
-                    "inventory",
-                    "v4"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "store_id",
-                      "value": "8c9f33d5-d138-4a49-9a4f-162f195c89b8"
-                    },
-                    {
-                      "key": "subcategory_id",
-                      "value": "id_7b2c4e"
-                    },
-                    {
-                      "key": "pickup",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_quote",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_customizations",
-                      "value": "true"
-                    },
-                    {
-                      "key": "available",
-                      "value": "true"
-                    },
-                    {
-                      "key": "page",
-                      "value": "0"
-                    },
-                    {
-                      "key": "menu_id",
-                      "value": "id_7b2c4e"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "14fc3309-c3ea-4e81-9e3a-fc4fb98b87fa",
-          "name": "Get Product Details",
-          "request": {
-            "name": "Get Product Details",
-            "description": {
-              "content": "Retrieve details for a single product including customizations.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "details",
-                "product",
-                "v2"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "product_id",
-                  "value": "<string>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "pickup",
-                  "value": "false"
-                },
-                {
-                  "disabled": false,
-                  "key": "include_quote",
-                  "value": "false"
-                },
-                {
-                  "disabled": false,
-                  "key": "user_latitude",
-                  "value": "<number>"
-                },
-                {
-                  "disabled": false,
-                  "key": "user_longitude",
-                  "value": "<number>"
-                },
-                {
-                  "disabled": false,
-                  "key": "include_fees",
-                  "value": "true"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5648df3e-57ec-4164-8eb3-2076a693eaf6",
-              "name": "Product.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "details",
-                    "product",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "product_id",
-                      "value": "prod_5a3e9d12"
-                    },
-                    {
-                      "key": "pickup",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_quote",
-                      "value": "false"
-                    },
-                    {
-                      "key": "user_latitude",
-                      "value": "37.7786357"
-                    },
-                    {
-                      "key": "user_longitude",
-                      "value": "-122.3918135"
-                    },
-                    {
-                      "key": "include_fees",
-                      "value": "true"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"product_id\": \"prod_5a3e9d12\",\n  \"name\": \"Tony's Pizza Napoletana\",\n  \"price\": 1299,\n  \"available\": false,\n  \"store_name\": \"Tony's Pizza Napoletana\",\n  \"menu_id\": \"id_7b2c4e\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cf2cfc05-4f71-4336-a927-2b6b130625a8",
-              "name": "Input Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "details",
-                    "product",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "product_id",
-                      "value": "prod_5a3e9d12"
-                    },
-                    {
-                      "key": "pickup",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_quote",
-                      "value": "false"
-                    },
-                    {
-                      "key": "user_latitude",
-                      "value": "37.7786357"
-                    },
-                    {
-                      "key": "user_longitude",
-                      "value": "-122.3918135"
-                    },
-                    {
-                      "key": "include_fees",
-                      "value": "true"
-                    }
-                  ],
-                  "variable": []
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:05:33.000Z",
+                  "updatedAt": "2026-10-22T02:05:33.000Z",
+                  "uid": "35240-bf84aa88-ccf6-45f0-ac39-bb0f3c7d7ebe"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "df35509c-a704-40b5-89ce-99de92c6f145",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "details",
-                    "product",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "product_id",
-                      "value": "prod_5a3e9d12"
-                    },
-                    {
-                      "key": "pickup",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_quote",
-                      "value": "false"
-                    },
-                    {
-                      "key": "user_latitude",
-                      "value": "37.7786357"
-                    },
-                    {
-                      "key": "user_longitude",
-                      "value": "-122.3918135"
-                    },
-                    {
-                      "key": "include_fees",
-                      "value": "true"
+                  "id": "264f141f-5891-47aa-92e3-7a650576543f",
+                  "name": "Missing Authorization",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/utils/add_store?place_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "utils",
+                        "add_store"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "place_id",
+                          "value": "<string>"
+                        }
+                      ]
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:05:33.000Z",
+                  "updatedAt": "2026-10-22T02:05:33.000Z",
+                  "uid": "35240-264f141f-5891-47aa-92e3-7a650576543f"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d5c1c9d2-1662-45d5-917f-e128d85705c7",
-              "name": "Product Unavailable",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "details",
-                    "product",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "product_id",
-                      "value": "prod_5a3e9d12"
-                    },
-                    {
-                      "key": "pickup",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_quote",
-                      "value": "false"
-                    },
-                    {
-                      "key": "user_latitude",
-                      "value": "37.7786357"
-                    },
-                    {
-                      "key": "user_longitude",
-                      "value": "-122.3918135"
-                    },
-                    {
-                      "key": "include_fees",
-                      "value": "true"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Acceptable",
-              "code": 406,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4a3e9ea6-b4b7-46b3-92d5-4cb8aa5b2025",
-              "name": "Too Many Requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "details",
-                    "product",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "product_id",
-                      "value": "prod_5a3e9d12"
-                    },
-                    {
-                      "key": "pickup",
-                      "value": "false"
-                    },
-                    {
-                      "key": "include_quote",
-                      "value": "false"
-                    },
-                    {
-                      "key": "user_latitude",
-                      "value": "37.7786357"
-                    },
-                    {
-                      "key": "user_longitude",
-                      "value": "-122.3918135"
-                    },
-                    {
-                      "key": "include_fees",
-                      "value": "true"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T02:05:33.000Z",
+              "updatedAt": "2026-10-22T02:05:33.000Z",
+              "uid": "35240-8fca3d63-41b7-4723-8b19-d273ea21bf53"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "9ced382e-df29-4d96-999d-8007910567b7",
+          "createdAt": "2026-10-22T02:05:33.000Z",
+          "updatedAt": "2026-10-22T02:05:33.000Z",
+          "uid": "35240-9ced382e-df29-4d96-999d-8007910567b7"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "c2e0878c-27cb-40fd-af8a-8a0408887f14",
+      "createdAt": "2026-10-22T02:05:33.000Z",
+      "updatedAt": "2026-10-22T02:05:33.000Z",
+      "uid": "35240-c2e0878c-27cb-40fd-af8a-8a0408887f14"
+    },
     {
-      "type": "string",
-      "value": "https://api.mealme.ai",
-      "key": "baseUrl"
+      "name": "details",
+      "item": [
+        {
+          "name": "inventory",
+          "item": [
+            {
+              "name": "v4",
+              "item": [
+                {
+                  "name": "Get Inventory",
+                  "id": "6f9fbfa3-e795-4f1c-9caa-5683c7f82aa9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/details/inventory/v4?store_id=<string>&subcategory_id=<string>&pickup=false&include_quote=false&include_customizations=true&available=true&page=<integer>&menu_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "details",
+                        "inventory",
+                        "v4"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "store_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "subcategory_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "pickup",
+                          "value": "false"
+                        },
+                        {
+                          "key": "include_quote",
+                          "value": "false"
+                        },
+                        {
+                          "key": "include_customizations",
+                          "value": "true"
+                        },
+                        {
+                          "key": "available",
+                          "value": "true"
+                        },
+                        {
+                          "key": "page",
+                          "value": "<integer>"
+                        },
+                        {
+                          "key": "menu_id",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a store's menu or grocery inventory."
+                  },
+                  "response": [
+                    {
+                      "id": "53f66542-a98e-43ee-a7ea-1df862709785",
+                      "name": "Inventory.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/details/inventory/v4?store_id=<string>&subcategory_id=<string>&pickup=false&include_quote=false&include_customizations=true&available=true&page=<integer>&menu_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "details",
+                            "inventory",
+                            "v4"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "store_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "subcategory_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "pickup",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_quote",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_customizations",
+                              "value": "true"
+                            },
+                            {
+                              "key": "available",
+                              "value": "true"
+                            },
+                            {
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "menu_id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-53f66542-a98e-43ee-a7ea-1df862709785"
+                    },
+                    {
+                      "id": "27cb949e-81de-4f14-a8e8-8e322f9d3661",
+                      "name": "Input Validation Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/details/inventory/v4?store_id=<string>&subcategory_id=<string>&pickup=false&include_quote=false&include_customizations=true&available=true&page=<integer>&menu_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "details",
+                            "inventory",
+                            "v4"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "store_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "subcategory_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "pickup",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_quote",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_customizations",
+                              "value": "true"
+                            },
+                            {
+                              "key": "available",
+                              "value": "true"
+                            },
+                            {
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "menu_id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-27cb949e-81de-4f14-a8e8-8e322f9d3661"
+                    },
+                    {
+                      "id": "b37bae4a-d4a7-435f-a6ad-68ecf03362c7",
+                      "name": "Missing Authorization",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/details/inventory/v4?store_id=<string>&subcategory_id=<string>&pickup=false&include_quote=false&include_customizations=true&available=true&page=<integer>&menu_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "details",
+                            "inventory",
+                            "v4"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "store_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "subcategory_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "pickup",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_quote",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_customizations",
+                              "value": "true"
+                            },
+                            {
+                              "key": "available",
+                              "value": "true"
+                            },
+                            {
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "menu_id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-b37bae4a-d4a7-435f-a6ad-68ecf03362c7"
+                    },
+                    {
+                      "id": "6efe662c-1e42-4719-b7b9-bc26b25cb57b",
+                      "name": "Too Many Requests",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/details/inventory/v4?store_id=<string>&subcategory_id=<string>&pickup=false&include_quote=false&include_customizations=true&available=true&page=<integer>&menu_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "details",
+                            "inventory",
+                            "v4"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "store_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "subcategory_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "pickup",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_quote",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_customizations",
+                              "value": "true"
+                            },
+                            {
+                              "key": "available",
+                              "value": "true"
+                            },
+                            {
+                              "key": "page",
+                              "value": "<integer>"
+                            },
+                            {
+                              "key": "menu_id",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-6efe662c-1e42-4719-b7b9-bc26b25cb57b"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:05:33.000Z",
+                  "updatedAt": "2026-10-22T02:05:33.000Z",
+                  "uid": "35240-6f9fbfa3-e795-4f1c-9caa-5683c7f82aa9"
+                }
+              ],
+              "id": "c3f1a78f-298b-4bec-8827-5e262a88fb56",
+              "createdAt": "2026-10-22T02:05:33.000Z",
+              "updatedAt": "2026-10-22T02:05:33.000Z",
+              "uid": "35240-c3f1a78f-298b-4bec-8827-5e262a88fb56"
+            }
+          ],
+          "id": "ae639a78-1cde-4492-a535-a6dcc56e29f3",
+          "createdAt": "2026-10-22T02:05:33.000Z",
+          "updatedAt": "2026-10-22T02:05:33.000Z",
+          "uid": "35240-ae639a78-1cde-4492-a535-a6dcc56e29f3"
+        },
+        {
+          "name": "product",
+          "item": [
+            {
+              "name": "v2",
+              "item": [
+                {
+                  "name": "Get Product Details",
+                  "id": "5208fc52-4cf1-42e9-a64d-7db8294fdf70",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/details/product/v2?product_id=<string>&pickup=false&include_quote=false&user_latitude=<number>&user_longitude=<number>&include_fees=true",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "details",
+                        "product",
+                        "v2"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "product_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "pickup",
+                          "value": "false"
+                        },
+                        {
+                          "key": "include_quote",
+                          "value": "false"
+                        },
+                        {
+                          "key": "user_latitude",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "user_longitude",
+                          "value": "<number>"
+                        },
+                        {
+                          "key": "include_fees",
+                          "value": "true"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve details for a single product including customizations."
+                  },
+                  "response": [
+                    {
+                      "id": "aa009bdb-9566-4a51-89eb-71c6075d2dd7",
+                      "name": "Product.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/details/product/v2?product_id=<string>&pickup=false&include_quote=false&user_latitude=<number>&user_longitude=<number>&include_fees=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "details",
+                            "product",
+                            "v2"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "product_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "pickup",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_quote",
+                              "value": "false"
+                            },
+                            {
+                              "key": "user_latitude",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "user_longitude",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "include_fees",
+                              "value": "true"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"product_id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"price\": \"<integer>\",\n  \"available\": \"<boolean>\",\n  \"store_name\": \"<string>\",\n  \"menu_id\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-aa009bdb-9566-4a51-89eb-71c6075d2dd7"
+                    },
+                    {
+                      "id": "de4a604c-c65d-4c03-87a2-acc231923c86",
+                      "name": "Input Validation Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/details/product/v2?product_id=<string>&pickup=false&include_quote=false&user_latitude=<number>&user_longitude=<number>&include_fees=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "details",
+                            "product",
+                            "v2"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "product_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "pickup",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_quote",
+                              "value": "false"
+                            },
+                            {
+                              "key": "user_latitude",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "user_longitude",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "include_fees",
+                              "value": "true"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-de4a604c-c65d-4c03-87a2-acc231923c86"
+                    },
+                    {
+                      "id": "a617e90a-81e7-4862-a3b1-b777c57fab7f",
+                      "name": "Missing Authorization",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/details/product/v2?product_id=<string>&pickup=false&include_quote=false&user_latitude=<number>&user_longitude=<number>&include_fees=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "details",
+                            "product",
+                            "v2"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "product_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "pickup",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_quote",
+                              "value": "false"
+                            },
+                            {
+                              "key": "user_latitude",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "user_longitude",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "include_fees",
+                              "value": "true"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-a617e90a-81e7-4862-a3b1-b777c57fab7f"
+                    },
+                    {
+                      "id": "12202bd1-36b4-4409-af0f-31ff0d972909",
+                      "name": "Product Unavailable",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/details/product/v2?product_id=<string>&pickup=false&include_quote=false&user_latitude=<number>&user_longitude=<number>&include_fees=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "details",
+                            "product",
+                            "v2"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "product_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "pickup",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_quote",
+                              "value": "false"
+                            },
+                            {
+                              "key": "user_latitude",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "user_longitude",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "include_fees",
+                              "value": "true"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Acceptable",
+                      "code": 406,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-12202bd1-36b4-4409-af0f-31ff0d972909"
+                    },
+                    {
+                      "id": "41a7ff46-fc2c-47bc-9f3d-304b59a126d1",
+                      "name": "Too Many Requests",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/details/product/v2?product_id=<string>&pickup=false&include_quote=false&user_latitude=<number>&user_longitude=<number>&include_fees=true",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "details",
+                            "product",
+                            "v2"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ",
+                              "key": "product_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "pickup",
+                              "value": "false"
+                            },
+                            {
+                              "key": "include_quote",
+                              "value": "false"
+                            },
+                            {
+                              "key": "user_latitude",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "user_longitude",
+                              "value": "<number>"
+                            },
+                            {
+                              "key": "include_fees",
+                              "value": "true"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:33.000Z",
+                      "updatedAt": "2026-10-22T02:05:33.000Z",
+                      "uid": "35240-41a7ff46-fc2c-47bc-9f3d-304b59a126d1"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:05:33.000Z",
+                  "updatedAt": "2026-10-22T02:05:33.000Z",
+                  "uid": "35240-5208fc52-4cf1-42e9-a64d-7db8294fdf70"
+                }
+              ],
+              "id": "edfb1d39-89e4-4bc4-b8ac-e366524c2a99",
+              "createdAt": "2026-10-22T02:05:33.000Z",
+              "updatedAt": "2026-10-22T02:05:33.000Z",
+              "uid": "35240-edfb1d39-89e4-4bc4-b8ac-e366524c2a99"
+            }
+          ],
+          "id": "418fc6d4-b4c8-41b4-acf3-5423c8217f7e",
+          "createdAt": "2026-10-22T02:05:33.000Z",
+          "updatedAt": "2026-10-22T02:05:33.000Z",
+          "uid": "35240-418fc6d4-b4c8-41b4-acf3-5423c8217f7e"
+        }
+      ],
+      "id": "4773a2b3-d6ac-41d8-8284-9096a68b2b7b",
+      "createdAt": "2026-10-22T02:05:33.000Z",
+      "updatedAt": "2026-10-22T02:05:33.000Z",
+      "uid": "35240-4773a2b3-d6ac-41d8-8284-9096a68b2b7b"
     }
   ],
   "auth": {
@@ -1177,25 +1172,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "Authorization"
+        "value": "Authorization",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "cd7117ed-e43a-4943-a902-0fba9fbc7c31",
-    "name": "MealMe Food Ordering Carts Stores API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada. The API covers store and product search, store\nlookup, inventory/menu retrieval, product details, cart creation and\nmanagement, order creation and finalization, payment methods, MealMe\nConnect accounts, customer support chat, order tracking webhooks, places\nsearch, and geocoding. Every menu item and grocery product returned\nincludes real-time availability, prices, and customizations or modifiers.\nThe current reference is version 4.1.0.\n\nPaths in this specification mirror the documented MealMe endpoints under\nhttps://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,\nand `/order/order/v4`). Authentication uses an API key passed in the\nAuthorization header.\n\n\nContact Support:\n Name: MealMe API Reference",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mealme.ai"
     }
-  }
+  ]
 }

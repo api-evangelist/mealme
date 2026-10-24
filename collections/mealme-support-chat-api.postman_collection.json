@@ -1,651 +1,648 @@
 {
+  "info": {
+    "_postman_id": "b7539f7f-736c-411b-afa6-b7aa681491de",
+    "name": "MealMe Food Ordering Support Chat API",
+    "description": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada.\n\nContact Support:\n Name: MealMe API Reference",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:05:38.000Z",
+    "updatedAt": "2026-10-22T02:05:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b7539f7f-736c-411b-afa6-b7aa681491de"
+  },
   "item": [
     {
-      "id": "d2f9637a-088e-4e93-b5be-06dc3fbb2de0",
-      "name": "Support Chat",
-      "description": {
-        "content": "Customer support chat.",
-        "type": "text/plain"
-      },
+      "name": "chat_initiate",
       "item": [
         {
-          "id": "e141027e-4aa4-4025-aa45-26b6fdeb4c5d",
           "name": "Initiate Customer Support Chat",
+          "id": "8fe8c5c7-7f66-4417-aeed-18451d231bac",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Initiate Customer Support Chat",
-            "description": {
-              "content": "Initiate a customer support chat session.",
-              "type": "text/plain"
-            },
+            "method": "POST",
+            "header": [],
             "url": {
-              "path": [
-                "chat_initiate"
-              ],
+              "raw": "{{baseUrl}}/chat_initiate",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
+              "path": [
+                "chat_initiate"
+              ]
             },
-            "method": "POST",
-            "auth": null
+            "description": "Initiate a customer support chat session."
           },
           "response": [
             {
-              "id": "9de27af0-d493-4bb7-a5a3-933fc6dc8891",
+              "id": "3f9de12e-a4e2-4a01-9370-0328f1e99681",
               "name": "Chat initiated.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "chat_initiate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "Authorization",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/chat_initiate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat_initiate"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:39.000Z",
+              "updatedAt": "2026-10-22T02:05:39.000Z",
+              "uid": "35240-3f9de12e-a4e2-4a01-9370-0328f1e99681"
             },
             {
-              "id": "878e4c42-852d-4194-91ba-8cf87935a97d",
+              "id": "a5a05ed5-6444-4e9b-8600-15d968dae9a1",
               "name": "Missing Authorization",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "chat_initiate"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "Authorization",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/chat_initiate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "chat_initiate"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:39.000Z",
+              "updatedAt": "2026-10-22T02:05:39.000Z",
+              "uid": "35240-a5a05ed5-6444-4e9b-8600-15d968dae9a1"
             }
           ],
-          "event": [],
+          "createdAt": "2026-10-22T02:05:38.000Z",
+          "updatedAt": "2026-10-22T02:05:38.000Z",
+          "uid": "35240-8fe8c5c7-7f66-4417-aeed-18451d231bac"
+        }
+      ],
+      "id": "7bb448d7-fcbe-413a-985b-f6b34dc5c7ce",
+      "createdAt": "2026-10-22T02:05:38.000Z",
+      "updatedAt": "2026-10-22T02:05:38.000Z",
+      "uid": "35240-7bb448d7-fcbe-413a-985b-f6b34dc5c7ce"
+    },
+    {
+      "name": "exit_chat",
+      "item": [
+        {
+          "name": "Exit a Customer Support Chat",
+          "id": "1fc38def-81ac-4956-9f0a-8d4aa1791754",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4bafb133-5ba6-45dc-938d-4eedb0ea843c",
-          "name": "Exit a Customer Support Chat",
+          },
           "request": {
-            "name": "Exit a Customer Support Chat",
-            "description": {
-              "content": "Exit a customer support chat session.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "exit_chat"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
               "raw": "{\n  \"chat_id\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/exit_chat",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "exit_chat"
+              ]
+            },
+            "description": "Exit a customer support chat session."
           },
           "response": [
             {
-              "id": "f11599bc-02bc-4d8f-adce-6eb6fdfb4f49",
+              "id": "9983ca99-388c-4f4b-9c5a-724c0829019c",
               "name": "Exited.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "exit_chat"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "Authorization",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"chat_id\": \"id_7b2c4e\"\n}",
+                  "raw": "{\n  \"chat_id\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/exit_chat",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "exit_chat"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:39.000Z",
+              "updatedAt": "2026-10-22T02:05:39.000Z",
+              "uid": "35240-9983ca99-388c-4f4b-9c5a-724c0829019c"
             },
             {
-              "id": "e185920e-a783-47a4-bf3f-2fc85ab906c1",
+              "id": "f966f9ba-9dc9-4ef4-af7c-2a5ef8bc35e7",
               "name": "Missing Authorization",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "exit_chat"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "Authorization",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"chat_id\": \"id_7b2c4e\"\n}",
+                  "raw": "{\n  \"chat_id\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/exit_chat",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "exit_chat"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:39.000Z",
+              "updatedAt": "2026-10-22T02:05:39.000Z",
+              "uid": "35240-f966f9ba-9dc9-4ef4-af7c-2a5ef8bc35e7"
             }
           ],
-          "event": [],
+          "createdAt": "2026-10-22T02:05:38.000Z",
+          "updatedAt": "2026-10-22T02:05:38.000Z",
+          "uid": "35240-1fc38def-81ac-4956-9f0a-8d4aa1791754"
+        }
+      ],
+      "id": "3a5f06e0-6c16-4ff2-a164-0276ae4f16d7",
+      "createdAt": "2026-10-22T02:05:38.000Z",
+      "updatedAt": "2026-10-22T02:05:38.000Z",
+      "uid": "35240-3a5f06e0-6c16-4ff2-a164-0276ae4f16d7"
+    },
+    {
+      "name": "send_message",
+      "item": [
+        {
+          "name": "Send a Customer Support Chat Message",
+          "id": "dd96cf4f-3ac8-4e08-9e58-7930c91ef489",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "206ce49d-3d85-49b7-8f27-a92e61d8c1f8",
-          "name": "Send a Customer Support Chat Message",
+          },
           "request": {
-            "name": "Send a Customer Support Chat Message",
-            "description": {
-              "content": "Send a message in a customer support chat.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "send_message"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
               "raw": "{\n  \"chat_id\": \"<string>\",\n  \"message\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/send_message",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "send_message"
+              ]
+            },
+            "description": "Send a message in a customer support chat."
           },
           "response": [
             {
-              "id": "738bf2d6-a8de-4521-852b-3ea991f0255f",
+              "id": "01ac6c54-e9c4-4f41-a8f6-d8c386a9b385",
               "name": "Message sent.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "send_message"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "Authorization",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"chat_id\": \"id_7b2c4e\",\n  \"message\": \"Where is my order?\"\n}",
+                  "raw": "{\n  \"chat_id\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/send_message",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "send_message"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:39.000Z",
+              "updatedAt": "2026-10-22T02:05:39.000Z",
+              "uid": "35240-01ac6c54-e9c4-4f41-a8f6-d8c386a9b385"
             },
             {
-              "id": "e4553d73-87a4-4aa9-abe0-7bd2824fec40",
+              "id": "74e8b655-643c-435d-bba6-f61b53a017ab",
               "name": "Missing Authorization",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "send_message"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "Authorization",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"chat_id\": \"id_7b2c4e\",\n  \"message\": \"Where is my order?\"\n}",
+                  "raw": "{\n  \"chat_id\": \"<string>\",\n  \"message\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/send_message",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "send_message"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:39.000Z",
+              "updatedAt": "2026-10-22T02:05:39.000Z",
+              "uid": "35240-74e8b655-643c-435d-bba6-f61b53a017ab"
             }
           ],
-          "event": [],
+          "createdAt": "2026-10-22T02:05:38.000Z",
+          "updatedAt": "2026-10-22T02:05:38.000Z",
+          "uid": "35240-dd96cf4f-3ac8-4e08-9e58-7930c91ef489"
+        }
+      ],
+      "id": "7bf62bbe-e37c-4f49-aa49-b014b9a87341",
+      "createdAt": "2026-10-22T02:05:38.000Z",
+      "updatedAt": "2026-10-22T02:05:38.000Z",
+      "uid": "35240-7bf62bbe-e37c-4f49-aa49-b014b9a87341"
+    },
+    {
+      "name": "read_message",
+      "item": [
+        {
+          "name": "Mark Chat Messages as Read",
+          "id": "96aaae03-dcf6-4584-94f8-35ab4789a705",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7d1f4ac2-8a0e-4ef0-b90c-ab988249f754",
-          "name": "Mark Chat Messages as Read",
+          },
           "request": {
-            "name": "Mark Chat Messages as Read",
-            "description": {
-              "content": "Mark customer support chat messages as read.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "read_message"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
               "raw": "{\n  \"chat_id\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
-          },
-          "response": [
-            {
-              "id": "7886d8ff-3733-4e69-8351-50b87b0a3fcb",
-              "name": "Marked read.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "read_message"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"chat_id\": \"id_7b2c4e\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "22b595b2-d0ea-47f5-b427-e3c062914edb",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "read_message"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"chat_id\": \"id_7b2c4e\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "211a31e1-adb3-4561-a61b-4de7e0ab36d6",
-          "name": "Fetch Customer Support Chat IDs",
-          "request": {
-            "name": "Fetch Customer Support Chat IDs",
-            "description": {
-              "content": "Fetch the chat IDs available for the account.",
-              "type": "text/plain"
             },
             "url": {
-              "path": [
-                "fetch_chat_ids"
-              ],
+              "raw": "{{baseUrl}}/read_message",
               "host": [
                 "{{baseUrl}}"
               ],
-              "query": [],
-              "variable": []
+              "path": [
+                "read_message"
+              ]
             },
-            "method": "POST",
-            "auth": null
+            "description": "Mark customer support chat messages as read."
           },
           "response": [
             {
-              "id": "7fb781c8-b2b8-43c0-a537-b74e5b4b32dd",
-              "name": "Chat IDs.",
+              "id": "e1748fb7-2151-4c0b-8d29-5bb90b5dea08",
+              "name": "Marked read.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "fetch_chat_ids"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "Authorization",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chat_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/read_message",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "read_message"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:39.000Z",
+              "updatedAt": "2026-10-22T02:05:39.000Z",
+              "uid": "35240-e1748fb7-2151-4c0b-8d29-5bb90b5dea08"
             },
             {
-              "id": "e6b6d097-07d2-489c-b2a2-ca79f3806c73",
+              "id": "dcb76012-3a0c-486c-ba11-83771f693f95",
               "name": "Missing Authorization",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "fetch_chat_ids"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "Authorization",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
-                "body": {}
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"chat_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/read_message",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "read_message"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:39.000Z",
+              "updatedAt": "2026-10-22T02:05:39.000Z",
+              "uid": "35240-dcb76012-3a0c-486c-ba11-83771f693f95"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T02:05:38.000Z",
+          "updatedAt": "2026-10-22T02:05:38.000Z",
+          "uid": "35240-96aaae03-dcf6-4584-94f8-35ab4789a705"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "8fa43495-ccbd-40b8-9f4a-de5bd69b923c",
+      "createdAt": "2026-10-22T02:05:38.000Z",
+      "updatedAt": "2026-10-22T02:05:38.000Z",
+      "uid": "35240-8fa43495-ccbd-40b8-9f4a-de5bd69b923c"
+    },
     {
-      "type": "string",
-      "value": "https://api.mealme.ai",
-      "key": "baseUrl"
+      "name": "fetch_chat_ids",
+      "item": [
+        {
+          "name": "Fetch Customer Support Chat IDs",
+          "id": "669fdc7b-c199-45bb-a3e7-33a7c05944a6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/fetch_chat_ids",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fetch_chat_ids"
+              ]
+            },
+            "description": "Fetch the chat IDs available for the account."
+          },
+          "response": [
+            {
+              "id": "7093e765-41b5-48cd-bf49-ee8cd1872fa8",
+              "name": "Chat IDs.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fetch_chat_ids",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fetch_chat_ids"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:39.000Z",
+              "updatedAt": "2026-10-22T02:05:39.000Z",
+              "uid": "35240-7093e765-41b5-48cd-bf49-ee8cd1872fa8"
+            },
+            {
+              "id": "81d44361-65bb-4ae0-b05d-4119ffa7fdf6",
+              "name": "Missing Authorization",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fetch_chat_ids",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fetch_chat_ids"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:39.000Z",
+              "updatedAt": "2026-10-22T02:05:39.000Z",
+              "uid": "35240-81d44361-65bb-4ae0-b05d-4119ffa7fdf6"
+            }
+          ],
+          "createdAt": "2026-10-22T02:05:38.000Z",
+          "updatedAt": "2026-10-22T02:05:38.000Z",
+          "uid": "35240-669fdc7b-c199-45bb-a3e7-33a7c05944a6"
+        }
+      ],
+      "id": "f5edc67c-c7e8-4817-b605-ebc0d1c34de2",
+      "createdAt": "2026-10-22T02:05:38.000Z",
+      "updatedAt": "2026-10-22T02:05:38.000Z",
+      "uid": "35240-f5edc67c-c7e8-4817-b605-ebc0d1c34de2"
     }
   ],
   "auth": {
@@ -653,25 +650,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "Authorization"
+        "value": "Authorization",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "7967d637-1d49-49e8-bbeb-bf36218078df",
-    "name": "MealMe Food Ordering Carts Support Chat API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada. The API covers store and product search, store\nlookup, inventory/menu retrieval, product details, cart creation and\nmanagement, order creation and finalization, payment methods, MealMe\nConnect accounts, customer support chat, order tracking webhooks, places\nsearch, and geocoding. Every menu item and grocery product returned\nincludes real-time availability, prices, and customizations or modifiers.\nThe current reference is version 4.1.0.\n\nPaths in this specification mirror the documented MealMe endpoints under\nhttps://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,\nand `/order/order/v4`). Authentication uses an API key passed in the\nAuthorization header.\n\n\nContact Support:\n Name: MealMe API Reference",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mealme.ai"
     }
-  }
+  ]
 }

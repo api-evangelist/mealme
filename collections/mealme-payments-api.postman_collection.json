@@ -1,801 +1,833 @@
 {
+  "info": {
+    "_postman_id": "902b977f-1028-4f67-8366-8b7d902d35a9",
+    "name": "MealMe Food Ordering Payments API",
+    "description": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada.\n\nContact Support:\n Name: MealMe API Reference",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T02:05:02.000Z",
+    "updatedAt": "2026-10-22T02:05:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-902b977f-1028-4f67-8366-8b7d902d35a9"
+  },
   "item": [
     {
-      "id": "bb859876-b2be-4294-888a-cf9e22714985",
-      "name": "Payments",
-      "description": {
-        "content": "Payment method management and payment intents.",
-        "type": "text/plain"
-      },
+      "name": "payment",
       "item": [
         {
-          "id": "6ff8be09-99df-41a2-9bef-9b9d0c6c97de",
-          "name": "Create a Payment Method",
-          "request": {
-            "name": "Create a Payment Method",
-            "description": {
-              "content": "Create a payment method for a user.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "payment",
-                "create",
-                "v2"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"user_email\": \"<email>\",\n  \"user_id\": \"<string>\",\n  \"payment_method\": \"<object>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "create",
+          "item": [
             {
-              "id": "134f38fc-5c00-48b7-bbed-0c971cc06498",
-              "name": "Payment method created.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "payment",
-                    "create",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
+              "name": "v2",
+              "item": [
+                {
+                  "name": "Create a Payment Method",
+                  "id": "1a2190dc-7d95-4f96-a9be-450dd1da9669",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"user_email\": \"<email>\",\n  \"user_id\": \"<string>\",\n  \"payment_method\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payment/create/v2",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment",
+                        "create",
+                        "v2"
+                      ]
+                    },
+                    "description": "Create a payment method for a user."
+                  },
+                  "response": [
+                    {
+                      "id": "5fbc3256-b3e2-4034-87da-f5b36f62237d",
+                      "name": "Payment method created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_email\": \"<email>\",\n  \"user_id\": \"<string>\",\n  \"payment_method\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payment/create/v2",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment",
+                            "create",
+                            "v2"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"payment_method_id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"last4\": \"<string>\"\n}",
+                      "createdAt": "2026-10-22T02:05:03.000Z",
+                      "updatedAt": "2026-10-22T02:05:03.000Z",
+                      "uid": "35240-5fbc3256-b3e2-4034-87da-f5b36f62237d"
+                    },
+                    {
+                      "id": "9dc433e4-d1b0-40c6-991d-3083c74342d4",
+                      "name": "Input Validation Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_email\": \"<email>\",\n  \"user_id\": \"<string>\",\n  \"payment_method\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payment/create/v2",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment",
+                            "create",
+                            "v2"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:03.000Z",
+                      "updatedAt": "2026-10-22T02:05:03.000Z",
+                      "uid": "35240-9dc433e4-d1b0-40c6-991d-3083c74342d4"
+                    },
+                    {
+                      "id": "540daf5d-220d-4a81-8a7d-63b290d6503e",
+                      "name": "Missing Authorization",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_email\": \"<email>\",\n  \"user_id\": \"<string>\",\n  \"payment_method\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payment/create/v2",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment",
+                            "create",
+                            "v2"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:03.000Z",
+                      "updatedAt": "2026-10-22T02:05:03.000Z",
+                      "uid": "35240-540daf5d-220d-4a81-8a7d-63b290d6503e"
+                    },
+                    {
+                      "id": "17b68f39-3ae5-4fbe-9473-25c4c0524d83",
+                      "name": "User ID does not match user email",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_email\": \"<email>\",\n  \"user_id\": \"<string>\",\n  \"payment_method\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payment/create/v2",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment",
+                            "create",
+                            "v2"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:03.000Z",
+                      "updatedAt": "2026-10-22T02:05:03.000Z",
+                      "uid": "35240-17b68f39-3ae5-4fbe-9473-25c4c0524d83"
+                    },
+                    {
+                      "id": "e2000e2c-9fba-4496-8dfe-cd17f009f856",
+                      "name": "Too Many Requests",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"user_email\": \"<email>\",\n  \"user_id\": \"<string>\",\n  \"payment_method\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/payment/create/v2",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "payment",
+                            "create",
+                            "v2"
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-22T02:05:03.000Z",
+                      "updatedAt": "2026-10-22T02:05:03.000Z",
+                      "uid": "35240-e2000e2c-9fba-4496-8dfe-cd17f009f856"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T02:05:03.000Z",
+                  "updatedAt": "2026-10-22T02:05:03.000Z",
+                  "uid": "35240-1a2190dc-7d95-4f96-a9be-450dd1da9669"
+                }
+              ],
+              "id": "e6c6d3e8-23c0-451d-b4ee-0f44c7b9beb1",
+              "createdAt": "2026-10-22T02:05:03.000Z",
+              "updatedAt": "2026-10-22T02:05:03.000Z",
+              "uid": "35240-e6c6d3e8-23c0-451d-b4ee-0f44c7b9beb1"
+            }
+          ],
+          "id": "57122c2c-1cac-4536-b47f-6132b76eb044",
+          "createdAt": "2026-10-22T02:05:03.000Z",
+          "updatedAt": "2026-10-22T02:05:03.000Z",
+          "uid": "35240-57122c2c-1cac-4536-b47f-6132b76eb044"
+        },
+        {
+          "name": "list",
+          "item": [
+            {
+              "name": "List Payment Methods",
+              "id": "4c8621d3-48e4-47ec-a4f1-aa46537af0cf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"user_email\": \"diner@example.com\",\n  \"user_id\": \"user_abc123\",\n  \"payment_method\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"payment_method_id\": \"id_7b2c4e\",\n  \"type\": \"card\",\n  \"last4\": \"4242\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fd350357-e465-44b5-98c6-ab937ee0ee9a",
-              "name": "Input Validation Error",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "payment",
-                    "create",
-                    "v2"
-                  ],
+                  "raw": "{{baseUrl}}/payment/list?user_id=<string>&user_email=<email>",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"user_email\": \"diner@example.com\",\n  \"user_id\": \"user_abc123\",\n  \"payment_method\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "45d396c1-c483-4f12-94a7-cb8ce018c4fb",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "payment",
-                    "create",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"user_email\": \"diner@example.com\",\n  \"user_id\": \"user_abc123\",\n  \"payment_method\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0d67b40f-90b3-4aae-9e13-cdbb102c6bdc",
-              "name": "User ID does not match user email",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "payment",
-                    "create",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"user_email\": \"diner@example.com\",\n  \"user_id\": \"user_abc123\",\n  \"payment_method\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "82be55cb-d6e3-4e61-994d-56e232a782b7",
-              "name": "Too Many Requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "payment",
-                    "create",
-                    "v2"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"user_email\": \"diner@example.com\",\n  \"user_id\": \"user_abc123\",\n  \"payment_method\": {}\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4c948305-5bf3-4b00-9259-beb3b29ceb4f",
-          "name": "List Payment Methods",
-          "request": {
-            "name": "List Payment Methods",
-            "description": {
-              "content": "List a user's payment methods.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "payment",
-                "list"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "user_id",
-                  "value": "<string>",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "key": "user_email",
-                  "value": "<email>",
-                  "description": "(Required) "
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "e212bf8a-fa91-4ce7-9ad4-033ae39310bb",
-              "name": "Payment methods.",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "payment",
                     "list"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "(Required) ",
                       "key": "user_id",
-                      "value": "user_abc123"
+                      "value": "<string>"
                     },
                     {
+                      "description": "(Required) ",
                       "key": "user_email",
-                      "value": "diner@example.com"
+                      "value": "<email>"
+                    }
+                  ]
+                },
+                "description": "List a user's payment methods."
+              },
+              "response": [
+                {
+                  "id": "9d9addbb-9b86-49ce-81d1-b081c03fb54f",
+                  "name": "Payment methods.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment/list?user_id=<string>&user_email=<email>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment",
+                        "list"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "user_email",
+                          "value": "<email>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"payment_method_id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"last4\": \"<string>\"\n  },\n  {\n    \"payment_method_id\": \"<string>\",\n    \"type\": \"<string>\",\n    \"last4\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-10-22T02:05:03.000Z",
+                  "updatedAt": "2026-10-22T02:05:03.000Z",
+                  "uid": "35240-9d9addbb-9b86-49ce-81d1-b081c03fb54f"
                 },
+                {
+                  "id": "8ffee2de-6bc4-43b6-9c46-bee09add7beb",
+                  "name": "Input Validation Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment/list?user_id=<string>&user_email=<email>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment",
+                        "list"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "user_email",
+                          "value": "<email>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:05:03.000Z",
+                  "updatedAt": "2026-10-22T02:05:03.000Z",
+                  "uid": "35240-8ffee2de-6bc4-43b6-9c46-bee09add7beb"
+                },
+                {
+                  "id": "1c53898f-76e2-4f8b-a538-24ad48a8b202",
+                  "name": "Missing Authorization",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/payment/list?user_id=<string>&user_email=<email>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment",
+                        "list"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "user_email",
+                          "value": "<email>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:05:03.000Z",
+                  "updatedAt": "2026-10-22T02:05:03.000Z",
+                  "uid": "35240-1c53898f-76e2-4f8b-a538-24ad48a8b202"
+                }
+              ],
+              "createdAt": "2026-10-22T02:05:03.000Z",
+              "updatedAt": "2026-10-22T02:05:03.000Z",
+              "uid": "35240-4c8621d3-48e4-47ec-a4f1-aa46537af0cf"
+            }
+          ],
+          "id": "52deb6d9-d2fc-4090-9e01-abcf0c1c4812",
+          "createdAt": "2026-10-22T02:05:03.000Z",
+          "updatedAt": "2026-10-22T02:05:03.000Z",
+          "uid": "35240-52deb6d9-d2fc-4090-9e01-abcf0c1c4812"
+        },
+        {
+          "name": "delete",
+          "item": [
+            {
+              "name": "Delete a Payment Method",
+              "id": "516b055e-aa39-4f3a-a256-6a9ea39c6297",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
+                    "key": "Content-Type",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"payment_method_id\": \"id_7b2c4e\",\n    \"type\": \"card\",\n    \"last4\": \"4242\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "329f1d82-ef8b-4342-8bce-7bef3c6f1ba1",
-              "name": "Input Validation Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "payment",
-                    "list"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "user_id",
-                      "value": "user_abc123"
-                    },
-                    {
-                      "key": "user_email",
-                      "value": "diner@example.com"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "1eca1672-1dcc-4ad7-b15f-d8281b782846",
-              "name": "Missing Authorization",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "payment",
-                    "list"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "user_id",
-                      "value": "user_abc123"
-                    },
-                    {
-                      "key": "user_email",
-                      "value": "diner@example.com"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4d5a1044-ca4e-4b8d-a5f6-4b9cfd7b8ebb",
-          "name": "Delete a Payment Method",
-          "request": {
-            "name": "Delete a Payment Method",
-            "description": {
-              "content": "Delete a user's payment method.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "payment",
-                "delete"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"payment_method_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"user_email\": \"<email>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "e2ec23cf-b5b5-411a-95da-788c479f5a6a",
-              "name": "Deleted.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "payment",
-                    "delete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"payment_method_id\": \"id_7b2c4e\",\n  \"user_id\": \"user_abc123\",\n  \"user_email\": \"diner@example.com\"\n}",
+                  "raw": "{\n  \"payment_method_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"user_email\": \"<email>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0664bd8c-7a81-4d6c-b0f1-b572554b8260",
-              "name": "Missing Authorization",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "payment",
-                    "delete"
-                  ],
+                  "raw": "{{baseUrl}}/payment/delete",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
+                  "path": [
+                    "payment",
+                    "delete"
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"payment_method_id\": \"id_7b2c4e\",\n  \"user_id\": \"user_abc123\",\n  \"user_email\": \"diner@example.com\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "Delete a user's payment method."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "f78132f0-ff35-4e24-9e45-5db1336bb324",
+                  "name": "Deleted.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"user_email\": \"<email>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payment/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:05:03.000Z",
+                  "updatedAt": "2026-10-22T02:05:03.000Z",
+                  "uid": "35240-f78132f0-ff35-4e24-9e45-5db1336bb324"
+                },
+                {
+                  "id": "2ab5aa16-cbfc-4f92-a178-c2ffccb7b194",
+                  "name": "Missing Authorization",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"payment_method_id\": \"<string>\",\n  \"user_id\": \"<string>\",\n  \"user_email\": \"<email>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/payment/delete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "payment",
+                        "delete"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T02:05:03.000Z",
+                  "updatedAt": "2026-10-22T02:05:03.000Z",
+                  "uid": "35240-2ab5aa16-cbfc-4f92-a178-c2ffccb7b194"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T02:05:03.000Z",
+              "updatedAt": "2026-10-22T02:05:03.000Z",
+              "uid": "35240-516b055e-aa39-4f3a-a256-6a9ea39c6297"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
+          "id": "b1c52b98-3acb-4b53-b05c-ad7176c43641",
+          "createdAt": "2026-10-22T02:05:03.000Z",
+          "updatedAt": "2026-10-22T02:05:03.000Z",
+          "uid": "35240-b1c52b98-3acb-4b53-b05c-ad7176c43641"
+        }
+      ],
+      "id": "5b7023ea-d985-42f6-a898-77351e89568f",
+      "createdAt": "2026-10-22T02:05:03.000Z",
+      "updatedAt": "2026-10-22T02:05:03.000Z",
+      "uid": "35240-5b7023ea-d985-42f6-a898-77351e89568f"
+    },
+    {
+      "name": "get_payment_intent",
+      "item": [
         {
-          "id": "dfa999b2-ae13-4bbc-948a-49d01b346ac0",
           "name": "Get a Payment Intent",
+          "id": "9c3c52b0-522c-4084-a515-fe44c3f24587",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Get a Payment Intent",
-            "description": {
-              "content": "Create a payment intent for a cart.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "get_payment_intent"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": null,
             "body": {
               "mode": "raw",
               "raw": "{\n  \"cart_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/get_payment_intent",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "get_payment_intent"
+              ]
+            },
+            "description": "Create a payment intent for a cart."
           },
           "response": [
             {
-              "id": "3e5dfcc9-cb9a-40a6-865d-441ddfe23f45",
+              "id": "367a2b66-3acf-4d41-bd36-61425e9eaf98",
               "name": "Payment intent.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "get_payment_intent"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "Authorization",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"amount\": 1299,\n  \"currency\": \"usd\"\n}",
+                  "raw": "{\n  \"cart_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/get_payment_intent",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "get_payment_intent"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:03.000Z",
+              "updatedAt": "2026-10-22T02:05:03.000Z",
+              "uid": "35240-367a2b66-3acf-4d41-bd36-61425e9eaf98"
             },
             {
-              "id": "204c100d-777e-43ff-8881-9d79b28933d8",
+              "id": "222dce82-7881-4e47-b8f4-38f2c89bd89b",
               "name": "Missing Authorization",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "get_payment_intent"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
                     "key": "Authorization",
                     "value": "<API Key>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"cart_id\": \"kQ8vZEd-UnW_gZu6c4iO\",\n  \"amount\": 1299,\n  \"currency\": \"usd\"\n}",
+                  "raw": "{\n  \"cart_id\": \"<string>\",\n  \"amount\": \"<integer>\",\n  \"currency\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/get_payment_intent",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "get_payment_intent"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-22T02:05:03.000Z",
+              "updatedAt": "2026-10-22T02:05:03.000Z",
+              "uid": "35240-222dce82-7881-4e47-b8f4-38f2c89bd89b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-22T02:05:03.000Z",
+          "updatedAt": "2026-10-22T02:05:03.000Z",
+          "uid": "35240-9c3c52b0-522c-4084-a515-fe44c3f24587"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.mealme.ai",
-      "key": "baseUrl"
+      "id": "b7661e37-4993-4d5c-b7a2-be1fa5b6af27",
+      "createdAt": "2026-10-22T02:05:03.000Z",
+      "updatedAt": "2026-10-22T02:05:03.000Z",
+      "uid": "35240-b7661e37-4993-4d5c-b7a2-be1fa5b6af27"
     }
   ],
   "auth": {
@@ -803,25 +835,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "Authorization"
+        "value": "Authorization",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "e5de7d6f-8b7a-44a8-864d-e5618cb3cba5",
-    "name": "MealMe Food Ordering Carts Payments API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "MealMe provides a food and grocery ordering API for menus, inventory, and\norder placement at over one million restaurants and grocery stores in the\nUnited States and Canada. The API covers store and product search, store\nlookup, inventory/menu retrieval, product details, cart creation and\nmanagement, order creation and finalization, payment methods, MealMe\nConnect accounts, customer support chat, order tracking webhooks, places\nsearch, and geocoding. Every menu item and grocery product returned\nincludes real-time availability, prices, and customizations or modifiers.\nThe current reference is version 4.1.0.\n\nPaths in this specification mirror the documented MealMe endpoints under\nhttps://api.mealme.ai (for example `/search/store/v3`, `/cart/create`,\nand `/order/order/v4`). Authentication uses an API key passed in the\nAuthorization header.\n\n\nContact Support:\n Name: MealMe API Reference",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.mealme.ai"
     }
-  }
+  ]
 }
