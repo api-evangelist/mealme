@@ -1,4 +1,4 @@
-# MealMe (mealme)
+# MealMe
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,68 +66,193 @@
 
 MealMe provides the largest food ordering API, enabling developers to get menus, inventory, and send orders to the point of sale at over 1 million restaurants and grocery stores for pickup or delivery. Includes a Food Search API, Menu API, and Grocery Ordering API.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/apis.yml)
+**Areas:** Delivery · Food · Grocery · Ordering · Restaurant
 
-## Scope
+## MealMe on APIs.io
 
-- **Type:** Index
+Everything profiled for MealMe is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mealme/](https://apis.io/providers/mealme/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (9)
 
-- Delivery
-- Food
-- Grocery
-- Ordering
-- Restaurants
+- [MealMe Carts API](https://apis.io/apis/mealme/mealme-carts-api/) — Cart creation, retrieval, and item management.
+- [MealMe Connect Accounts API](https://apis.io/apis/mealme/mealme-connect-accounts-api/) — MealMe Connect account linking and ordering.
+- [MealMe Geocoding API](https://apis.io/apis/mealme/mealme-geocoding-api/) — Address geocoding and reverse geocoding.
+- [MealMe Orders API](https://apis.io/apis/mealme/mealme-orders-api/) — Order creation, finalization, and history.
+- [MealMe Payments API](https://apis.io/apis/mealme/mealme-payments-api/) — Payment method management and payment intents.
+- [MealMe Search API](https://apis.io/apis/mealme/mealme-search-api/) — Store, product, and place search.
+- [MealMe Stores API](https://apis.io/apis/mealme/mealme-stores-api/) — Store lookup, inventory, and product details.
+- [MealMe Support Chat API](https://apis.io/apis/mealme/mealme-support-chat-api/) — Customer support chat.
+- [MealMe Tracking API](https://apis.io/apis/mealme/mealme-tracking-api/) — Order tracking webhooks.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-03-01
-- **Modified:** 2026-06-02
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### MealMe Food Ordering API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The MealMe API enables getting menus and inventory and sending orders to the POS of over 1 million restaurants and grocery stores. Every menu item includes real-time availability, prices, and customizations.
+- [Mealme Agentic Access](https://apis.io/agentic-access/mealme/mealme-agentic-access/)
 
-- **Human URL:** [https://www.mealme.ai/](https://www.mealme.ai/)
-- **Base URL:** `https://api.mealme.ai`
+#### JSON Schema (9)
 
-#### Tags
+The data models the API reads and writes.
 
-- Food
-- Grocery
-- Ordering
-- Restaurants
+- [Cart](https://apis.io/schemas/mealme/mealme-api-cart/)
+- [CartItem](https://apis.io/schemas/mealme/mealme-api-cart-item/)
+- [CartRequest](https://apis.io/schemas/mealme/mealme-api-cart-request/)
+- [Order](https://apis.io/schemas/mealme/mealme-api-order/)
+- [OrderRequest](https://apis.io/schemas/mealme/mealme-api-order-request/)
+- [PaymentMethod](https://apis.io/schemas/mealme/mealme-api-payment-method/)
+- [PaymentMethodCreateRequest](https://apis.io/schemas/mealme/mealme-api-payment-method-create-request/)
+- [Product](https://apis.io/schemas/mealme/mealme-api-product/)
+- [Store](https://apis.io/schemas/mealme/mealme-api-store/)
 
-#### Properties
+#### JSON Structure (9)
 
-- [Documentation](https://docs.mealme.ai/docs/api-features)
-- [Getting Started](https://docs.mealme.ai/docs/create-order)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/mealme/refs/heads/main/openapi/mealme-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Reference](https://docs.mealme.ai/reference)
-- [Overview](https://docs.mealme.ai/docs/endpoints-overview)
-- [Authentication](https://docs.mealme.ai/docs/api-features)
-- [Tutorials](https://docs.mealme.ai/docs/store-search-order-flow)
-- [Postman Collection](collections/mealme.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/mealme.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Mealme Api Cart Item Structure](https://apis.io/json-structure/mealme/mealme-api-cart-item-structure/)
+- [Mealme Api Cart Request Structure](https://apis.io/json-structure/mealme/mealme-api-cart-request-structure/)
+- [Mealme Api Cart Structure](https://apis.io/json-structure/mealme/mealme-api-cart-structure/)
+- [Mealme Api Order Request Structure](https://apis.io/json-structure/mealme/mealme-api-order-request-structure/)
+- [Mealme Api Order Structure](https://apis.io/json-structure/mealme/mealme-api-order-structure/)
+- [Mealme Api Payment Method Create Request Structure](https://apis.io/json-structure/mealme/mealme-api-payment-method-create-request-structure/)
+- [Mealme Api Payment Method Structure](https://apis.io/json-structure/mealme/mealme-api-payment-method-structure/)
+- [Mealme Api Product Structure](https://apis.io/json-structure/mealme/mealme-api-product-structure/)
+- [Mealme Api Store Structure](https://apis.io/json-structure/mealme/mealme-api-store-structure/)
 
-- [GitHub Organization](https://github.com/MealMe-Ai)
-- [LinkedIn](https://www.linkedin.com/company/mealme)
-- [Portal](https://www.mealme.ai/)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Mealme Api Context](https://apis.io/jsonld/mealme/mealme-api-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Mealme Vocabulary](https://apis.io/vocabularies/mealme/mealme-vocabulary/)
+
+#### Examples (9)
+
+Example requests and responses.
+
+- [Mealme Api Cart Example](https://apis.io/examples/mealme/mealme-api-cart-example/)
+- [Mealme Api Cart Item Example](https://apis.io/examples/mealme/mealme-api-cart-item-example/)
+- [Mealme Api Cart Request Example](https://apis.io/examples/mealme/mealme-api-cart-request-example/)
+- [Mealme Api Order Example](https://apis.io/examples/mealme/mealme-api-order-example/)
+- [Mealme Api Order Request Example](https://apis.io/examples/mealme/mealme-api-order-request-example/)
+- [Mealme Api Payment Method Create Request Example](https://apis.io/examples/mealme/mealme-api-payment-method-create-request-example/)
+- [Mealme Api Payment Method Example](https://apis.io/examples/mealme/mealme-api-payment-method-example/)
+- [Mealme Api Product Example](https://apis.io/examples/mealme/mealme-api-product-example/)
+- [Mealme Api Store Example](https://apis.io/examples/mealme/mealme-api-store-example/)
+
+#### Collections (10)
+
+Postman and Open Collection request collections.
+
+- [MealMe Food Ordering API](https://apis.io/collections/mealme/open-mealme/)
+- [MealMe Food Ordering Carts API](https://apis.io/collections/mealme/open-mealme-carts-api/)
+- [MealMe Food Ordering Carts Connect Accounts API](https://apis.io/collections/mealme/open-mealme-connect-accounts-api/)
+- [MealMe Food Ordering Carts Geocoding API](https://apis.io/collections/mealme/open-mealme-geocoding-api/)
+- [MealMe Food Ordering Carts Orders API](https://apis.io/collections/mealme/open-mealme-orders-api/)
+- [MealMe Food Ordering Carts Payments API](https://apis.io/collections/mealme/open-mealme-payments-api/)
+- [MealMe Food Ordering Carts Search API](https://apis.io/collections/mealme/open-mealme-search-api/)
+- [MealMe Food Ordering Carts Stores API](https://apis.io/collections/mealme/open-mealme-stores-api/)
+- [MealMe Food Ordering Carts Support Chat API](https://apis.io/collections/mealme/open-mealme-support-chat-api/)
+- [MealMe Food Ordering Carts Tracking API](https://apis.io/collections/mealme/open-mealme-tracking-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [MealMe — jsonschema rules](https://apis.io/rules/mealme/mealme-jsonschema-spectral-rules/)
+- [MealMe API Rules](https://apis.io/rules/mealme/mealme-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Mealme Authentication](https://apis.io/security/mealme/mealme-authentication/)
+- [Mealme Domain Security](https://apis.io/security/mealme/mealme-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Mealme Plans Pricing](https://apis.io/plans/mealme/mealme-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Mealme Rate Limits](https://apis.io/rate-limits/mealme/mealme-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Mealme Finops](https://apis.io/finops/mealme/mealme-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.mealme.ai/)
 - [Documentation](https://docs.mealme.ai/)
-- [L L Ms Txt](https://api.mealme.ai/llms.txt)
-- [Spectral Rules](rules/mealme-spectral-rules.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
-- [Vocabulary](vocabulary/mealme-vocabulary.yaml)
-- [JSON-LD](json-ld/mealme-api-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Plans](plans/mealme-plans-pricing.yml)
-- [Rate Limits](rate-limits/mealme-rate-limits.yml)
-- [Fin Ops](finops/mealme-finops.yml)
+- [Blog](https://www.mealme.ai/blog-feed.xml)
+- [GitHub](https://github.com/MealMe-Ai)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 35.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 61.2 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 7.9 |
+
+**Agent readiness 24.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mealme/](https://apis.io/providers/mealme/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for MealMe: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mealme/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
